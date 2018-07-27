@@ -1,0 +1,8 @@
+{
+  "name": "bookstore",
+  "app_id": "e708af03",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
