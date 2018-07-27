@@ -6,7 +6,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  bannerImgs=[1,2,3]
   constructor(public navCtrl: NavController) {
 
   }

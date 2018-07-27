@@ -1,3 +1,52 @@
+@import "theme/flex.scss";
 page-home {
+
+  .header-box {
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    background-color: rgba(116, 116, 116, 0.4);
+    @include flx($x:flex-start);
+    .search-box{
+      @include flx($x:flex-start);
+      flex:1;
+      margin: .6rem .6rem .6rem 2rem;
+      background-color: #ECECEC;
+      ion-icon[name=search]{
+        padding-left:10px;
+        font-size: 2rem;
+        color:#A2E9B1;
+      }
+      .search{
+        color:#555555;
+        flex:1;
+        .text-input{
+
+          margin-top:3px !important;
+          margin-bottom: 3px !important;
+        }
+
+      }
+    }
+    ion-icon[name=cart]{
+      font-size: 2rem;
+      padding: 0 1rem;
+      color:white;
+    }
+
+  }
+
+  .banner{
+    ion-slide{
+      div{
+        height: 160px;
+        background-image: url("../../assets/imgs/banner.jpg");
+        background-size:100%;
+        background-repeat: no-repeat;
+        background-position:center;
+        opacity: .9;
+      }
+    }
+  }
 
 }
