@@ -28,10 +28,19 @@ page-home {
 
       }
     }
+    .icon-btn{
+      height:2.6rem !important;
+    }
     ion-icon[name=cart]{
       font-size: 2rem;
       padding: 0 1rem;
       color:white;
+    }
+    ion-icon[name=list]{
+      font-size: 2rem;
+      padding: 0 1rem;
+      color:white;
+    
     }
 
   }
@@ -45,6 +54,99 @@ page-home {
         background-repeat: no-repeat;
         background-position:center;
         opacity: .9;
+      }
+    }
+  }
+
+  .tuijian{
+    @include flx;
+    margin-bottom: 10px;
+    height:180px;
+    border-bottom:1px solid #ccc;
+    span{
+      font-size:1.5rem;
+      text-align: center;
+      font-family: "微软雅黑";
+      font-weight: 400;
+      position: relative;
+      margin-bottom:30px;
+      i{
+        position: absolute;
+        width: 100%;
+        display: block;
+        text-align: center;
+        top:2rem;
+        display: block;
+        font-size: 1rem;
+        color: #ccc;
+        font-style: normal;
+      }
+    }
+    
+    .major{
+      height: 100%;
+      box-sizing: border-box;
+      width: 35%;
+      @include flx(column);
+      border-right:1px solid #ccc;
+      span{
+        color:#f53d3d;
+        width:100%;
+      }
+      img{
+        width:70%;
+      }
+    }
+    .other{
+      height:100%;
+      width: 65%;
+      @include flx(column);
+      .top100{
+        
+        @include flx($x:flex-end);
+        span{
+          color:#32db64;
+          padding-right:30px;
+          flex: 1;
+        }
+        flex:1;
+        border-bottom:1px solid #ccc;
+      }
+      .newbook{
+        @include flx($x:flex-end);
+        flex:1;
+        span{
+          flex:1;
+          color: #488aff;
+          padding-right:30px;
+        }
+      }
+      img{
+        width: 30%;
+        margin-right:20px;
+      }
+    }
+  }
+  .type-list{
+    .title{
+      font-size: 1.5rem;
+      @include flx;
+      span{
+        margin-left: 10px;
+      }
+    }
+    .content{
+      ion-col{
+        p{
+          margin:2px;
+        }
+        .book-name{
+          font-size: 1rem;
+        }
+        .author{
+          font-size: .7rem;
+          color: rgb(141, 141, 141);
+        }
       }
     }
   }

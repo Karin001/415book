@@ -7,8 +7,13 @@
         <ion-icon name="search"></ion-icon>
         <ion-input class="search" type="text" placeholder="作者/书名/出版社"></ion-input>
     </div>
-
-    <ion-icon name="cart" ></ion-icon>
+    <button ion-button icon-only clear class="icon-btn">
+      <ion-icon name="cart" ></ion-icon>
+    </button>
+    <button ion-button icon-only clear class="icon-btn">
+      <ion-icon name="list"></ion-icon>
+    </button>
+    
   </header>
 
     <div class="banner">
@@ -18,5 +23,49 @@
             </ion-slide>
 
         </ion-slides>
-          </div>
+    </div>
+    <div class="tuijian">
+      <div class="major">
+        <span>
+          好书推荐
+          <i>415力荐 超值好书</i>
+        </span>
+        
+        <img src="assets/imgs/book1.jpg" alt="">
+      </div>
+      <div class="other">
+        <div class="top100">
+          <span>TOP100
+              <i>排行榜100的好书</i>
+          </span>
+          
+          <img src="assets/imgs/book2.jpg" alt="">
+        </div>
+        <div class="newbook">
+          <span>新到图书
+              <i>财务自由之路</i>
+          </span>
+          
+          <img src="assets/imgs/book2.jpg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="type-list" *ngFor="let group of typeLists">
+      <div class="title">
+        <ion-icon name="happy" color="primary"></ion-icon>
+        <span>{{group.typeName}}</span>
+      </div>
+      <div class="content">
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3 *ngFor="let book of group.books" (click)="toBookPage(book)">
+              <img [src]="book.src" alt="">
+              <p class="book-name">{{book.name}}</p>
+              <p class="author">{{book.author}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
 </ion-content>

@@ -1,0 +1,68 @@
+@import "theme/flex.scss";
+page-book {
+    .headerbox{
+        @include flx(column);
+        img{
+            width:100px;
+        }
+        .caozuo{
+            button{
+                width:10rem;
+            }
+        }
+
+        .zhekou
+        {
+            @include flx;
+            .dixiao{
+                display: block;
+                margin-left:10px;
+                position: relative;
+            }
+            .dixiao i{
+                display:block;
+                width: 100%;
+                position: absolute;
+                top:0.5rem;
+                height:5px;
+                border-bottom: 1px solid black;
+            }
+        }
+
+
+    }
+    .jianjie{
+        margin: 10px 0;
+        border-top:5px solid #ccc;
+        .jianjie-title{
+            margin: 20px 10px 10px 5px;;
+            border-bottom:1px solid #ccc;
+        }
+        .content-box{
+            margin:10px;
+            padding:0 18px 15px 15px;
+
+          position: relative;
+            .jianjie-content{
+                font-size: 1.3rem;
+                line-height: 2.3rem;
+                height: 6.6rem;
+                overflow: hidden;
+            }
+            .ura-jianjie-content{
+              font-size: 1.3rem;
+              line-height: 2.3rem;
+              height: auto;
+            }
+
+
+
+        }
+        button.jianjie-more{
+          position: relative;
+          bottom:30px;
+
+        }
+    }
+
+}
