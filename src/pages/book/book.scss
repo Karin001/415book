@@ -4,16 +4,34 @@ page-book {
         @include flx(column);
         img{
             width:100px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0,.6);
+            margin:10px;
         }
         .caozuo{
             button{
                 width:10rem;
             }
         }
-
+        .author{
+          span{
+            color: #9E9E9E;
+          }
+          color:#00A2FF;
+        }
+        .name{
+          font-size: 1.8rem;
+          font-weight: 500;
+        }
+        .jiage{
+          color:#FF0000;
+        }
         .zhekou
         {
             @include flx;
+            .zhe{
+              background: #FF0000;
+              color: white;
+            }
             .dixiao{
                 display: block;
                 margin-left:10px;
@@ -35,12 +53,14 @@ page-book {
         margin: 10px 0;
         border-top:5px solid #ccc;
         .jianjie-title{
-            margin: 20px 10px 10px 5px;;
-            border-bottom:1px solid #ccc;
+            font-size:1.6rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom:10px;
+            padding-left: 10px;
         }
         .content-box{
             margin:10px;
-            padding:0 18px 15px 15px;
+            padding:0 18px 0px 15px;
 
           position: relative;
             .jianjie-content{
@@ -60,9 +80,29 @@ page-book {
         }
         button.jianjie-more{
           position: relative;
-          bottom:30px;
+
 
         }
     }
+    .mulu{
+      background-color: #F7F7F7;
+      button{
+        font-size: 1.3rem;
+      }
+      border-bottom:10px solid #DFDFDF;
+    }
 
+    .info{
+      h3{
+        font-size: 1.6rem;
+        padding-left: 10px;
+      }
+      ion-item{
+        font-size:1.3rem;
+      }
+
+      ion-col{
+        font-size:1.3rem;
+      }
+    }
 }

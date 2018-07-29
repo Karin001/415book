@@ -17,41 +17,35 @@
   <div class="headerbox">
     <img [src]="book.src" alt="">
     <p class="name">{{book.name}}</p>
-    <p class="author">作者：{{book.author}}</p>
+    <p class="author"><span>作者: </span> {{book.author}}</p>
     <p class="jiage">￥21</p>
     <p class="zhekou">
-      <span>3.7折</span>
+      <span class="zhe">3.7折</span>
       <span class="dixiao">
         ￥57.99
         <i></i>
       </span>
     </p>
     <div class="caozuo">
-      <button ion-button outline >加入购物车</button>
-      <button ion-button >立即购买</button>
+      <button ion-button outline>加入购物车</button>
+      <button ion-button>立即购买</button>
     </div>
   </div>
   <div class="jianjie">
-      <p class="jianjie-title">内容简介</p>
-      <div class="content-box" #box>
-          <p class="jianjie-content" [ngStyle]="{'height':!show? '6.6rem':'auto'}" #con>
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事。
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
-              这是一个动人的故事，这是一个动人的故事，这是一个动人的故事。
+      <h3 class="jianjie-title">内容简介</h3>
 
-          </p>
-      </div>
 
-      <button (click)="show = !show " *ngIf="moreShow" ion-button icon-end class="jianjie-more" full clear>
+    <div class="content-box" #box>
+      <p class="jianjie-content" [ngStyle]="{'height':!show? '6.6rem':'auto'}" #con>
+        这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
+        这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事。
+        这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，
+        这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事，这是一个动人的故事， 这是一个动人的故事，这是一个动人的故事，这是一个动人的故事。
+
+      </p>
+    </div>
+
+    <button (click)="show = !show " *ngIf="moreShow" ion-button icon-end class="jianjie-more" full clear>
         {{show?'back...':'...read more'}}
         <ion-icon  [name]="show?'arrow-up':'arrow-down'" ></ion-icon>
 
@@ -59,7 +53,59 @@
 
 
   </div>
-  <div class="info"></div>
+  <div class="mulu">
+    <button ion-button icon-end clear full (click)="toMuluPage()">
+      查看目录
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </button>
+  </div>
+  <div class="info">
+    <h3>图书信息</h3>
+    <ion-list>
+      <ion-item>
+        <span>作者：</span>
+        <span>(德)赫尔曼，等</span>
+      </ion-item>
+      <ion-item>
+        <span>出版方：</span>
+        <span>天津人民出版社</span>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-8>
+              <span>ISBN：</span>
+              <span>9893783743938493</span>
+            </ion-col>
+            <ion-col col-4>
+              <span>版次：</span>
+              <span>1</span>
+            </ion-col>
+            <ion-col col-8>
+              <span>包装：</span>
+              <span>平装</span>
+            </ion-col>
+            <ion-col col-4>
+              <span>开本：</span>
+              <span>16开</span>
+            </ion-col>
+            <ion-col col-8>
+              <span>用纸：</span>
+              <span>胶版纸</span>
+            </ion-col>
+            <ion-col col-4>
+              <span>页数：</span>
+              <span>436</span>
+            </ion-col>
+            <ion-col col-8>
+              <span>字数：</span>
+              <span>280000</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
   <div class="shuping"></div>
 
 </ion-content>
