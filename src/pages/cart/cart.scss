@@ -1,3 +1,99 @@
+@import "theme/flex.scss";
 page-cart {
+  button.to-top{
+    position: fixed;
+    bottom:70px;
+    right:10px;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 2px #CFCFCF;
+    font-size: 1.6rem;
 
+  }
+  ion-list{
+    ion-item:last-child{
+      margin-bottom:100px;
+    }
+  }
+  .checkbox-box{
+    margin:-8px !important;
+    height:100%;
+    ion-checkbox{
+      button{
+        width: auto !important;
+      }
+    }
+  }
+  .all-price{
+    background: #FFFFFF;
+    box-shadow: 0 -1px 1px 1px rgba(0, 0, 0,.1);
+    height:50px;
+    width: 100%;
+    position: fixed;
+    z-index: 13;
+    bottom: 0;
+    @include flx(row, flex-start, center);
+    .all-select{
+      width:70px;
+      @include flx(row, space-around, center);
+      margin:0 10px;
+      }
+      button{
+        margin-left: auto;
+      }
+  }
+
+  .book{
+    width: 100%;
+    padding:15px 10px;
+
+    border-radius: 2%;
+    box-shadow: 0px 1px 8px 1px #EEEEEE;
+    @include flx(row,flex-start,center);
+    img{
+      width:90px;
+      box-shadow: 0 1px 3px 1px #AFAFAF;
+    }
+
+    .info{
+
+      height:100%;
+      align-self: stretch;
+      padding:0 1rem;
+      font-size:1rem;
+      @include flx(column,flex-start,flex-start);
+      span{
+        margin-bottom:3px;
+      }
+      .price-fuhao{
+        color:  #f53d3d;
+        font-size: 1rem;
+
+      }
+      .price-jiage{
+        color:  #f53d3d;
+        font-size: 1.5rem;
+      }
+      .nums-modify{
+        @include flx(row, flex-end, center);
+        .add-nums,.remove-nums{
+          width:3rem;
+          height:3rem;
+        }
+
+        input{
+          width:3rem;
+          text-align: center;
+          border: none;
+          line-height: 2rem;
+          color:#222;
+          background: #EEEEEE;
+          font-weight: 600;
+
+        }
+      }
+
+    }
+  }
 }

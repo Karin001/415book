@@ -13,11 +13,58 @@
 </ion-header>
 
 
-<ion-content>
-  <ion-list >
-    <ion-item *ngFor="let item of cartGoods">
+<ion-content #content (ionScroll)="hhahaScroll($event)">
+  <ion-list no-lines>
+    <ion-item *ngFor="let item of cartGoods"  [ngStyle]="{'background': item.nums>0?'none':'#ECECEC'}">
+      <div item-start class="checkbox-box">
+          <ion-checkbox [(ngModel)]="item.selected"  [disabled]="!item.nums" ></ion-checkbox>
+        </div>
+        <div class="book" item-end >
+            <div class="img-box">
+                <img [src]="item.imgSrc" alt="">
+            </div>
+            <div class="info" (click)="toBookPage(item)">
+                <span>书名： {{item.name}}</span>
+                <span>作者: {{item.author}}</span>
+                <div>
+                  <span class="price-fuhao">￥</span>
+                  <span class="price-jiage">{{item.price}}</span>
+                </div>
+                <div class="nums-modify" (click)="$event.stopPropagation()">
+                  <span>购买数量：</span>
+                  <button class="remove-nums" clear ion-button icon-only color="secondary"  (click)="item.nums = item.nums===0?0:item.nums-1;item.selected=item.nums>0?item.selected:false">
+                    <ion-icon name="remove"></ion-icon>
+                  </button>
+
+                    <input type="number" disabled [value]=item.nums>
+
+
+                  <button class="add-nums" clear ion-button icon-only color="danger" (click)="item.nums = item.nums-0+1">
+                      <ion-icon name="add"></ion-icon>
+                  </button>
+                </div>
+            </div>
+
+          </div>
 
     </ion-item>
+
   </ion-list>
+  <div class="all-price">
+    <div class="all-select">
+        <ion-checkbox #c [checked]="allPrice.nothing===true?false:c.checked" (ionChange)="allChange(c.checked)" [disabled]="allPrice.nothing" ></ion-checkbox>
+        <span>全选</span>
+    </div>
+
+    <div>
+        <span>合计:</span>
+        <span *ngIf="allPrice.sum>0">￥{{allPrice.sum}}</span>
+    </div>
+    <button ion-button>去付款</button>
+
+  </div>
+  <button *ngIf="showToTop" ion-button (click)="toTop()" color="light" icon-only class="to-top">
+      <ion-icon name="arrow-round-up"></ion-icon>
+  </button>
 
 </ion-content>

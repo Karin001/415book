@@ -1,46 +1,100 @@
 @import "theme/flex.scss";
+.header-box-border{
+  box-shadow: 0 2px 3px rgba(0,0,0,.3);
+
+}
+
+.header-box-border-none{
+  box-shadow: none;
+}
+.search-box-sw-none{
+  background-color: #ECECEC;
+}
+.search-box-sw{
+  background-color: #DBDBDB;
+}
+.input-sw{
+  color:white;
+}
+.input-sw-none{
+  color:#6E6E6E;
+}
+.book-item-img{
+  box-shadow: 0 2px 2px #6E6E6E;
+  margin-bottom: 10px;
+}
+.book-item{
+  display: inline-block;
+  width: 115px;
+  margin: 0 5px;
+  img{
+    box-shadow: 0 2px 2px #6E6E6E;
+    margin-bottom: 10px;
+  }
+
+}
+.book-con{
+width: auto;
+white-space: nowrap;
+}
+.scroll1{
+  height: 220px;
+  width: 100%;
+}
 page-home {
+  ion-scroll{
+    height:100%;
+  }
 
   .header-box {
     z-index: 2;
     position: fixed;
     width: 100%;
-    background-color: rgba(116, 116, 116, 0.4);
+    height:50px;
     @include flx($x:flex-start);
     .search-box{
       @include flx($x:flex-start);
       flex:1;
-      margin: .6rem .6rem .6rem 2rem;
-      background-color: #ECECEC;
+      margin: .8rem .8rem .8rem 2rem;
+
       ion-icon[name=search]{
-        padding-left:10px;
+        padding:0 10px;
         font-size: 2rem;
-        color:#A2E9B1;
+
       }
       .search{
-        color:#555555;
+
         flex:1;
         .text-input{
 
-          margin-top:3px !important;
-          margin-bottom: 3px !important;
+          margin-top:6px !important;
+          margin-bottom: 6px !important;
         }
 
       }
     }
+
     .icon-btn{
       height:2.6rem !important;
+      background: rgba(161, 185, 230, .3);
+
+    }
+    .icon-btn-op1{
+      height:2.6rem !important;
+
+      background:none;
     }
     ion-icon[name=cart]{
-      font-size: 2rem;
+      font-size: 2.5rem;
       padding: 0 1rem;
-      color:white;
+
+
     }
     ion-icon[name=list]{
-      font-size: 2rem;
+      font-size: 2.5rem;
       padding: 0 1rem;
-      color:white;
-    
+
+
     }
 
   }
@@ -48,7 +102,7 @@ page-home {
   .banner{
     ion-slide{
       div{
-        height: 160px;
+        height: 200px;
         background-image: url("../../assets/imgs/banner.jpg");
         background-size:100%;
         background-repeat: no-repeat;
@@ -62,12 +116,14 @@ page-home {
     @include flx;
     margin-bottom: 10px;
     height:180px;
-    border-bottom:1px solid #ccc;
+    border:5px solid #EEEEEE;
+    border-left:none;
+    border-right:none;
     span{
       font-size:1.5rem;
       text-align: center;
       font-family: "微软雅黑";
-      font-weight: 400;
+      font-weight: 600;
       position: relative;
       margin-bottom:30px;
       i{
@@ -78,17 +134,18 @@ page-home {
         top:2rem;
         display: block;
         font-size: 1rem;
+        font-weight: 100;
         color: #ccc;
         font-style: normal;
       }
     }
-    
+
     .major{
       height: 100%;
       box-sizing: border-box;
-      width: 35%;
+      width: 45%;
       @include flx(column);
-      border-right:1px solid #ccc;
+      border-right:1px solid #eee;
       span{
         color:#f53d3d;
         width:100%;
@@ -99,18 +156,19 @@ page-home {
     }
     .other{
       height:100%;
-      width: 65%;
+      width: 55%;
       @include flx(column);
       .top100{
-        
+
         @include flx($x:flex-end);
         span{
+          padding-left: 15px;
           color:#32db64;
           padding-right:30px;
           flex: 1;
         }
         flex:1;
-        border-bottom:1px solid #ccc;
+        border-bottom:1px solid #eee;
       }
       .newbook{
         @include flx($x:flex-end);
@@ -118,6 +176,7 @@ page-home {
         span{
           flex:1;
           color: #488aff;
+          padding-left: 15px;
           padding-right:30px;
         }
       }
@@ -127,16 +186,60 @@ page-home {
       }
     }
   }
-  .type-list{
+  .type-tubiao-set{
+    text-align: center;
+    @include flx(column);
+    height:50px;
+    ion-icon{
+      font-size:2.5rem;
+    }
+    p{
+      color:#6E6E6E;
+    }
+  }
+  .rexiao{
+
     .title{
-      font-size: 1.5rem;
+      font-size: 1.7rem;
+      position: relative;
       @include flx;
       span{
-        margin-left: 10px;
+
       }
+      .more-books-icon{
+        position: absolute;
+        right:20px;
+      }
+
+    }
+    .book-name{
+      font-size: 1rem;
+    }
+    .author{
+      font-size: 1rem;
+      color: rgb(141, 141, 141);
+    }
+  }
+  .type-list{
+    border-top:5px solid #EBEBEB;
+    margin-bottom:30px;
+    .title{
+      font-size: 1.7rem;
+
+      position: relative;
+      @include flx;
+
+      .more-books-icon{
+        position: absolute;
+        right:20px;
+      }
+
+
     }
     .content{
-      ion-col{
+      padding-left: 10px;
+      ion-scroll{
+
         p{
           margin:2px;
         }
@@ -144,7 +247,7 @@ page-home {
           font-size: 1rem;
         }
         .author{
-          font-size: .7rem;
+          font-size: 1rem;
           color: rgb(141, 141, 141);
         }
       }

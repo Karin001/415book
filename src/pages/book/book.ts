@@ -43,6 +43,7 @@ export class BookPage {
   moreShow=false;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
    this.book = this.navParams.get('book');
+   console.log('bookpage',this.book);
   }
 
   ionViewDidLoad() {
