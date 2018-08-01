@@ -9,6 +9,9 @@ import { HomePage } from '../pages/home/home';
 import { BookPage } from '../pages/book/book';
 import {MuluPage} from '../pages/mulu/mulu';
 import { CartPage } from '../pages/cart/cart';
+import { EditRemovePage } from '../pages/cart/modal-page/editRemove';
+import { FukuanPage } from '../pages/fukuan/fukuan';
+import { CheckOrderPage } from '../pages/check-order/check-order';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,12 +27,16 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     TabsPage,
     BookPage,
     MuluPage,
-    CartPage
+    CartPage,
+    FukuanPage,
+    CheckOrderPage,
+    EditRemovePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true',
+      iconMode: 'ios',
     })
   ],
   bootstrap: [IonicApp],
@@ -41,7 +48,10 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     BookPage,
     MuluPage,
     CartPage,
-    TabsPage
+    TabsPage,
+    FukuanPage,
+    CheckOrderPage,
+    EditRemovePage
   ],
   providers: [
     StatusBar,

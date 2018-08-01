@@ -17,7 +17,7 @@ page-cart {
     }
   }
   .checkbox-box{
-    margin:-8px !important;
+    margin:-12px !important;
     height:100%;
     ion-checkbox{
       button{
@@ -57,10 +57,10 @@ page-cart {
     }
 
     .info{
-
+      flex:1;
       height:100%;
       align-self: stretch;
-      padding:0 1rem;
+      padding:0  0  0 1rem;
       font-size:1rem;
       @include flx(column,flex-start,flex-start);
       span{
@@ -76,14 +76,14 @@ page-cart {
         font-size: 1.5rem;
       }
       .nums-modify{
-        @include flx(row, flex-end, center);
+        @include flx(row, flex-start, center);
         .add-nums,.remove-nums{
-          width:3rem;
+          width:2rem;
           height:3rem;
         }
 
         input{
-          width:3rem;
+          width:2rem;
           text-align: center;
           border: none;
           line-height: 2rem;

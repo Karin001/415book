@@ -1,0 +1,46 @@
+<!--
+  Generated template for the CheckOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>确认订单</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list >
+    <ion-item *ngFor="let item of orderList">
+      <ion-list no-lines>
+        <ion-item >
+            <img item-start [src]="item.imgSrc" alt="">
+            <div  class="book-info">
+              <p>书名：{{item.name}}</p>
+              <P>作者：{{item.author}}</P>
+              <p>定价：￥{{item.price}}</p>
+              <p>数量：{{item.nums}}</p>
+            </div>
+        </ion-item>
+
+      </ion-list>
+
+
+
+
+
+    </ion-item>
+  </ion-list>
+  <div class="sum">
+      <button ion-button icon-right full  color="light" class="songhuo-btn">
+          <span item-start>送货方式</span>
+          <span item-end>免邮</span>
+          <ion-icon name="arrow-forward" color="primary"></ion-icon>
+      </button>
+  </div>
+
+</ion-content>

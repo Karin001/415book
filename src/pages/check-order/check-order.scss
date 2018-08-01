@@ -1,0 +1,22 @@
+@import "theme/flex.scss";
+page-check-order {
+  ion-item img{
+    width:70px;
+    margin-right:10px;
+  }
+  ion-list{
+    margin-bottom:50px;
+  }
+  .sum{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    .songhuo-btn{
+      height:3rem !important;
+      span:nth-child(1){
+        margin-right:auto;
+      }
+    }
+  }
+
+}

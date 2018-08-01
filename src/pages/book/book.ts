@@ -1,5 +1,5 @@
 import { Component, ViewChild,ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController  } from 'ionic-angular';
 import { MuluPage } from '../mulu/mulu';
 /**
  * Generated class for the BookPage page.
@@ -41,7 +41,11 @@ export class BookPage {
   @ViewChild('box') box1:ElementRef;
   @ViewChild('con') con1:ElementRef;
   moreShow=false;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController
+  ) {
    this.book = this.navParams.get('book');
    console.log('bookpage',this.book);
   }
@@ -53,6 +57,8 @@ export class BookPage {
     }
   }
   toMuluPage(){
-    this.navCtrl.push(MuluPage, {mulu})
+    //this.navCtrl.push(MuluPage, {mulu})
+    const modal = this.modalCtrl.create(MuluPage,{mulu});
+    modal.present();
   }
 }

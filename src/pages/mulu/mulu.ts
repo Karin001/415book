@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the MuluPage page.
@@ -15,12 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MuluPage {
   mulu;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController
+  ) {
     this.mulu = this.navParams.get("mulu");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MuluPage');
   }
-
+  dismiss() {
+    this.viewCtrl.dismiss();
+  }
 }

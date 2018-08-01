@@ -8,6 +8,11 @@
 
   <ion-navbar>
     <ion-title>购物车</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openAlert()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +20,7 @@
 
 <ion-content #content (ionScroll)="hhahaScroll($event)">
   <ion-list no-lines>
-    <ion-item *ngFor="let item of cartGoods"  [ngStyle]="{'background': item.nums>0?'none':'#ECECEC'}">
+    <ion-item *ngFor="let item of cartGoods"  (click)="toBookPage(item)" [ngStyle]="{'background': item.nums>0?'none':'#ECECEC'}">
       <div item-start class="checkbox-box">
           <ion-checkbox [(ngModel)]="item.selected"  [disabled]="!item.nums" ></ion-checkbox>
         </div>
@@ -23,7 +28,7 @@
             <div class="img-box">
                 <img [src]="item.imgSrc" alt="">
             </div>
-            <div class="info" (click)="toBookPage(item)">
+            <div class="info">
                 <span>书名： {{item.name}}</span>
                 <span>作者: {{item.author}}</span>
                 <div>
@@ -60,7 +65,7 @@
         <span>合计:</span>
         <span *ngIf="allPrice.sum>0">￥{{allPrice.sum}}</span>
     </div>
-    <button ion-button>去付款</button>
+    <button ion-button (click)="toCheckOrderPage()">去付款</button>
 
   </div>
   <button *ngIf="showToTop" ion-button (click)="toTop()" color="light" icon-only class="to-top">

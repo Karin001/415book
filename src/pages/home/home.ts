@@ -8,7 +8,7 @@ import { CartPage } from '../cart/cart';
 })
 export class HomePage {
   @ViewChild('header') header:ElementRef;
-  bannerImgs = [1, 2, 3]
+  bannerImgs = [`url("assets/imgs/banner.jpg")`,`url("assets/imgs/banner.jpg")`,`url("assets/imgs/banner.jpg")`]
   sw;
   haha=1;
   icontypes = [
@@ -94,18 +94,18 @@ export class HomePage {
     this.navCtrl.push(CartPage);
   }
   hhahaScroll(event:ScrollEvent){
-    console.log(this.header);
+
     if(event.scrollTop>=160) {
       this.op = `rgba(255,255,255,1)`;
       this.sw = true;
-      console.log(this.op);
+
       this.renderer.setStyle(this.header.nativeElement,'background',this.op);
     } else{
       this.sw = false;
       const op = Math.floor(event.scrollTop/160 * 100)/100
       this.op = `rgba(255,255,255,${op})`;
       this.renderer.setStyle(this.header.nativeElement,'background',this.op);
-      console.log(this.op);
+
     }
     this.zone.run(()=>{
       this.sw = !!this.sw;

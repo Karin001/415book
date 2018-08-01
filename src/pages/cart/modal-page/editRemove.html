@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>清扫列表</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+            <span ion-text color="primary" showWhen="ios">Cancel</span>
+            <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+          </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ng-container *ngFor="let ele of removeBooks">
+        <ion-item [hidden]="ele.hide">
+            <ion-checkbox #c checked="true" (ionChange)="ele.dontRemove = !c.checked; doMore()"></ion-checkbox>
+            <ion-label>
+              <img [src]="ele.imgSrc" alt="">
+              <div>
+                <p>
+                  书名：{{ele.name}}
+                </p>
+                <p>作者：{{ele.author}}</p>
+                <p>定价：￥{{ele.price}}</p>
+              </div>
+            </ion-label>
+          </ion-item>
+    </ng-container>
+
+  </ion-list>
+  <div class="remove">
+    <ion-item>
+      <span>共有{{removeBooks.length}}项。 </span>
+      <span>您取消了{{dontRemoveCnt}}项</span>
+      <button ion-button color="danger" item-end (click)="remove()">清扫</button>
+    </ion-item>
+
+  </div>
+</ion-content>

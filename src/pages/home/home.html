@@ -19,7 +19,7 @@
     <div class="banner">
         <ion-slides autoplay="3000" loop="true" pager="true">
             <ion-slide *ngFor="let item of bannerImgs">
-              <div></div>
+              <div [ngStyle]="{'background-image':item}"></div>
             </ion-slide>
 
         </ion-slides>
