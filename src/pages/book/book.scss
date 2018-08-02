@@ -109,7 +109,12 @@ page-book {
         font-size: 1.6rem;
         padding-left: 10px;
       }
-
+      .grid{
+        padding-left: 0 !important;
+        ion-col{
+          padding-left:0 !important;
+        }
+      }
       ion-item{
         font-size:1.3rem;
       }

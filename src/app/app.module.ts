@@ -12,6 +12,8 @@ import { CartPage } from '../pages/cart/cart';
 import { EditRemovePage } from '../pages/cart/modal-page/editRemove';
 import { FukuanPage } from '../pages/fukuan/fukuan';
 import { CheckOrderPage } from '../pages/check-order/check-order';
+import { PostAddrPage } from '../pages/post-addr/post-addr';
+import { EditPostPage } from '../pages/edit-post/edit-post';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -30,7 +32,9 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     CartPage,
     FukuanPage,
     CheckOrderPage,
-    EditRemovePage
+    EditRemovePage,
+    PostAddrPage,
+    EditPostPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     TabsPage,
     FukuanPage,
     CheckOrderPage,
-    EditRemovePage
+    EditRemovePage,
+    PostAddrPage,
+    EditPostPage
   ],
   providers: [
     StatusBar,

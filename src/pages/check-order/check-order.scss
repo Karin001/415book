@@ -1,5 +1,35 @@
 @import "theme/flex.scss";
 page-check-order {
+  .post-addr-box{
+    @include flx;
+    padding: 10px;
+  }
+  .post-addr{
+    width:90%;
+    font-weight: 400;
+    padding-left:10px;
+    .name-phone{
+      font-size: 2rem;
+      @include flx($x:space-between);
+      span:nth-child(1){
+        margin-right:auto;
+
+      }
+    }
+    .addr{
+      font-size: 1rem;
+      color:#ccc;
+    }
+  }
+  .icon-box{
+    width: 10%;
+    @include flx($x:flex-end);
+    ion-icon{
+
+      font-size:2.5rem;
+    }
+  }
+
   ion-item img{
     width:70px;
     margin-right:10px;

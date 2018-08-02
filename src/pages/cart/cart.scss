@@ -17,9 +17,12 @@ page-cart {
     }
   }
   .checkbox-box{
-    margin:-12px !important;
+    //margin:-12px !important;
+    margin:0 !important;
+    width:30px;
     height:100%;
     ion-checkbox{
+      width:20px !important;
       button{
         width: auto !important;
       }
@@ -46,13 +49,13 @@ page-cart {
 
   .book{
     width: 100%;
-    padding:15px 10px;
+    padding:15px 15px 10px 0px;
 
     border-radius: 2%;
     box-shadow: 0px 1px 8px 1px #EEEEEE;
     @include flx(row,flex-start,center);
     img{
-      width:90px;
+      width:70px;
       box-shadow: 0 1px 3px 1px #AFAFAF;
     }
 
@@ -66,6 +69,9 @@ page-cart {
       span{
         margin-bottom:3px;
       }
+      .price-box{
+        padding-top:5px;
+      }
       .price-fuhao{
         color:  #f53d3d;
         font-size: 1rem;
@@ -76,10 +82,11 @@ page-cart {
         font-size: 1.5rem;
       }
       .nums-modify{
-        @include flx(row, flex-start, center);
+        @include flx(row, flex-end, center);
+        width:100%;
         .add-nums,.remove-nums{
           width:2rem;
-          height:3rem;
+          height:2rem;
         }
 
         input{

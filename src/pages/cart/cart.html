@@ -31,7 +31,9 @@
             <div class="info">
                 <span>书名： {{item.name}}</span>
                 <span>作者: {{item.author}}</span>
-                <div>
+                <span>出版社：{{item.publisher}}</span>
+                <span>版次：{{item.version}}</span>
+                <div class="price-box">
                   <span class="price-fuhao">￥</span>
                   <span class="price-jiage">{{item.price}}</span>
                 </div>
@@ -62,7 +64,8 @@
     </div>
 
     <div>
-        <span>合计:</span>
+        <span *ngIf="allPrice.sum>0">共{{allPrice.selectedBooks.length}}款图书 </span>
+        <span> 合计:</span>
         <span *ngIf="allPrice.sum>0">￥{{allPrice.sum}}</span>
     </div>
     <button ion-button (click)="toCheckOrderPage()">去付款</button>

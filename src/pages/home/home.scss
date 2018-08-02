@@ -151,7 +151,7 @@ page-home {
         width:100%;
       }
       img{
-        width:70%;
+        height:65%;
       }
     }
     .other{
@@ -162,9 +162,10 @@ page-home {
 
         @include flx($x:flex-end);
         span{
-          padding-left: 15px;
+
+          width: 65%;
           color:#32db64;
-          padding-right:30px;
+
           flex: 1;
         }
         flex:1;
@@ -176,13 +177,12 @@ page-home {
         span{
           flex:1;
           color: #488aff;
-          padding-left: 15px;
-          padding-right:30px;
+         width: 65%;
         }
       }
       img{
         width: 30%;
-        margin-right:20px;
+        margin-right:  10px;
       }
     }
   }

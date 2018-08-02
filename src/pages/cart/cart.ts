@@ -17,18 +17,18 @@ const goods = []
 })
 export class CartPage {
  cartGoods = [
-   {bookid:'1',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5},
-   {bookid:'2',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5},
-   {bookid:'3',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:1,price:11.6},
-   {bookid:'4',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5},
-   {bookid:'5',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5},
-   {bookid:'6',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:1,price:11.6},
-   {bookid:'7',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5},
-   {bookid:'8',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5},
-   {bookid:'9',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:1,price:11.6},
-   {bookid:'10',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:2,price:12.5},
-   {bookid:'11',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5},
-   {bookid:'12',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:0,price:11.6},
+   {bookid:'1',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'2',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'3',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:1,price:11.6,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'4',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'5',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'6',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:1,price:11.6,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'7',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'8',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'9',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:1,price:11.6,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'10',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:2,price:12.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'11',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book5.jpg',nums:1,price:16.5,publisher:'某某某某某某某出版社',version:'2014年第一版'},
+   {bookid:'12',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book3.jpg',nums:0,price:11.6,publisher:'某某某某某某某出版社',version:'2014年第一版'},
 
  ];
  mayNotWantBooks;
@@ -38,6 +38,7 @@ export class CartPage {
    this.mayNotWantBooks = [];
    let nothing = true;
    let sum = 0;
+   let selectedBooks = [];
    this.cartGoods.forEach(ele => {
     if(ele.nums > 0 ){
       nothing = false;
@@ -45,11 +46,12 @@ export class CartPage {
       this.mayNotWantBooks.push(ele)
     }
     if(ele['selected']){
+      selectedBooks.push(ele);
       sum = sum + (ele.price*1000 * ele.nums);
     }
   })
   sum = sum/1000;
-  return {sum,nothing};
+  return {sum,nothing,selectedBooks};
  }
   constructor(
     public navCtrl: NavController,
@@ -70,10 +72,10 @@ export class CartPage {
   }
 
 
-  allChange(checked){
+  allChange(checkedState){
     this.cartGoods.forEach(ele => {
       if(ele.nums>0) {
-        ele['selected'] = checked;
+        ele['selected'] = checkedState;
       }
     })
   }

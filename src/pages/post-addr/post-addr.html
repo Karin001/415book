@@ -1,0 +1,56 @@
+<!--
+  Generated template for the PostAddrPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>选择收货地址</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-scroll  scrollY="true">
+      <ion-list>
+          <ion-item>
+              <div class="box">
+                  <p class="people-info">
+                    <span class="default-tag">[默认地址]</span>
+                    <span >{{addrs.default.name}}</span>
+                    <span>{{addrs.default.phone}}</span>
+                  </p>
+                  <p class="addr">{{addrs.default.addr}}</p>
+                  <button ion-button icon-only clear class="edit-icon" (click)="toEditPage(addrs.default)">
+                      <ion-icon name="build"></ion-icon>
+                    </button>
+                </div>
+          </ion-item>
+          <ng-container *ngFor="let item of addrs.list">
+              <ion-item *ngIf="item.postId !== addrs.default.postId">
+                  <div class="box">
+                      <p class="people-info">
+                        <span>{{item.name}}</span>
+                        <span>{{item.phone}}</span>
+                      </p>
+                      <p class="addr">{{item.addr}}</p>
+                      <button ion-button icon-only clear class="edit-icon" (click)="toEditPage(item)">
+                          <ion-icon name="build"></ion-icon>
+                        </button>
+                    </div>
+              </ion-item>
+          </ng-container>
+
+        </ion-list>
+  </ion-scroll>
+  <ion-toolbar >
+      <button ion-button full icon-start (click)="toEditPage(null)" >
+          <ion-icon name="add"></ion-icon>
+          新建收货地址
+        </button>
+  </ion-toolbar>
+
+</ion-content>
