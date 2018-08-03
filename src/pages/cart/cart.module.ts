@@ -5,7 +5,7 @@ import { EditRemovePage } from './modal-page/editRemove';
 
 @NgModule({
   declarations: [
-    CartPage,
+
 
   ],
   imports: [

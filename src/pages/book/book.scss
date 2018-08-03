@@ -1,5 +1,9 @@
 @import "theme/flex.scss";
 page-book {
+  .cos{
+    position: absolute;
+    top:100px;
+  }
     .headerbox{
         @include flx(column);
         img{

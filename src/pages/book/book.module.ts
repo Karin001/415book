@@ -4,7 +4,7 @@ import { BookPage } from './book';
 
 @NgModule({
   declarations: [
-    BookPage,
+
   ],
   imports: [
     IonicPageModule.forChild(BookPage),

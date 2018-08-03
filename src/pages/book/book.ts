@@ -58,7 +58,7 @@ export class BookPage {
   }
   toMuluPage(){
     //this.navCtrl.push(MuluPage, {mulu})
-    const modal = this.modalCtrl.create(MuluPage,{mulu});
+    const modal = this.modalCtrl.create(MuluPage,{mulu},{cssClass:'cos'});
     modal.present();
   }
 }

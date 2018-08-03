@@ -1,5 +1,6 @@
 @import "theme/flex.scss";
 page-editRemove{
+  position: absolute;
   ion-item{
     ion-label{
       @include flx(row,flex-start,center);

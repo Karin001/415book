@@ -4,7 +4,7 @@ import { PostAddrPage } from './post-addr';
 
 @NgModule({
   declarations: [
-    PostAddrPage,
+
   ],
   imports: [
     IonicPageModule.forChild(PostAddrPage),
