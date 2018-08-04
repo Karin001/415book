@@ -12,7 +12,8 @@ const CONFIG = 'dev';
 const switchUrl = {
   dev:{
     getBookList_url:'assets/mockData/bookList.json',
-    postBookDetail_url:''
+    postBookDetail_url:'',
+    areaData_url:'assets/mockData/areaData.json'
   },
   pro:{
     getBookList_url:''
@@ -27,10 +28,11 @@ export class RestApiProvider {
   userInfoCache;
   userInfoSubject = new BehaviorSubject<string>(null);
   userCartDataCache;
-  userCartDataSubjec = new BehaviorSubject<string>(null);
+  userCartDataSubject = new BehaviorSubject<string>(null);
   bookDetailCache;
   bookDetailSubject = new BehaviorSubject<string>(null);
-
+  areaDataCache;
+  areaDataSubject = new BehaviorSubject<string>(null);
   constructor(public http: HttpClient) {
     console.log('Hello RestApiProvider Provider');
   }
@@ -55,6 +57,18 @@ export class RestApiProvider {
   }
   signIn(){
 
+  }
+
+  getAreaData(){
+    this.http.get(apiUrl.areaData_url)
+    .retry(5)
+    .subscribe(list => {
+      this.areaDataCache = list;
+      this.areaDataSubject.next('success');
+    })
+  }
+  watchAreaData(){
+    return this.areaDataSubject.asObservable();
   }
 
 }

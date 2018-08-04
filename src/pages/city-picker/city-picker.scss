@@ -1,3 +1,42 @@
+@import "theme/flex.scss";
 page-city-picker {
+  .box{
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .cancel-box {
+    height:40%;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  ion-navbar{
+    height:5% !important;
+    min-height: 0px !important;
+    box-sizing: border-box;
+    p{
+      text-align: center;
+    }
+  }
+  .select-content{
+    height: 55%;
+    background-color: white;
+    @include flx(column,flex-start,flex-start);
+    .s-x{
+      height: 30px;
+      min-width: 100%;
+      background-color: red;
+    }
+    .s-y{
+      width: 100%;
+      flex:1;
+      background: #F3EBEB;
+      ion-list{
+        ion-item{
+          font-size:1.6rem;
+
+        }
+      }
+    }
+  }
+
 
 }

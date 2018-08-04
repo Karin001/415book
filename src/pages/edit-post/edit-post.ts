@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import { CityPickerPage } from '../city-picker/city-picker';
 /**
  * Generated class for the EditPostPage page.
  *
@@ -15,12 +15,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EditPostPage {
   title;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  fromModalData = '';
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
     this.title = this.navParams.get('post')?'编辑收货地址':'新建收货地址';
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditPostPage');
+  }
+  openCityPicker(){
+    const modal = this.modalCtrl.create(CityPickerPage,{data:this.fromModalData},{cssClass:'cos'});
+    console.log('frpmdata',this.fromModalData);
+    modal.present();
+    modal.onDidDismiss(data => {
+      this.fromModalData = data.join(' ');
+    })
   }
 
 }

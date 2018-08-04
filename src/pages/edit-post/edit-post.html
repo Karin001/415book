@@ -23,5 +23,9 @@
         <ion-label color="primary">联系电话</ion-label>
         <ion-input placeholder="Text Input"></ion-input>
     </ion-item>
+    <ion-item  (click)="openCityPicker()">
+      <ion-label color="primary">选择地址</ion-label>
+      <ion-input placeholder="Text Input" [value]="fromModalData" disabled></ion-input>
+  </ion-item>
   </ion-list>
 </ion-content>
