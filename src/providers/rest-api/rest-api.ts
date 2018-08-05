@@ -13,7 +13,7 @@ const switchUrl = {
   dev:{
     getBookList_url:'assets/mockData/bookList.json',
     postBookDetail_url:'',
-    areaData_url:'assets/mockData/areaData.json'
+    areaData_url:'assets/mockData/areaData1.json'
   },
   pro:{
     getBookList_url:''

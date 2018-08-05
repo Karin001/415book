@@ -23,7 +23,38 @@ page-city-picker {
     .s-x{
       height: 30px;
       min-width: 100%;
-      background-color: red;
+      @include flx($x:flex-start);
+      span{
+        padding:10px 10px 3px 10px;
+        line-height: 20px;
+        position: relative;
+      }
+      .now{
+        color: red;
+        &:after{
+          content: "";
+          display: block;
+          position: absolute;
+          height:3px;
+          width:100%;
+          bottom: 0;
+          left: 0;
+          background-color: orange;
+          animation: border-slide .3s;
+          @keyframes border-slide {
+            from {width: 0}
+            to {width: 100%}
+          }
+        }
+      }
+      .unnow{
+          color:black;
+          &:after{
+            content: ""
+          }
+      }
+
+      margin:10px 0;
     }
     .s-y{
       width: 100%;

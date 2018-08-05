@@ -16,6 +16,11 @@ import { CityPickerPage } from '../city-picker/city-picker';
 export class EditPostPage {
   title;
   fromModalData = '';
+  form = {
+    name:'',
+    phone:'',
+
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
     this.title = this.navParams.get('post')?'编辑收货地址':'新建收货地址';
   }
@@ -31,5 +36,7 @@ export class EditPostPage {
       this.fromModalData = data.join(' ');
     })
   }
-
+  handleSubmit(shouhuoren){
+    console.log(shouhuoren);
+  }
 }

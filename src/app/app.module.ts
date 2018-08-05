@@ -4,6 +4,11 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NG_VALIDATORS} from '@angular/forms'
+import { MyvalidatorDirective } from '../directives/myvalidator/myvalidator';
+
+import { DirectivesModule } from '../directives/directives.module';
+
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -41,6 +46,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
   ],
   imports: [
     BrowserModule,
+    DirectivesModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true',
@@ -68,6 +74,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+
     RestApiProvider
   ]
 })

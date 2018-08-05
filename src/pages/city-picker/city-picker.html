@@ -13,7 +13,10 @@
         </ion-navbar>
     <div class="select-content">
       <ion-scroll scrollX=true class="s-x">
-        <span *ngFor="let pro of properties; let i = index" (click)="reSel(i, properties[i-1] || '')">{{pro}}</span>
+        <ng-container *ngFor="let pro of properties; let i = index">
+          <span [ngClass]="{'now': i === step, ' ': i!==step}" (click)="reSel(i, properties[i-1] || '')">{{pro}}</span>
+        </ng-container>
+
       </ion-scroll>
       <ion-scroll scrollY=true class="s-y">
         <ion-list *ngIf="display.list.length>0">

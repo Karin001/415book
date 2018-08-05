@@ -18,6 +18,7 @@ export class CityPickerPage {
   sheng;
   shi;
   qu;
+  step;
   properties:string[] = [];
   default = '请选择';
   display = {type:'',list:[]};
@@ -41,6 +42,7 @@ export class CityPickerPage {
         if(!this.properties || this.properties.length === 0) {
           console.log('here',this.properties);
           this.properties[0] = this.default;
+          setTimeout(()=>{this.step = 0;})
           this.display['type'] = 'sheng'
           this.display['list'] = this.data.map(ele => ele.name);
           console.log(this.properties);
@@ -48,10 +50,14 @@ export class CityPickerPage {
           if(this.properties.length === 1) {
             console.log('there',this.properties);
             this.properties[1] = this.default;
+            setTimeout(()=>{this.step = 1;})
             this.findShi(this.properties[0]);
-          } else  {
+          } else {
             console.log('there2',this.properties);
-            this.properties[2] = this.default;
+            if(this.properties.length === 2) {
+              this.properties[2] = this.default;
+            }
+            setTimeout(()=>{this.step = 2;})
             this.findShi(this.properties[0]);
             this.findQu(this.properties[1]);
           }
@@ -68,7 +74,7 @@ export class CityPickerPage {
   }
   dismiss(data = []) {
     this.$stream.unsubscribe();
-    this.properties = [];
+    data = data.filter(ele => ele !== this.default);
     this.viewCtrl.dismiss(data);
 
   }
@@ -88,6 +94,7 @@ export class CityPickerPage {
   }
   reSel(index,name){
     this.properties[index] = this.default;
+    setTimeout(()=>{this.step = index;});
     const popToEnd = ()=>{
       if(this.properties.length> index+1){
         this.properties.pop();
@@ -114,6 +121,7 @@ export class CityPickerPage {
     if(lth<3) {
       this.properties[lth-1] = name;
       this.properties[lth] = this.default;
+      setTimeout(()=>{this.step = lth;});
       if(lth === 1){
         this.findShi(name);
       } else if(lth === 2) {
@@ -123,6 +131,7 @@ export class CityPickerPage {
       }
     } else{
       this.properties[2] = name;
+      this.step = 2;
       console.log('3jie',this.properties);
       this.dismiss(this.properties);
     }

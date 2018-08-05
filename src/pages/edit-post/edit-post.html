@@ -17,15 +17,21 @@
   <ion-list >
     <ion-item>
         <ion-label color="primary">收货人姓名</ion-label>
-        <ion-input placeholder="Text Input"></ion-input>
+        <ion-input placeholder="Text Input" [ngClass]="{'valid':shouhuoren.valid,'invalid':!shouhuoren.valid }" chnOnly [(ngModel)]="form.name" name="name" #shouhuoren = "ngModel"></ion-input>
+
     </ion-item>
     <ion-item>
         <ion-label color="primary">联系电话</ion-label>
-        <ion-input placeholder="Text Input"></ion-input>
+        <ion-input type="number" minlength="11" maxlength="11" [ngClass]="{'valid':dianhua.valid,'invalid':!dianhua.valid }" #dianhua = "ngModel" name="phone" [(ngModel)]="form.phone" placeholder="请输入11位电话号码"></ion-input>
     </ion-item>
     <ion-item  (click)="openCityPicker()">
-      <ion-label color="primary">选择地址</ion-label>
+      <ion-label color="primary">选择地区</ion-label>
       <ion-input placeholder="Text Input" [value]="fromModalData" disabled></ion-input>
   </ion-item>
+    <ion-item >
+        <ion-label color="primary">详细地址</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
   </ion-list>
+  <button ion-button (click)="handleSubmit(shouhuoren)">提交</button>
 </ion-content>
