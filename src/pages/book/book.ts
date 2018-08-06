@@ -1,6 +1,7 @@
 import { Component, ViewChild,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController  } from 'ionic-angular';
 import { MuluPage } from '../mulu/mulu';
+import { CheckOrderPage } from '../check-order/check-order';
 /**
  * Generated class for the BookPage page.
  *
@@ -60,5 +61,8 @@ export class BookPage {
     //this.navCtrl.push(MuluPage, {mulu})
     const modal = this.modalCtrl.create(MuluPage,{mulu},{cssClass:'cos'});
     modal.present();
+  }
+  toCheckOrderPage(){
+    this.navCtrl.push(CheckOrderPage,{orderList:[{bookid:'1',name:'好书一本',author:'高手',imgSrc:'assets/imgs/book4.jpg',nums:1,price:12.5,publisher:'某某某某某某某出版社',version:'2014年第一版'}]});
   }
 }

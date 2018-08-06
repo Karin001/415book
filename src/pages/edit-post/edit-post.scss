@@ -7,4 +7,17 @@ page-edit-post {
   .valid{
     color:#222;
   }
+  ion-textarea{
+    height:10rem;
+    font-size:1.6rem;
+    line-height: 2rem;
+    .text-input{
+      height: 100%;
+    }
+  }
+  button{
+    position: absolute !important;
+    bottom: 0px !important;
+
+  }
 }

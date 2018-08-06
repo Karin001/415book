@@ -1,15 +1,24 @@
 @import "theme/flex.scss";
 page-check-order {
+  ion-content{
+    .scroll-content{
+      background-color: #E7E7E7;
+    }
+
+  }
+
   .post-addr-box{
     @include flx;
     padding: 10px;
+    background-color: #fff;
   }
   .post-addr{
+
     width:90%;
     font-weight: 400;
     padding-left:10px;
     .name-phone{
-      font-size: 2rem;
+      font-size: 1.6rem;
       @include flx($x:space-between);
       span:nth-child(1){
         margin-right:auto;
@@ -31,22 +40,45 @@ page-check-order {
   }
 
   ion-item img{
-    width:70px;
+    width:40px;
     margin-right:10px;
+  }
+  .item-list{
+
+    font-size:1.3rem;
+    ion-icon{
+      font-size:2.3rem;
+      position: relative;
+      top:.4rem;
+    }
   }
   ion-list{
     margin-bottom:50px;
   }
-  .sum{
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    .songhuo-btn{
-      height:3rem !important;
-      span:nth-child(1){
-        margin-right:auto;
-      }
-    }
-  }
+ .quereng{
+   background-color: #fff;
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+
+   @include flx;
+   span{
+     padding-left:10px;
+    font-size: 2rem;
+    color:#f53d3d;
+     flex:1;
+   }
+   button{
+
+     span{
+      padding-left: 0;
+      font-size: 1.6rem;
+      color:#fff;
+     }
+
+     margin: 0 !important;
+     border-radius: 0 !important;
+   }
+ }
 
 }

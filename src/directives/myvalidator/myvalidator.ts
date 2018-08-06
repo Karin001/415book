@@ -8,12 +8,12 @@ import { ValidatorFn, ValidationErrors, AsyncValidatorFn,AbstractControl,NG_VALI
  */
 function regCheck(c: AbstractControl, reg: RegExp, name: string, message: string) {
   const match = reg.test(c.value);
-  return !match ? {
-    [name]: {'message':message}
-  } : null;
+  return !match ?
+    {'message':message}
+   : null;
 }
 function chnChar(c: AbstractControl): ValidationErrors {
-  return regCheck(c, /^[\u4E00-\u9FA5]+$/, 'chnChar', '请输入中英文字符');
+  return regCheck(c, /^[\u4E00-\u9FA5]+$/, 'chnChar', '请输入中文字符');
 }
 @Directive({
   selector: '[chnOnly]', // Attribute selector
@@ -25,7 +25,7 @@ export class MyvalidatorDirective {
     console.log('Hello MyvalidatorDirective Directive');
   }
   validate(control: AbstractControl): {[key: string]: any} | null {
-    return regCheck(control, /^[\u4E00-\u9FA5]+$/, 'chnOnly', '请输入中英文字符');
+    return regCheck(control, /^[\u4E00-\u9FA5]+$/, 'chnOnly', '收货人请输入中文字符');
   }
 
 }

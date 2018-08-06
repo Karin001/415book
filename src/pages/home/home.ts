@@ -113,4 +113,7 @@ export class HomePage {
     })
 
   }
+  doInfinite(event:Event){
+
+  }
 }

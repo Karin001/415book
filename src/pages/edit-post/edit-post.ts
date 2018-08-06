@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,AlertController } from 'ionic-angular';
 import { CityPickerPage } from '../city-picker/city-picker';
 /**
  * Generated class for the EditPostPage page.
@@ -15,13 +15,21 @@ import { CityPickerPage } from '../city-picker/city-picker';
 })
 export class EditPostPage {
   title;
-  fromModalData = '';
+
   form = {
     name:'',
     phone:'',
-
+    fromModalData:'',
+    xiangxidizhi:'',
+    asDefaultPost:false
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl: ModalController) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public alerCtrl:AlertController
+  ) {
+
     this.title = this.navParams.get('post')?'编辑收货地址':'新建收货地址';
   }
 
@@ -29,14 +37,30 @@ export class EditPostPage {
     console.log('ionViewDidLoad EditPostPage');
   }
   openCityPicker(){
-    const modal = this.modalCtrl.create(CityPickerPage,{data:this.fromModalData},{cssClass:'cos'});
-    console.log('frpmdata',this.fromModalData);
+    const modal = this.modalCtrl.create(CityPickerPage,{data:this.form.fromModalData},{cssClass:'cos'});
+    console.log('frpmdata',this.form.fromModalData);
     modal.present();
     modal.onDidDismiss(data => {
-      this.fromModalData = data.join(' ');
+      this.form.fromModalData = data.join(' ');
     })
   }
-  handleSubmit(shouhuoren){
-    console.log(shouhuoren);
+  doAlert(message) {
+    let alert = this.alerCtrl.create({
+      title: '请确认',
+      message: message,
+      buttons: ['Ok']
+    });
+    alert.present()
+  }
+  handleSubmit(modelList:any[]){
+    console.log(modelList);
+    const errors = modelList.filter(ele => ele.invalid).map(ele => ele.errors);
+    if(errors.length === 0){
+      console.log(errors,'success')
+    } else{
+      console.log(errors,'wrong');
+      const message = errors.map((ele,index) =>index+1+': ' + ele.message+'; ').join('');
+      this.doAlert(message);
+    }
   }
 }

@@ -4,7 +4,7 @@ import { CityPickerPage } from './city-picker';
 
 @NgModule({
   declarations: [
-    CityPickerPage,
+
   ],
   imports: [
     IonicPageModule.forChild(CityPickerPage),

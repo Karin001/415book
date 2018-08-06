@@ -20,7 +20,7 @@
 
 <ion-content #content (ionScroll)="hhahaScroll($event)">
   <ion-list no-lines>
-    <ion-item *ngFor="let item of cartGoods"  (click)="toBookPage(item)" [ngStyle]="{'background': item.nums>0?'none':'#ECECEC'}">
+    <ion-item *ngFor="let item of cartGoods"   [ngStyle]="{'background': item.nums>0?'none':'#7c7c7c'}">
       <div item-start class="checkbox-box">
           <ion-checkbox [(ngModel)]="item.selected"  [disabled]="!item.nums" ></ion-checkbox>
         </div>
@@ -28,7 +28,7 @@
             <div class="img-box">
                 <img [src]="item.imgSrc" alt="">
             </div>
-            <div class="info">
+            <div class="info" (click)="toBookPage(item)">
                 <span>书名： {{item.name}}</span>
                 <span>作者: {{item.author}}</span>
                 <span>出版社：{{item.publisher}}</span>

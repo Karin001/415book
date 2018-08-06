@@ -75,7 +75,7 @@
               </div>
           <ion-grid>
             <ion-row>
-              <ion-col col-4 *ngFor="let book of group.books"  (click)="toBookPage(book)">
+              <ion-col col-3 *ngFor="let book of group.books"  (click)="toBookPage(book)">
 
                       <img [src]="book.src" alt="" class="book-item-img">
                       <p class="book-name">{{book.name}}</p>
@@ -110,5 +110,10 @@
           </div>
 
     </ng-container>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content>
+
+        </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
 </ion-content>

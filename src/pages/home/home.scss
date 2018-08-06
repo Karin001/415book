@@ -21,11 +21,12 @@
 }
 .book-item-img{
   box-shadow: 0 2px 2px #6E6E6E;
+  width: 60px;
   margin-bottom: 10px;
 }
 .book-item{
   display: inline-block;
-  width: 115px;
+  width: 70px;
   margin: 0 5px;
   img{
     box-shadow: 0 2px 2px #6E6E6E;
@@ -38,7 +39,7 @@ width: auto;
 white-space: nowrap;
 }
 .scroll1{
-  height: 220px;
+  height: 150px;
   width: 100%;
 }
 page-home {
@@ -239,7 +240,9 @@ page-home {
     .content{
       padding-left: 10px;
       ion-scroll{
+       img{
 
+       }
         p{
           margin:2px;
         }
