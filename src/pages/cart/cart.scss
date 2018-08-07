@@ -13,7 +13,7 @@ page-cart {
   }
   ion-list{
     ion-item:last-child{
-      margin-bottom:100px;
+      margin-bottom:10px;
     }
   }
   .checkbox-box{
@@ -35,7 +35,7 @@ page-cart {
     width: 100%;
     position: fixed;
     z-index: 13;
-    bottom: 0;
+    bottom: 50px;
     @include flx(row, flex-start, center);
     .all-select{
       width:70px;
@@ -43,7 +43,11 @@ page-cart {
       margin:0 10px;
       }
       button{
+        margin: 0;
         margin-left: auto;
+        height: 100%;
+        border: none;
+        border-radius: 0;
       }
   }
 

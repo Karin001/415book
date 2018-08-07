@@ -64,7 +64,7 @@
     </div>
 
     <div>
-        <span *ngIf="allPrice.sum>0">共{{allPrice.selectedBooks.length}}款图书 </span>
+        <span *ngIf="allPrice.sum>0">{{allPrice.selectedBooks.length}}款 </span>
         <span> 合计:</span>
         <span *ngIf="allPrice.sum>0">￥{{allPrice.sum}}</span>
     </div>

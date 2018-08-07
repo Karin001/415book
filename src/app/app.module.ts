@@ -2,10 +2,14 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
+import { Platform } from 'ionic-angular';
 import { NG_VALIDATORS} from '@angular/forms'
 import { MyvalidatorDirective } from '../directives/myvalidator/myvalidator';
+
+import {ComponentsModule} from '../components/components.module'
 
 import { DirectivesModule } from '../directives/directives.module';
 
@@ -21,6 +25,7 @@ import { CheckOrderPage } from '../pages/check-order/check-order';
 import { PostAddrPage } from '../pages/post-addr/post-addr';
 import { EditPostPage } from '../pages/edit-post/edit-post';
 import { CityPickerPage } from '../pages/city-picker/city-picker';
+import { BookTypePage } from '../pages/book-type/book-type';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -42,12 +47,15 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     EditRemovePage,
     PostAddrPage,
     EditPostPage,
+    BookTypePage,
     CityPickerPage
   ],
   imports: [
     BrowserModule,
+    ComponentsModule,
     DirectivesModule,
     HttpClientModule,
+    NativeHttpModule,
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true',
       iconMode: 'ios',
@@ -68,13 +76,14 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     EditRemovePage,
     PostAddrPage,
     EditPostPage,
-    CityPickerPage
+    CityPickerPage,
+    BookTypePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
+    {provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]},
     RestApiProvider
   ]
 })

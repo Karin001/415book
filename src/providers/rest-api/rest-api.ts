@@ -1,7 +1,8 @@
+import { Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {retry} from 'rxjs/operators';
+import { BehaviorSubject,Subject } from 'rxjs';
+
 /*
   Generated class for the RestApiProvider provider.
 
@@ -10,20 +11,26 @@ import {retry} from 'rxjs/operators';
 */
 const CONFIG = 'dev';
 const switchUrl = {
-  dev:{
-    getBookList_url:'assets/mockData/bookList.json',
-    postBookDetail_url:'',
-    areaData_url:'assets/mockData/areaData1.json'
+  dev: {
+    getBookList_url: 'assets/mockData/bookList.json',
+    postBookDetail_url: '',
+    postBookTypeList_url:'assets/mockData/bookTypeList.json',
+    areaData_url: 'assets/mockData/areaData1.json'
   },
-  pro:{
-    getBookList_url:''
+  pro: {
+    getBookList_url: '',
+    postBookTypeList_url:'',
+    postBookDetail_url:'',
+    areaData_url:''
   }
 }
 const apiUrl = switchUrl[CONFIG];
 @Injectable()
 export class RestApiProvider {
   bookListCache;
-  bookListSubJect = new BehaviorSubject<string>(null);
+  bookListSubject = new Subject<string>();
+  bookTypeListCache;
+  bookTypeListSubject = new Subject();
   userAuthoritySubject = new BehaviorSubject<string>(null);
   userInfoCache;
   userInfoSubject = new BehaviorSubject<string>(null);
@@ -33,41 +40,55 @@ export class RestApiProvider {
   bookDetailSubject = new BehaviorSubject<string>(null);
   areaDataCache;
   areaDataSubject = new BehaviorSubject<string>(null);
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public platForm: Platform) {
     console.log('Hello RestApiProvider Provider');
   }
-  getBookList(){
-    this.http.get(apiUrl.getBookList_url)
-    .retry(5)
-    .subscribe(list => {
-      this.bookListCache = list;
-      this.bookListSubJect.next('success');
+  getBookList() {
+    this.platForm.ready().then(() => {
+      this.http.get(apiUrl.getBookList_url)
+        .retry(5)
+        .subscribe(list => {
+          this.bookListCache = list;
+          this.bookListSubject.next('success');
+        })
     })
+
   }
-  watchBookList(){
-    return this.bookListSubJect.asObservable();
+  watchBookList() {
+    return this.bookListSubject.asObservable();
   }
-  getBookDetail(bookId){
-    this.http.post(apiUrl.postBookDetail_url,{
+  getBookDetail(bookId) {
+    this.http.post(apiUrl.postBookDetail_url, {
       bookId
     })
   }
-  watchBookDetail(){
+  watchBookDetail() {
     return this.bookDetailSubject.asObservable();
   }
-  signIn(){
-
-  }
-
-  getAreaData(){
-    this.http.get(apiUrl.areaData_url)
+  getBooktypeList(typeName) {
+    this.http.get(apiUrl.postBookTypeList_url)
     .retry(5)
     .subscribe(list => {
-      this.areaDataCache = list;
-      this.areaDataSubject.next('success');
+      this.bookTypeListCache = list;
+      this.bookTypeListSubject.next(`success for ${typeName}`);
     })
   }
-  watchAreaData(){
+  watchBookTypeList() {
+    return this.bookTypeListSubject.asObservable();
+  }
+  signIn() {
+
+  }
+
+  getAreaData() {
+    this.http.get(apiUrl.areaData_url)
+      .retry(5)
+      .subscribe(list => {
+        this.areaDataCache = list;
+        this.areaDataSubject.next('success');
+      })
+  }
+  watchAreaData() {
     return this.areaDataSubject.asObservable();
   }
 

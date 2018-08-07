@@ -1,119 +1,136 @@
-
-
 <ion-content (ionScroll)="hhahaScroll($event)">
 
-  <header #header class="header-box"  [ngClass]="{'header-box-border': sw,'header-box-border-none':!sw}">
-    <div class="search-box" [ngClass]="{'search-box-sw': sw,'search-box-sw-none':!sw}" >
-        <ion-icon name="search" [color]="sw?'primary':'secondary'"></ion-icon>
-        <ion-input   class="search" [ngClass]="{'input-sw': sw,'input-sw-none':!sw}" type="text" placeholder="作者/书名/出版社"></ion-input>
+  <header #header class="header-box" [ngClass]="{'header-box-border': sw,'header-box-border-none':!sw}">
+    <div class="search-box" [ngClass]="{'search-box-sw': sw,'search-box-sw-none':!sw}">
+      <ion-icon name="search" [color]="sw?'primary':'secondary'"></ion-icon>
+      <ion-input class="search" [ngClass]="{'input-sw': sw,'input-sw-none':!sw}" type="text" placeholder="作者/书名/出版社"></ion-input>
     </div>
-    <button (click)="toCartPage()" ion-button icon-only clear [ngClass]="{'icon-btn': !sw,'icon-btn-op1':sw}" >
-      <ion-icon name="cart" [color]="sw?'primary':'light'"></ion-icon>
+    <button (click)="toCartPage()" ion-button icon-only clear [ngClass]="{'icon-btn': !sw,'icon-btn-op1':sw}">
+      <ion-icon name="notifications" [color]="sw?'primary':'light'"></ion-icon>
+
     </button>
-    <button ion-button icon-only clear [ngClass]="{'icon-btn': !sw,'icon-btn-op1':sw}" >
-      <ion-icon name="list" [color]="sw?'primary':'light'"></ion-icon>
-    </button>
+    <ion-badge color="danger">99+</ion-badge>
 
   </header>
 
-    <div class="banner">
-        <ion-slides autoplay="3000" loop="true" pager="true">
-            <ion-slide *ngFor="let item of bannerImgs">
-              <div [ngStyle]="{'background-image':item}"></div>
-            </ion-slide>
+  <div class="banner">
+    <ion-slides autoplay="3000" loop="true" pager="true">
+      <ion-slide *ngFor="let item of bannerImgs">
+        <div [ngStyle]="{'background-image':item}"></div>
+      </ion-slide>
 
-        </ion-slides>
-    </div>
-    <div class="tuijian">
-      <div class="major">
-        <span>
+    </ion-slides>
+  </div>
+  <div class="tuijian">
+    <div class="major">
+      <span>
           好书推荐
           <i>415力荐 超值好书</i>
         </span>
 
-        <img src="assets/imgs/book1.jpg" alt="">
-      </div>
-      <div class="other">
-        <div class="top100">
-          <span>TOP100
+      <img src="assets/imgs/book1.jpg" alt="">
+    </div>
+    <div class="other">
+      <div class="top100">
+        <span>TOP100
               <i>排行榜100的好书</i>
           </span>
 
-          <img src="assets/imgs/book2.jpg" alt="">
-        </div>
-        <div class="newbook">
-          <span>新到图书
+        <img src="assets/imgs/book2.jpg" alt="">
+      </div>
+      <div class="newbook">
+        <span>新到图书
               <i>财务自由之路</i>
           </span>
 
-          <img src="assets/imgs/book2.jpg" alt="">
-        </div>
+        <img src="assets/imgs/book2.jpg" alt="">
       </div>
     </div>
-    <div class="type-select">
-      <ion-grid>
-        <ion-row>
-          <ion-col col-3 *ngFor="let icontype of icontypes">
-            <div class="type-tubiao-set">
+  </div>
+  <div class="type-select">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3 *ngFor="let icontype of icontypes">
+          <div class="type-tubiao-set">
 
-              <ion-icon color="primary" [name]="icontype.icon_name"></ion-icon>
-              <p>{{icontype.name}}</p>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <ng-container *ngFor="let group of typeLists">
-        <div class="rexiao" *ngIf="group.typeName === 'hot' || group.typeName === 'new'">
-            <div class="title">
-              <button ion-button   full [color]="group.typeName === 'hot'?'danger':'primary'" icon-start>
+            <ion-icon color="primary" [name]="icontype.icon_name"></ion-icon>
+            <p>{{icontype.name}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ng-container *ngFor="let group of typeLists" >
+    <div class="rexiao" *ngIf="group.typeName === 'hot' || group.typeName === 'new'">
+      <div class="title">
+        <button ion-button full [color]="group.typeName === 'hot'?'danger':'primary'" icon-start (click)="toBookTypePage('hot')">
                 <ion-icon [name]="group.typeName === 'hot'? 'bonfire':'car'"  class="books-type-icon"></ion-icon>
                 <span>{{group.typeName === 'hot'?'热销图书':'新到好书'}}</span>
                 <ion-icon  name="arrow-dropright" class="more-books-icon"></ion-icon>
               </button>
 
-              </div>
-          <ion-grid>
-            <ion-row>
-              <ion-col col-3 *ngFor="let book of group.books"  (click)="toBookPage(book)">
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3 *ngFor="let book of group.books" (click)="toBookPage(book)">
 
-                      <img [src]="book.src" alt="" class="book-item-img">
-                      <p class="book-name">{{book.name}}</p>
-                      <p class="author">{{book.author}}</p>
+            <img [src]="book.src" alt="" class="book-item-img">
+            <p class="book-name">{{book.name}}</p>
+            <p class="author">{{book.author}}</p>
 
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-        <div class="type-list" *ngIf="group.typeName!=='hot' && group.typeName!=='new' " >
-            <div class="title">
-                <button ion-button  full clear icon-start>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div class="type-list" *ngIf="group.typeName!=='hot' && group.typeName!=='new' &&  group.typeName!=='youMayLike' ">
+      <div class="title">
+        <button ion-button full clear icon-start>
                     <ion-icon name="book"  class="books-type-icon"></ion-icon>
                     <span>{{group.typeName}}</span>
                     <ion-icon  name="arrow-dropright" class="more-books-icon"></ion-icon>
                   </button>
 
-            </div>
-            <div class="content">
-              <ion-scroll scrollX="true" class="scroll1">
-                <div class="book-con">
-                  <div *ngFor="let book of group.books" class="book-item" (click)="toBookPage(book)">
-                      <img [src]="book.src" alt="">
-                      <p class="book-name">{{book.name}}</p>
-                      <p class="author">{{book.author}}</p>
-                  </div>
-                </div>
-              </ion-scroll>
-
-
+      </div>
+      <div class="content">
+        <ion-scroll scrollX="true" class="scroll1">
+          <div class="book-con">
+            <div *ngFor="let book of group.books" class="book-item" (click)="toBookPage(book)">
+              <img [src]="book.src" alt="">
+              <p class="book-name">{{book.name}}</p>
+              <p class="author">{{book.author}}</p>
             </div>
           </div>
+        </ion-scroll>
 
-    </ng-container>
-    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-        <ion-infinite-scroll-content>
 
-        </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+      </div>
+    </div>
+    <div class="you-may-like" *ngIf="group.typeName === 'youMayLike'">
+      <div class="you-may-like-title">
+        <h3>
+          <ion-icon name="cafe" color="danger"></ion-icon> 猜你喜欢</h3>
+      </div>
+      <ion-list no-lines>
+        <ion-item *ngFor="let book of group.books" (click)="toBookPage(book)">
+          <div class="you-may-like-content-box">
+
+            <img [src]="book.src" alt="" class="book-item-img">
+            <div class="you-may-like-content-info">
+              <p class="book-name">{{book.name}}</p>
+              <p class="author">{{book.author}}</p>
+            </div>
+
+
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+
+  </ng-container>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>
