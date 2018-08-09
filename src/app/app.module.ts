@@ -12,7 +12,7 @@ import { MyvalidatorDirective } from '../directives/myvalidator/myvalidator';
 import {ComponentsModule} from '../components/components.module'
 
 import { DirectivesModule } from '../directives/directives.module';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -26,6 +26,7 @@ import { PostAddrPage } from '../pages/post-addr/post-addr';
 import { EditPostPage } from '../pages/edit-post/edit-post';
 import { CityPickerPage } from '../pages/city-picker/city-picker';
 import { BookTypePage } from '../pages/book-type/book-type';
+import { UserPage } from '../pages/user/user';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -48,11 +49,13 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     PostAddrPage,
     EditPostPage,
     BookTypePage,
-    CityPickerPage
+    CityPickerPage,
+    UserPage
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
+    IonicStorageModule.forRoot(),
     DirectivesModule,
     HttpClientModule,
     NativeHttpModule,
@@ -66,7 +69,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     MyApp,
     AboutPage,
     ContactPage,
-
+    UserPage,
     BookPage,HomePage,
     MuluPage,
     CartPage,
