@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+import 'rxjs/add/operator/retry';
 /*
   Generated class for the RestApiProvider provider.
 
@@ -27,22 +27,27 @@ const switchUrl = {
     historyBooks_url: ''
   }
 }
+
 const apiUrl = switchUrl[CONFIG];
+const storageNames = {
+  index: 'index_book_list',
+  history: 'book_type_history_list',
+  skill: 'book_type_skill_list',
+  sports: 'book_type_sports_list',
+  eng: 'book_type_eng_list',
+  child: 'book_type_child_list',
+  gijuzu: 'book_type_gijuzu_list',
+  bungaku: 'book_type_bungaku_list',
+  shakai: 'book_type_shakai_list',
+  hot: 'hot_book_list',
+  new: 'new_book_list',
+  areaData: 'area_data'
+
+}
+const LIMIT = 1000 * 60 * 10 //10min
 @Injectable()
 export class RestApiProvider {
-  bookListCache;
-  bookListSubject = new Subject<string>();
-  bookTypeListCache;
-  bookTypeListSubject = new Subject();
-  userAuthoritySubject = new BehaviorSubject<string>(null);
-  userInfoCache;
-  userInfoSubject = new BehaviorSubject<string>(null);
-  userCartDataCache;
-  userCartDataSubject = new BehaviorSubject<string>(null);
-  bookDetailCache;
-  bookDetailSubject = new BehaviorSubject<string>(null);
-  areaDataCache;
-  areaDataSubject = new BehaviorSubject<string>(null);
+
   constructor(
     public http: HttpClient,
     public platForm: Platform,
@@ -50,64 +55,95 @@ export class RestApiProvider {
   ) {
     console.log('Hello RestApiProvider Provider');
   }
-  getBookList() {
-    this.platForm.ready().then(() => {
-      this.http.get(apiUrl.getBookList_url)
-        .retry(5)
-        .subscribe(list => {
-          this.bookListCache = list;
-          this.bookListSubject.next('success');
-        })
-    })
+  setStorage(name: string, data: any) {
+    data.lastTime = Date.now();
+    this.storage.set(name, JSON.stringify(data));
+  }
+  async getIndexBookList(callbackFn) {
+    await this.platForm.ready();
+    const stringifyData = await this.storage.get(storageNames.index);
+    if(stringifyData) {
+      const data = JSON.parse(stringifyData);
+      if(data.lastTime && Date.now() - data.lastTime < LIMIT) {
+        callbackFn(data);
+        return;
+      }
+    };
+    this.http.get(apiUrl.getBookList_url)
+      .retry(5)
+      .subscribe(list => {
+        if (!list) {
+          throw new Error('获取首页图书数据为空')
+        }
+        this.setStorage(storageNames.index, list);
+        callbackFn(list);
+      })
 
   }
-  watchBookList() {
-    return this.bookListSubject.asObservable();
-  }
-  getBookDetail(bookId) {
+  getBookDetail(bookId, callbackFn) {
     this.http.post(apiUrl.postBookDetail_url, {
       bookId
     })
+      .retry(5)
+      .subscribe(detail => {
+        if (!detail) {
+          throw new Error('获取的图书详情数据为空')
+        }
+        callbackFn(detail);
+      })
   }
-  watchBookDetail() {
-    return this.bookDetailSubject.asObservable();
-  }
-  getBooktypeList(typeName) {
+
+  async getBooktypeList(typeName,callbackFn) {
+    const stringifyData = await this.storage.get(storageNames[typeName]);
+    if(stringifyData) {
+      const data = JSON.parse(stringifyData);
+      if(data.lastTime && Date.now() - data.lastTime < LIMIT) {
+        callbackFn(data);
+        return;
+      }
+    };
     this.http.get(apiUrl.postBookTypeList_url)
       .retry(5)
       .subscribe(list => {
-        this.bookTypeListCache = list;
-        this.bookTypeListSubject.next(`success for ${typeName}`);
+        if (!list) {
+          throw new Error('获取到的该类图书列表数据为空')
+        }
+
+        this.setStorage(storageNames[typeName],list);
+        callbackFn(list);
       })
   }
-  watchBookTypeList() {
-    return this.bookTypeListSubject.asObservable();
-  }
+
   signIn() {
 
   }
 
-  getAreaData() {
+  async getAreaData(callbackFn) {
+    const stringifyData = await this.storage.get(storageNames.areaData);
+    if(stringifyData) {
+      const data = JSON.parse(stringifyData);
+      if(data.lastTime && Date.now() - data.lastTime < LIMIT) {
+        callbackFn(data);
+        return;
+      }
+    };
     this.http.get(apiUrl.areaData_url)
       .retry(5)
       .subscribe(list => {
-        this.areaDataCache = list;
-        this.areaDataSubject.next('success');
+        this.setStorage(storageNames.areaData,list);
+        callbackFn(list);
       })
   }
-  watchAreaData() {
-    return this.areaDataSubject.asObservable();
-  }
 
-  getHistoryBooks(callback) {
+
+  getHistoryBooks(callbackFn) {
     this.http.get(apiUrl.historyBooks_url)
-    .retry(5)
-    .subscribe(data => {
-      if(data) {
-        this.storage.set('history',JSON.stringify(data));
-        callback(data);
-      }
-    })
+      .retry(5)
+      .subscribe(data => {
+        if (data) {
+          callbackFn(data);
+        }
+      })
   }
 
 }

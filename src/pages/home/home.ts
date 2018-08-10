@@ -32,12 +32,7 @@ export class HomePage {
     public zone: NgZone,
     public restApi: RestApiProvider
   ) {
-    this.restApi.watchBookList().subscribe(signal => {
-      if(signal === 'success') {
-        this.typeLists = this.restApi.bookListCache;
-      }
-    })
-    this.restApi.getBookList();
+    this.restApi.getIndexBookList((list)=>{this.typeLists = list});
     console.log('hiahiahia')
 
 

@@ -22,13 +22,9 @@ export class BookTypePage {
     public restApi: RestApiProvider
   ) {
     this.title = this.navParams.get('typeTitle');
-    this.restApi.watchBookTypeList().subscribe(signal => {
-      if(signal === `success for ${this.title}`) {
-        this.typeListData = this.restApi.bookTypeListCache;
-        console.log('222223',this.typeListData)
-      }
+    this.restApi.getBooktypeList(this.title,(list)=>{
+      this.typeListData = list;
     });
-    this.restApi.getBooktypeList(this.title);
   }
 
   ionViewDidLoad() {

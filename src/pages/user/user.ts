@@ -22,22 +22,14 @@ export class UserPage {
     public restApi: RestApiProvider,
     public storage: Storage
   ) {
-    this.loadHistoryBooks();
+    this.restApi.getHistoryBooks((list) => {
+      this.history = list;
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
   }
-  async loadHistoryBooks(){
-    const data = await this.storage.get('history');
-    if(!data) {
-      this.restApi.getHistoryBooks((data)=>{
-        this.history = data;
-      });
 
-    } else{
-      this.history = JSON.parse(data);
-    }
-  }
 
 }

@@ -32,39 +32,35 @@ export class CityPickerPage {
       this.properties = selectedData.split(' ');
       console.log('sssssss',this.properties);
     }
-    if(!this.rest.areaDataCache) {
-      this.rest.getAreaData();
-    }
-
-     this.$stream = this.rest.watchAreaData().subscribe(signal => {
-      if(signal === 'success') {
-        this.data = this.rest.areaDataCache;
-        if(!this.properties || this.properties.length === 0) {
-          console.log('here',this.properties);
-          this.properties[0] = this.default;
-          setTimeout(()=>{this.step = 0;})
-          this.display['type'] = 'sheng'
-          this.display['list'] = this.data.map(ele => ele.name);
-          console.log(this.properties);
+    this.rest.getAreaData((list)=>{
+      this.data = list;
+      if(!this.properties || this.properties.length === 0) {
+        console.log('here',this.properties);
+        this.properties[0] = this.default;
+        setTimeout(()=>{this.step = 0;})
+        this.display['type'] = 'sheng'
+        this.display['list'] = this.data.map(ele => ele.name);
+        console.log(this.properties);
+      } else {
+        if(this.properties.length === 1) {
+          console.log('there',this.properties);
+          this.properties[1] = this.default;
+          setTimeout(()=>{this.step = 1;})
+          this.findShi(this.properties[0]);
         } else {
-          if(this.properties.length === 1) {
-            console.log('there',this.properties);
-            this.properties[1] = this.default;
-            setTimeout(()=>{this.step = 1;})
-            this.findShi(this.properties[0]);
-          } else {
-            console.log('there2',this.properties);
-            if(this.properties.length === 2) {
-              this.properties[2] = this.default;
-            }
-            setTimeout(()=>{this.step = 2;})
-            this.findShi(this.properties[0]);
-            this.findQu(this.properties[1]);
+          console.log('there2',this.properties);
+          if(this.properties.length === 2) {
+            this.properties[2] = this.default;
           }
-
+          setTimeout(()=>{this.step = 2;})
+          this.findShi(this.properties[0]);
+          this.findQu(this.properties[1]);
         }
+
       }
     })
+
+
 
 
   }
@@ -73,7 +69,6 @@ export class CityPickerPage {
     console.log('ionViewDidLoad CityPickerPage');
   }
   dismiss(data = []) {
-    this.$stream.unsubscribe();
     data = data.filter(ele => ele !== this.default);
     this.viewCtrl.dismiss(data);
 
