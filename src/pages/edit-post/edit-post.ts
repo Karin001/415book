@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef} from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,AlertController } from 'ionic-angular';
 import { CityPickerPage } from '../city-picker/city-picker';
 /**
@@ -27,7 +27,8 @@ export class EditPostPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    public alerCtrl:AlertController
+    public alerCtrl:AlertController,
+    public cdr:ChangeDetectorRef
   ) {
 
     this.title = this.navParams.get('post')?'编辑收货地址':'新建收货地址';
@@ -42,6 +43,8 @@ export class EditPostPage {
     modal.present();
     modal.onDidDismiss(data => {
       this.form.fromModalData = data.join(' ');
+      this.cdr.detectChanges();
+
     })
   }
   doAlert(message) {
@@ -59,6 +62,7 @@ export class EditPostPage {
       console.log(errors,'success')
     } else{
       console.log(errors,'wrong');
+      console.log()
       const message = errors.map((ele,index) =>index+1+': ' + ele.message+'; ').join('');
       this.doAlert(message);
     }

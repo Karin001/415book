@@ -16,6 +16,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { SignUpPage } from '../pages/sign-up/sign-up';
 import { BookPage } from '../pages/book/book';
 import {MuluPage} from '../pages/mulu/mulu';
 import { CartPage } from '../pages/cart/cart';
@@ -32,12 +33,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
+    SignUpPage,
     HomePage,
     TabsPage,
     BookPage,
@@ -69,6 +72,7 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     MyApp,
     AboutPage,
     ContactPage,
+    SignUpPage,
     UserPage,
     BookPage,HomePage,
     MuluPage,
@@ -87,7 +91,8 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]},
-    RestApiProvider
+    RestApiProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}

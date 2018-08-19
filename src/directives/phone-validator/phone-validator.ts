@@ -11,14 +11,15 @@ import { NG_VALIDATORS, AbstractControl, ValidationErrors} from '@angular/forms'
   providers:[{provide: NG_VALIDATORS, useExisting:PhoneValidatorDirective, multi:true}]
 })
 export class PhoneValidatorDirective {
-
   constructor() {
     console.log('Hello PhoneValidatorDirective Directive');
   }
   validate(control: AbstractControl): {[key: string]: any} | null {
-    return control.value && control.value.length===11?null:{
+    const temp = control.value?control.value+'':'';
 
-        message:'请输入11位电话号码'
+    return temp && temp.length===11?null:{
+
+        message:`请输入11位电话号码`
 
     };
   }

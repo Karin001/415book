@@ -8,8 +8,8 @@
       { "name": "好书一本", "author": "卡斯乌达", "src": "assets/imgs/book4.jpg" },
       { "name": "好书一本", "author": "桑吉尔夫", "src": "assets/imgs/book5.jpg" },
       { "name": "好书一本", "author": "达尔米", "src": "assets/imgs/book3.jpg" },
-      { "name": "好书一本", "author": "卡卡禄冷", "src": "assets/imgs/book4.jpg" },
-      { "name": "好书一本", "author": "开饭店", "src": "assets/imgs/book5.jpg" }
+      { "name": "好书一本", "author": "卡卡禄冷", "src": "assets/imgs/book4.jpg" }
+
     ]
   },
   {
@@ -21,8 +21,8 @@
       { "name": "好书一本", "author": "卡斯乌达", "src": "assets/imgs/book4.jpg" },
       { "name": "好书一本", "author": "桑吉尔夫", "src": "assets/imgs/book5.jpg" },
       { "name": "好书一本", "author": "达尔米", "src": "assets/imgs/book3.jpg" },
-      { "name": "好书一本", "author": "卡卡禄冷", "src": "assets/imgs/book4.jpg" },
-      { "name": "好书一本", "author": "开饭店", "src": "assets/imgs/book5.jpg" }
+      { "name": "好书一本", "author": "卡卡禄冷", "src": "assets/imgs/book4.jpg" }
+
     ]
   },
   {

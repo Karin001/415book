@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EditPostPage } from '../edit-post/edit-post';
+import {CityPickerPage} from '../city-picker/city-picker';
+import { FukuanPage } from '../fukuan/fukuan';
 /**
  * Generated class for the PostAddrPage page.
  *
@@ -42,4 +44,7 @@ export class PostAddrPage {
     this.navCtrl.push(EditPostPage,{post});
   }
 
+  toEditPage2(post){
+    this.navCtrl.push(FukuanPage);
+  }
 }

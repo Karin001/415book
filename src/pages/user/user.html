@@ -10,14 +10,18 @@
 <ion-content>
   <header>
     <div class="avatar"></div>
-    <div class="user-name-youhuiquan">
-      <div class="user-name">
-        <span>邻家好少年</span>
+    <div class="user-name-youhuiquan" *ngIf="logged$ | async">
+      <div class="user-name" >
+        <span>{{username$ | async}}</span>
         <ion-badge>钻石</ion-badge>
       </div>
       <div class="youhuiquan">
         <ion-badge color="secondary">优惠券：3</ion-badge>
       </div>
+    </div>
+    <div  *ngIf="! (logged$ | async)">
+      <p (click)="toLogInPage()">请登录</p>
+      <p (click)="toSignUpPage()">注册</p>
     </div>
     <button ion-button clear icon-only class="set">
       <ion-icon name="settings"></ion-icon>

@@ -22,12 +22,12 @@
 }
 .book-item-img{
   box-shadow: 0 2px 2px #6E6E6E;
-  width: 60px;
+  width: 80px;
   margin-bottom: 10px;
 }
 .book-item{
   display: inline-block;
-  width: 70px;
+  width: 80px;
   margin: 0 5px;
   img{
     box-shadow: 0 2px 2px #6E6E6E;
@@ -40,7 +40,7 @@ width: auto;
 white-space: nowrap;
 }
 .scroll1{
-  height: 150px;
+  height: 170px;
   width: 100%;
 }
 
@@ -88,14 +88,14 @@ page-home {
       @include flx($x:flex-start);
       flex:1;
       margin: .8rem .8rem .8rem 2rem;
-
+      border: 2px solid #13AFEC;
       ion-icon[name=search]{
         padding:0 10px;
         font-size: 2rem;
 
       }
       .search{
-
+        font-weight: 600 !important;
         flex:1;
         .text-input{
 
@@ -158,28 +158,29 @@ page-home {
 
   .tuijian{
     @include flx;
-    margin-bottom: 10px;
+
     height:180px;
-    border:5px solid #EEEEEE;
+
+
     border-left:none;
     border-right:none;
     span{
-      font-size:1.5rem;
+      font-size:1.7rem;
       text-align: center;
       font-family: "微软雅黑";
       font-weight: 600;
       position: relative;
-      margin-bottom:30px;
+      margin-bottom:20px;
       i{
         position: absolute;
         width: 100%;
         display: block;
         text-align: center;
-        top:2rem;
+        top:2.3rem;
         display: block;
-        font-size: 1rem;
+        font-size: 1.2rem;
         font-weight: 100;
-        color: #ccc;
+        color: #949494;
         font-style: normal;
       }
     }
@@ -189,7 +190,7 @@ page-home {
       box-sizing: border-box;
       width: 45%;
       @include flx(column);
-      border-right:1px solid #eee;
+      border-right:1px solid #BDBDBD;
       span{
         color:#f53d3d;
         width:100%;
@@ -213,7 +214,7 @@ page-home {
           flex: 1;
         }
         flex:1;
-        border-bottom:1px solid #eee;
+        border-bottom:1px solid #BDBDBD;
       }
       .newbook{
         @include flx($x:flex-end);
@@ -230,19 +231,38 @@ page-home {
       }
     }
   }
+  .type-select{
+    background-color: #FDC13F;
+
+
+  }
   .type-tubiao-set{
+
     text-align: center;
-    @include flx(column);
+
+
     height:50px;
     ion-icon{
-      font-size:2.5rem;
+      font-size:3.6rem;
+      position: relative;
+      box-shadow: 3px 3px 5px 2px rgba(4, 28, 59, 0.2);
     }
-    p{
-      color:#6E6E6E;
+    span{
+      font-size:1.4rem;
+      display: inline-block;
+      color:#0E43A5;
+      font-weight: 600;
+      width: 1.6rem;
+      position: absolute;
+      padding-top: 3px;
+      border-top: 1px solid orchid;
+      left:-0.9rem;
+      top:-0.2rem;
     }
   }
   .rexiao{
 
+    background-color: #F1F1F1;
     .title{
       font-size: 1.7rem;
       position: relative;

@@ -21,11 +21,26 @@
 
     </ion-slides>
   </div>
+  <div class="type-select">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3 *ngFor="let icontype of icontypes">
+            <div class="type-tubiao-set">
+
+              <ion-icon color="primary" [name]="icontype.icon_name">
+
+              </ion-icon>
+
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   <div class="tuijian">
     <div class="major">
       <span>
           好书推荐
-          <i>415力荐 超值好书</i>
+          <i>415力荐! 超值好书</i>
         </span>
 
       <img src="assets/imgs/book1.jpg" alt="">
@@ -47,23 +62,11 @@
       </div>
     </div>
   </div>
-  <div class="type-select">
-    <ion-grid>
-      <ion-row>
-        <ion-col col-3 *ngFor="let icontype of icontypes">
-          <div class="type-tubiao-set">
 
-            <ion-icon color="primary" [name]="icontype.icon_name"></ion-icon>
-            <p>{{icontype.name}}</p>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
   <ng-container *ngFor="let group of typeLists" >
     <div class="rexiao" *ngIf="group.typeName === 'hot' || group.typeName === 'new'">
       <div class="title">
-        <button ion-button full [color]="group.typeName === 'hot'?'danger':'primary'" icon-start (click)="toBookTypePage('hot')">
+        <button ion-button full  [color]="group.typeName === 'hot'?'danger':'primary'" icon-start (click)="toBookTypePage('hot')">
                 <ion-icon [name]="group.typeName === 'hot'? 'bonfire':'car'"  class="books-type-icon"></ion-icon>
                 <span>{{group.typeName === 'hot'?'热销图书':'新到好书'}}</span>
                 <ion-icon  name="arrow-dropright" class="more-books-icon"></ion-icon>
