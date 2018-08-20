@@ -13,14 +13,16 @@ function regCheck(c: AbstractControl, reg: RegExp, name: string, message: string
   } : null;
 }
 @Directive({
-  selector: '[phoneNumber]', // Attribute selector
-  providers:[{provide: NG_VALIDATORS, useExisting:PhoneValidatorDirective, multi:true}]
+  selector: '[forbidenWord]', // Attribute selector
+  providers:[{provide: NG_VALIDATORS, useExisting:FobidenValidatorDirective, multi:true}]
 })
-export class PhoneValidatorDirective {
+export class FobidenValidatorDirective {
   constructor() {
-    console.log('Hello PhoneValidatorDirective Directive');
+    console.log('Hello forbiden Directive');
   }
   validate(control: AbstractControl): {[key: string]: any} | null {
-    return regCheck(control, /^1(3[0-9]|4[579]|5[0-35-9]|7[0-9]|8[0-9])\d{8}$/, 'mobile', '请输入合法手机号')
+  
+      return regCheck(control, /^[A-Za-z0-9\-\.()\/\\_:]+$/, 'forbiden', '含非法字符');
+    
   }
 }

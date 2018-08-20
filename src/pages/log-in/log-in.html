@@ -14,12 +14,16 @@
           <div class="contentbox">
       <ion-list class="mulu-list">
         <ion-item>
-          <ion-label color="primary" stacked >账号/手机号</ion-label>
+          <ion-label color="primary" stacked >账号/手机号
+            <span class="wrong" *ngIf="!id.valid && (id.dirty || id.touched)">{{id.errors.mobile}}</span>
+          </ion-label>
           <ion-input type="text" [ngModel]="form.id" #id="ngModel" phoneNumber></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="primary" stacked>密码</ion-label>
-          <ion-input type="password" [ngModel]="form.password" #ps="ngModel" required minlength="8" maxlength="20"></ion-input>
+          <ion-label color="primary" stacked>密码
+              <span class="wrong" *ngIf="!ps.valid && (ps.dirty || ps.touched)">{{ps.errors.forbiden}}</span>
+          </ion-label>
+          <ion-input type="password" [ngModel]="form.password" #ps="ngModel" forbidenWord required minlength="8" maxlength="20"></ion-input>
         </ion-item>
         <button ion-button full [disabled]="!id.valid || !ps.valid">登录</button>
         <ion-item class="restPS">
