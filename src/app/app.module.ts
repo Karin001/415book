@@ -17,6 +17,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
+import { LogInPage } from '../pages/log-in/log-in';
 import { BookPage } from '../pages/book/book';
 import {MuluPage} from '../pages/mulu/mulu';
 import { CartPage } from '../pages/cart/cart';
@@ -41,6 +42,7 @@ import { AuthProvider } from '../providers/auth/auth';
     AboutPage,
     ContactPage,
     SignUpPage,
+    LogInPage,
     HomePage,
     TabsPage,
     BookPage,
@@ -73,6 +75,7 @@ import { AuthProvider } from '../providers/auth/auth';
     AboutPage,
     ContactPage,
     SignUpPage,
+    LogInPage,
     UserPage,
     BookPage,HomePage,
     MuluPage,

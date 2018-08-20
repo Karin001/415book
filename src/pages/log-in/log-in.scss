@@ -1,0 +1,44 @@
+page-log-in{
+    .yanzheng{
+        ion-label{
+            font-size: 1.5rem;
+        }
+        
+    }
+    .box{
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .cancel-box {
+      height:100px;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .contentbox{
+      height:100%;
+      width: 100%;
+        background-color: rgb(255, 255, 255);
+      position: fixed;
+    }
+    .restPS{
+        span{
+            font-size: 1.5rem;
+        }
+        span:nth-child(2){
+            color:rgb(185, 185, 185);
+        }
+    }
+    ion-list{
+      margin:0 !important;
+      height: 100%;
+    }
+    .cos{
+      position: absolute;
+      top:100px;
+    }
+    .mulu-list{
+      ion-item{
+        font-size:2rem;
+      }
+  
+    }
+  }

@@ -1,3 +1,68 @@
 page-sign-up {
+    .info{
+        height: 30px;;
+        span{
+            font-size: 1.5rem;
+            line-height: 100%;
+        }
+        .switch-login{
+            color:rgb(95, 95, 250);
+        }
+        button{
+            height: 15px;
+        }
+    }
+    ion-card-content {
+        position: relative;
+    }
+    .phone{
+        position: relative;
+       
+    }
 
+    .getPhoneCode{
+        position: absolute;
+        z-index: 10;
+        top:73px;
+        right: 0px;
+        height: 30px;
+    }
+    .scroll-content{
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+    .card-background-page {
+        align-self: center;
+       
+          position: relative !important;
+          text-align: center;
+        }
+      
+        .card-title {
+          position: absolute;
+          top: 7%;
+          font-size: 1.6em;
+          left:3%;
+          width: auto;
+        font-weight: bold;
+          border-bottom: 1px solid rgb(255, 255, 255);
+         
+          color: rgb(255, 255, 255);
+        }
+      
+        .card-subtitle {
+          font-size: 1.6em;
+          left: 7%;
+          font-weight: bold;
+          position: absolute;
+          border-bottom: 1px solid rgb(255, 255, 255);
+          top: 16%;
+          width: auto;
+       
+          color: rgb(255, 255, 255);
+        }
+      
+      
 }

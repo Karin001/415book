@@ -8,6 +8,7 @@ import { retry } from 'rxjs/operators/retry';
 import { concat } from 'rxjs/operators/concat';
 import { catchError } from 'rxjs/operators/catchError';
 import { exhaustMap } from 'rxjs/operators/exhaustMap';
+import { map } from 'rxjs/operators/map';
 import { of } from 'rxjs/observable/of';
 import { Authentication_logIn, Authentication_signIn, User } from '../../app/model/auth';
 /*
@@ -68,7 +69,7 @@ export class AuthProvider {
     return of(true)
   }
   signUp(formval:Authentication_signIn):Observable<boolean> {
-    return this.http.post('http://127.0,0.1:8000/signUp',{...formval})
+    return this.http.post('http://127.0.0.1:8000/signUp',{...formval})
     .pipe(
       retry(5),
       catchError((err):Observable<boolean> => {
@@ -81,6 +82,18 @@ export class AuthProvider {
         this.logged.next({ ...data });
         return of(true);
       })
+    )
+  }
+  getPhoneCode({code}){
+    return this.http.post('http://127.0.0.1:8000/phoneCode',{code})
+    .pipe(
+      retry(5),
+      map(src => true),
+      catchError((err):Observable<boolean> => {
+        return of(false);
+       
+      }),
+   
     )
   }
 
