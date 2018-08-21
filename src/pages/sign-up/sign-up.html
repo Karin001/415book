@@ -25,20 +25,21 @@
     <ion-card-content>
         <ion-item class="phone">
           <ion-label >手机号</ion-label>
-          <ion-input type="number" [ngModel]="form.phone" #phone="ngModel" phoneNumber></ion-input>
+          <ion-input type="text" [(ngModel)]="form.phone" #phone="ngModel" phoneNumber></ion-input>
          
         </ion-item>
-        <button ion-button class="getPhoneCode" [disabled]="!phone.valid" >获取验证码</button>
-        <ion-item >
-          
-          <ion-input type="" placeholder="填写验证码" [ngModel]="form.phoneCode" required></ion-input>
+        
+        <ion-item class="code" >
+          <ion-label>验证码</ion-label>
+          <ion-input type="text" [(ngModel)]="form.phoneAuthCode" #code="ngModel" required></ion-input>
+          <button item-end ion-button class="getPhoneCode" [disabled]="!phone.valid || codeButtonDisabled" (click)="getCode()" >{{codeButtonName}}</button>
         </ion-item>
         <ion-item>
           <ion-label >密码</ion-label>
-          <ion-input type="password" [ngModel]="form.password" required></ion-input>
+          <ion-input type="password" [(ngModel)]="form.password" #ps="ngModel" forbidenWord required minlength="8" maxlength="20"></ion-input>
         </ion-item>
         
-          <button ion-button full >ok</button>
+          <button ion-button full [disabled]="!phone.valid ||!code.valid ||!ps.valid " (click)="submit({phone:phone,ps:ps,code:code})">ok</button>
           <ion-item class="info">
             <span>已有账号？请</span>
             <span class="switch-login" (click)="toLogIn()">登录</span>

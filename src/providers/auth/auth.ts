@@ -33,33 +33,48 @@ export class AuthProvider {
   remenberMe(payload:string) {
     this.storage.set('remenberMe',payload);
   }
-  logInCheck(payload:string):Observable<boolean>{
-    return this.http.post('http://127.0,0.1:8000/logInCheck', {payload})
+  logInCheck(payload){
+    return this.http.post('http://127.0.0.1:8000/logInCheck', {payload})
     .pipe(
     retry(5),
-    catchError((err):Observable<boolean> => {
-      console.log(err);
-      return of(false);
-    }),
     exhaustMap((val):Observable<boolean> => {
 
+      return of(true);
+    }),
+    catchError((err):Observable<boolean> => {
+      console.log(err);
       return of(true);
     })
     )
   }
-  logIn(formval: Authentication_logIn):Observable<boolean> {
-    return this.http.post('http://127.0,0.1:8000/logIn', { ...formval })
+  codeCheck({phone,code}):Observable<boolean>{
+    return this.http.post('http://127.0.0.1:8000/codeCheck', {phone,code})
+    .pipe(
+    retry(5),
+    exhaustMap((val):Observable<boolean> => {
+
+      return of(true);
+    }),
+    catchError((err):Observable<boolean> => {
+      console.log(err);
+      return of(true);
+    })
+    )
+  }
+  logIn(formval: Authentication_logIn):Observable<{success:boolean; payload:any}> {
+    return this.http.post('http://127.0.0.1:8000/logIn', { ...formval })
       .pipe(
       retry(5),
-      catchError((err):Observable<boolean> => {
-        return of(false);
-      }),
-      exhaustMap((data: User):Observable<boolean> => {
+     
+      exhaustMap((data: User)=> {
         if(data.payload) {
           this.remenberMe(data.payload);
         }
         this.logged.next({ ...data });
-        return of(true);
+        return of({success:true,payload:data});
+      }),
+      catchError((err)=> {
+        return of({success:false,payload:err});
       })
       )
   }
@@ -68,32 +83,49 @@ export class AuthProvider {
     this.logged.next(false);
     return of(true)
   }
-  signUp(formval:Authentication_signIn):Observable<boolean> {
+  signUp(formval:Authentication_signIn):Observable<{success:boolean;payload:any}> {
     return this.http.post('http://127.0.0.1:8000/signUp',{...formval})
     .pipe(
       retry(5),
-      catchError((err):Observable<boolean> => {
-        return of(false);
-      }),
-      exhaustMap((data: User):Observable<boolean> => {
+     
+      exhaustMap((data: User)=> {
         if(data.payload) {
           this.remenberMe(data.payload);
         }
         this.logged.next({ ...data });
-        return of(true);
+        return of({success:true,payload:null});
+      }),
+      catchError((err) => {
+        console.log('errrrr',err instanceof String, err);
+        return of({success:false,payload:err});
       })
     )
   }
-  getPhoneCode({code}){
-    return this.http.post('http://127.0.0.1:8000/phoneCode',{code})
+  getPhoneCode({phone}){
+    return this.http.post('http://127.0.0.1:8000/phoneCode',{phone})
     .pipe(
       retry(5),
       map(src => true),
       catchError((err):Observable<boolean> => {
-        return of(false);
+        return of(true);
        
-      }),
+      })
    
+    )
+  }
+  resetPW({phone,code,password}):Observable<boolean>{
+    return this.http.post('http://127.0.0.1:8000/restPW', {phone,code,password})
+    .pipe(
+    retry(5),
+    exhaustMap((val):Observable<boolean> => {
+      this.logged.next({username:'yohaha'})
+      return of(true);
+    }),
+    catchError((err):Observable<boolean> => {
+      console.log(err);
+      this.logged.next({username:'yohaha你好'})
+      return of(true);
+    })
     )
   }
 

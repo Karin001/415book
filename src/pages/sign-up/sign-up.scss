@@ -19,14 +19,8 @@ page-sign-up {
         position: relative;
        
     }
-
-    .getPhoneCode{
-        position: absolute;
-        z-index: 10;
-        top:73px;
-        right: 0px;
-        height: 30px;
-    }
+    
+   
     .scroll-content{
         display: flex !important;
         flex-direction: column;
@@ -46,8 +40,8 @@ page-sign-up {
           font-size: 1.6em;
           left:3%;
           width: auto;
-        font-weight: bold;
-          border-bottom: 1px solid rgb(255, 255, 255);
+    
+         
          
           color: rgb(255, 255, 255);
         }
@@ -55,10 +49,10 @@ page-sign-up {
         .card-subtitle {
           font-size: 1.6em;
           left: 7%;
-          font-weight: bold;
+  
           position: absolute;
-          border-bottom: 1px solid rgb(255, 255, 255);
-          top: 16%;
+
+          top: 13%;
           width: auto;
        
           color: rgb(255, 255, 255);
