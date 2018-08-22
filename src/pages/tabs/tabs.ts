@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { NavParams } from 'ionic-angular'
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { HomePage } from '../home/home';
@@ -9,12 +9,12 @@ import { UserPage } from '../user/user';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
+  index = 0;
   tab1Root = HomePage;
   tab2Root = CartPage;
   tab3Root = UserPage;
 
-  constructor() {
-
+  constructor(public navParams: NavParams) {
+    this.index = this.navParams.get('index');
   }
 }

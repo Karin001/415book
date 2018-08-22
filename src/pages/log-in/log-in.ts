@@ -10,6 +10,8 @@ import {
 } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { UserPage } from '../user/user';
+import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 /**
  * Generated class for the LogInPage page.
  *
@@ -120,7 +122,7 @@ export class LogInPage {
         if(val) {
           loading.dismiss();
           this.presentToast('验证成功，密码已重置!')
-          this.toast.onDidDismiss(()=>{this.navCtrl.push(UserPage)});
+          this.toast.onDidDismiss(()=>{this.navCtrl.push(TabsPage,{index:2})});
           this.toast.present();
         } else{
           loading.dismiss();
@@ -134,7 +136,7 @@ export class LogInPage {
   presentToast(message) {
     this.toast = this.toastCtrl.create({
       message: message,
-      duration: 3000
+      duration: 1000
     });
   }
  
@@ -150,7 +152,7 @@ export class LogInPage {
           loading.dismiss();
           this.presentToast('登录成功！')
           this.toast.onDidDismiss(() => {
-            this.navCtrl.push(UserPage);
+            this.navCtrl.push(TabsPage,{index:2});
           });
           this.toast.present();
         } else {

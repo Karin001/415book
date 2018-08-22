@@ -1,0 +1,21 @@
+<!-- Generated template for the YouMayLikeComponent component -->
+<h2 class="double"> <span>为您推荐</span> </h2>
+<ion-list >
+  <ion-item *ngFor="let book of lists" >
+      <div class="you-may-like-content-box">
+
+          <div [style.background-image]="'url('+book.src+')'" alt="" class="book-item-img">
+          <div class="you-may-like-content-info">
+            <p class="book-name">{{book.name}}</p>
+            <p class="author">{{book.author}}</p>
+          </div>
+
+
+        </div>
+      </div>
+  </ion-item>
+</ion-list>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>

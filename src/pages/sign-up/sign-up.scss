@@ -1,4 +1,7 @@
 page-sign-up {
+    ion-label{
+        font-weight: bold;
+    }
     .info{
         height: 30px;;
         span{
@@ -33,30 +36,52 @@ page-sign-up {
           position: relative !important;
           text-align: center;
         }
-      
+        .blur{
+            filter: blur(1px);
+        }
         .card-title {
           position: absolute;
-          top: 7%;
+          top: 17%;
+          width: 100%;
           font-size: 1.6em;
-          left:3%;
-          width: auto;
-    
+          text-align: center;
+          left:0;
+          display: block;
+          color:white;
+          font-weight: bold;
          
          
-          color: rgb(255, 255, 255);
         }
       
         .card-subtitle {
           font-size: 1.6em;
-          left: 7%;
-  
+          left: 0;
+            display: block;
           position: absolute;
-
-          top: 13%;
-          width: auto;
+          color:white;
+          font-weight: bold;
+          top: 24%;
+          width: 100%;
        
-          color: rgb(255, 255, 255);
+        
         }
-      
+        .font-color{
+            color: #f35626;
+            background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: hue 3s infinite linear;
+            font-weight: bold;
+          
+        }
+        @keyframes hue {
+            from {
+              -webkit-filter: hue-rotate(0deg);
+            }
+            
+            to {
+              -webkit-filter: hue-rotate(360deg);
+            }
+        }
       
 }

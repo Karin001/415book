@@ -7,7 +7,17 @@
 
 
 
-<ion-content>
+<ion-content (ionScroll)="hhahaScroll($event)">
+  <div #uraHeader class="ura-header " [style.background]="op" [ngClass]="{'shadow': sw}">
+      <div class="ura-avatar" [hidden]="!sw"></div>
+      <button ion-button clear icon-only class="set">
+          <ion-icon name="settings" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
+        </button>
+        <button ion-button clear icon-only>
+          <ion-icon name="notifications" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
+          <ion-badge class="message" color="danger">3</ion-badge>
+        </button>
+  </div>
   <header>
     <div class="avatar"></div>
     <div  class="shenmiren" *ngIf="!(logged$ | async)">
@@ -30,13 +40,7 @@
       </div>
     </div>
     
-    <button ion-button clear icon-only class="set">
-      <ion-icon name="settings" color="light"></ion-icon>
-    </button>
-    <button ion-button clear icon-only>
-      <ion-icon name="notifications" color="light"></ion-icon>
-      <ion-badge class="message" color="danger">3</ion-badge>
-    </button>
+ 
   </header>
   <div class="content-box">
     <div class="order-box">
@@ -78,7 +82,7 @@
     <div class="history">
       <div class="ashato">
           <ion-icon name="paw" color="secondary"></ion-icon>
-          <span>足迹...</span>
+          <span>浏览历史</span>
       </div>
 
       <ion-scroll [scrollX]="'true'"  >
@@ -93,5 +97,6 @@
       </ion-scroll>
     </div>
   </div>
+  <you-may-like></you-may-like>  
 
 </ion-content>

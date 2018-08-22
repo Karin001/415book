@@ -60,9 +60,9 @@ export class SignUpPage {
     this.auth.getPhoneCode({ phone: 12221211 })
       .subscribe(data => {
         if (data) {
-          this.codeButtonName = "3秒后，可重新获取";
+          this.codeButtonName = "60秒后，可重新获取";
           this.message = `秒`;
-          this.timeCount = 3;
+          this.timeCount = 60;
           loading.dismiss();
           const kk = setInterval(() => {
             if (this.timeCount === 0) {
@@ -74,7 +74,7 @@ export class SignUpPage {
               return;
             }
             this.timeCount--;
-            this.codeButtonName = `${this.timeCount}秒后，可重新获取`
+            this.codeButtonName = `${this.timeCount}秒后可重新获取`
 
           }, 1000)
         } else {
