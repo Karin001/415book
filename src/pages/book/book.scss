@@ -6,8 +6,9 @@ page-book {
   }
     .headerbox{
         @include flx(column);
-        img{
+        .imgbox{
             width:100px;
+            height:130px;
             box-shadow: 3px 3px 5px rgba(0, 0, 0,.6);
             margin:10px;
         }

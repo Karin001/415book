@@ -15,7 +15,7 @@
 
 <ion-content>
   <div class="headerbox">
-    <img [src]="book.src" alt="">
+    <div class="imgbox" fly-to-cart  [style.backgroundImage]="'url('+book.src+')'" alt=""></div>
     <p class="name">{{book.name}}</p>
     <p class="author"><span>作者: </span> {{book.author}}</p>
     <p class="jiage">￥21</p>

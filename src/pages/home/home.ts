@@ -67,41 +67,5 @@ export class HomePage {
     })
 
   }
-  doInfinite(infiniteScroll) {
-    if (this.typeLists.find(ele => ele.typeName === 'youMayLike')) {
-      setTimeout(() => {
-        if (this.youMayLike) {
-          this.youMayLike.books.push({ name: "好书一本", author: "超级作家", src: 'assets/imgs/book3.jpg' });
-          infiniteScroll.complete()
-        } else {
-          console.log('22222222', this.typeLists);
-          this.youMayLike = this.typeLists.find(ele => ele.typeName === 'youMayLike');
-          this.youMayLike.books.push({ name: "好书一本", author: "超级作家", src: 'assets/imgs/book3.jpg' });
-          infiniteScroll.complete();
-        }
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        this.typeLists.push(
-          {
-            typeName: "youMayLike", books: [
-              { name: "好书一本", author: "超级作家", src: 'assets/imgs/book3.jpg' },
-              { name: "好书一本", author: "陈良虎", src: 'assets/imgs/book4.jpg' },
-              { name: "好书一本", author: "超级作家", src: 'assets/imgs/book5.jpg' },
-              { name: "好书一本", author: "陈良虎", src: 'assets/imgs/book3.jpg' },
-              { name: "好书一本", author: "超级作家", src: 'assets/imgs/book4.jpg' },
-              { name: "好书一本", author: "超级作家", src: 'assets/imgs/book5.jpg' },
-              { name: "好书一本", author: "陈磊", src: 'assets/imgs/book5.jpg' },
-              { name: "好书一本", author: "陈良虎", src: 'assets/imgs/book3.jpg' },
-            ]
-          }
-        );
-
-        infiniteScroll.complete(
-
-        );
-      }, 2000)
-    }
-
-  }
+  
 }

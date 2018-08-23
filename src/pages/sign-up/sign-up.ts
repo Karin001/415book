@@ -28,6 +28,7 @@ export class SignUpPage {
     phoneAuthCode: '',
     password: ''
   }
+  bgsrc="../assets/imgs/loginBG.jpg";
   message = '';
   codeButtonDisabled = false;
   codeButtonName = '获取验证码';

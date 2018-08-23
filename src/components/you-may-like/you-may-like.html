@@ -1,17 +1,19 @@
 <!-- Generated template for the YouMayLikeComponent component -->
-<h2 class="double"> <span>为您推荐</span> </h2>
+<h2 class="background double"> <span>为您推荐</span> </h2>
 <ion-list >
   <ion-item *ngFor="let book of lists" >
       <div class="you-may-like-content-box">
 
-          <div [style.background-image]="'url('+book.src+')'" alt="" class="book-item-img">
+          <div [style.background-image]="'url('+book.src+')'" alt="" class="book-item-img"></div>
           <div class="you-may-like-content-info">
             <p class="book-name">{{book.name}}</p>
             <p class="author">{{book.author}}</p>
+            <p class="jianjie">{{book.jianjie || "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt laborum, velit at, dolor error temporibus illo rerum minus possimus modi corrupti nostrum recusandae. Aperiam quisquam nostrum, magni totam magnam libero?"}}</p>
+            <span class="t"></span>
           </div>
 
 
-        </div>
+        
       </div>
   </ion-item>
 </ion-list>

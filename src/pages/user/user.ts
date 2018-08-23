@@ -22,6 +22,8 @@ export class UserPage {
   @ViewChild('uraHeader')header;
   op = 'none';
   sw;
+  hideUra = false;
+  hideUraHandle;
   history;
   logged$: Observable<{ username: string;payload?:string }|boolean>;
   username$: Observable<string>;
@@ -48,10 +50,14 @@ export class UserPage {
     this.navCtrl.push(SignUpPage);
   }
   hhahaScroll(event: ScrollEvent) {
-
+    if(this.hideUraHandle){
+      window.clearTimeout(this.hideUraHandle);
+    }
+    this.hideUra = false;
     if (event.scrollTop >= 130) {
       this.op = `rgba(255,255,255,1)`;
       this.sw = true;
+      this.hideUraHandle = setTimeout(()=>{this.hideUra = true;this.change.detectChanges();console.log('hideura',this.hideUra)},2000);
       this.change.detectChanges();
       //this.renderer.setStyle(this.header.nativeElement, 'background', this.op);
     } else {

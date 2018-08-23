@@ -1,3 +1,4 @@
+@import "theme/flex.scss";
 you-may-like {
     .book-item-img{
         width:100px;
@@ -5,10 +6,10 @@ you-may-like {
         background-color: aquamarine;
         background-repeat:no-repeat; 
         background-size:100% 100%;
-
+         box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: .5)
     }
     h2 {
-        font: 33px sans-serif;
+        font: 2rem sans-serif;
         margin-top: 30px;
         text-align: center;
         text-transform: uppercase;
@@ -51,5 +52,32 @@ you-may-like {
         width: 95%;
         z-index: -1;
     }
+    .you-may-like-content-box {
+        @include flx();
+        height:150px;
+        .you-may-like-content-info{
+            flex:1;
+            padding:10px 0px 0px 20px;;
+            align-self: stretch;   
+            word-break:break-all;
+            .book-name{
+                font-weight: bold;
+                color:#222;
+            }
+            .jianjie{
+                margin-top:30px;;
+                white-space: normal;
+                
+                overflow : hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+
+            }
+           
+        }
+    }
+    
     
 }

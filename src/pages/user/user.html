@@ -8,7 +8,7 @@
 
 
 <ion-content (ionScroll)="hhahaScroll($event)">
-  <div #uraHeader class="ura-header " [style.background]="op" [ngClass]="{'shadow': sw}">
+  <div #uraHeader class="ura-header " [style.background]="op" [ngClass]="{'shadow': sw,'hideUra':hideUra}">
       <div class="ura-avatar" [hidden]="!sw"></div>
       <button ion-button clear icon-only class="set">
           <ion-icon name="settings" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
@@ -96,7 +96,8 @@
 
       </ion-scroll>
     </div>
+    
   </div>
-  <you-may-like></you-may-like>  
-
+  
+  <you-may-like></you-may-like>
 </ion-content>

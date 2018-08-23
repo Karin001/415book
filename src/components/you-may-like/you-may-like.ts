@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
 })
 export class YouMayLikeComponent {
   lists = [
-    { name: "好书一本", author: "超级作家", src: 'assets/imgs/book3.jpg' },
+    { name: "好书一本", author: "超级作家", src: 'assets/imgs/book3.jpg'},
     { name: "好书一本", author: "陈良虎", src: 'assets/imgs/book4.jpg' },
     { name: "好书一本", author: "超级作家", src: 'assets/imgs/book5.jpg' },
     { name: "好书一本", author: "陈良虎", src: 'assets/imgs/book3.jpg' },

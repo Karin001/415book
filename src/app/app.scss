@@ -17,3 +17,45 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.cart-fly{
+  position: absolute;
+  width: 100px;
+  height: 130px;
+  top:-50px;
+  left: 100px;
+  z-index: 999;
+  animation: fly 1s ease-in-out;
+  opacity: 0;
+  transform: scale(.2);
+}
+@keyframes fly {
+    0% {
+      top:50px;
+      display: inline-block;
+      opacity: .3;
+      transform:scale(.8);
+    
+    }
+  
+    30% {
+      left: 200px;
+      top: 200px;
+     
+      display: inline-block;
+      opacity: .3;
+      transform:scale(.2);
+    }
+  
+    60% {
+      left: 200px;
+      top:200px;
+  
+      display: inline-block;
+      opacity: .3;
+      transform:scale(.2);
+    }
+    100%{
+      left:300px;
+      
+    }
+}

@@ -14,15 +14,7 @@
 
 
 <ion-content>
-  <ion-card class="card-background-page">
-    <img class="blur" src="../assets/imgs/loginBG.jpg"/>
-    <h1 class="card-title">
-      对未来真正的慷慨
-    </h1>
-    <h1 class="card-subtitle">
-      是把握现在
-    </h1>
-    <ion-card-content>
+  <div >
         <ion-item class="phone">
           <ion-label color="primary">手机</ion-label>
           <ion-input type="text" [(ngModel)]="form.phone" #phone="ngModel" phoneNumber></ion-input>
@@ -44,8 +36,15 @@
             <span>已有账号？请</span>
             <span class="switch-login" (click)="toLogIn()">登录</span>
           </ion-item>
-      </ion-card-content>
-  </ion-card>
-
+        </div>
+  
+  <div class="blur bgImg" [style.background-image]="'url('+bgsrc +')'"> 
+      <h1 class="card-title">
+        对未来真正的慷慨
+      </h1>
+      <h1 class="card-subtitle">
+        是把握现在
+      </h1>
+    </div>
 
 </ion-content>
