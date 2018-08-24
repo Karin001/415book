@@ -73,11 +73,11 @@
               </button>
 
       </div>
-      <ion-grid>
-        <ion-row>
-          <ion-col col-3 *ngFor="let book of group.books" (click)="toBookPage(book)">
+      <ion-grid >
+        <ion-row >
+          <ion-col  col-4 *ngFor="let book of group.books" (click)="toBookPage(book)">
 
-            <div  [style.background-image]="'url('+book.src+')'"  class="book-item-img"> </div>
+            <div  [style.background-image]="'url('+book.imgSrc+')'"  class="book-item-img"> </div>
             <p class="book-name">{{book.name}}</p>
             <p class="author">{{book.author}}</p>
 
@@ -95,15 +95,15 @@
 
       </div>
       <div class="content">
-        <ion-scroll scrollX="true" class="scroll1">
+        <div class="scroll1">
           <div class="book-con">
             <div *ngFor="let book of group.books" class="book-item" (click)="toBookPage(book)">
-              <img [src]="book.src" alt="">
+              <div class="imgBox" [style.backgroundImage]="'url('+book.imgSrc+')'" alt=""> </div>
               <p class="book-name">{{book.name}}</p>
               <p class="author">{{book.author}}</p>
             </div>
           </div>
-        </ion-scroll>
+        </div>
 
 
       </div>

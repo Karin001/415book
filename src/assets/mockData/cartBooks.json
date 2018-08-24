@@ -1,0 +1,94 @@
+{
+    "cartBooks": [
+        {
+            "bookid": "1",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book4.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "2",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book5.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "3",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book3.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "4",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book4.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "5",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book5.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "6",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book3.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "7",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book4.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "8",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book5.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        },
+        {
+            "bookid": "9",
+            "name": "好书一本",
+            "author": "高手",
+            "imgSrc": "assets/imgs/book4.jpg",
+            "nums": 1,
+            "price": 12.5,
+            "publisher": "某某某某某某某出版社",
+            "version": "2014年第一版"
+        }
+    ]
+}

@@ -2,6 +2,7 @@ import { Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IndexBooklistElement } from '../../app/model/indexBooklist';
 import { BehaviorSubject, Subject } from 'rxjs';
 import 'rxjs/add/operator/retry';
 /*
@@ -18,13 +19,15 @@ const switchUrl = {
     postBookTypeList_url: 'assets/mockData/bookTypeList.json',
     areaData_url: 'assets/mockData/areaData1.json',
     historyBooks_url: 'assets/mockData/historyBooks.json',
+    cartBooks_url:'assets/mockData/cartBooks.json',
   },
   pro: {
     getBookList_url: '',
     postBookTypeList_url: '',
     postBookDetail_url: '',
     areaData_url: '',
-    historyBooks_url: ''
+    historyBooks_url: '',
+    cartBooks_url:'',
   }
 }
 
@@ -41,13 +44,14 @@ const storageNames = {
   shakai: 'book_type_shakai_list',
   hot: 'hot_book_list',
   new: 'new_book_list',
-  areaData: 'area_data'
-
+  areaData: 'area_data',
+  
 }
 const LIMIT = 1000 * 60 * 10 //10min
 @Injectable()
 export class RestApiProvider {
-
+  cartBooksCache;
+  cartBookChange = new BehaviorSubject<boolean>(null);
   constructor(
     public http: HttpClient,
     public platForm: Platform,
@@ -69,9 +73,9 @@ export class RestApiProvider {
         return;
       }
     };
-    this.http.get(apiUrl.getBookList_url)
+    this.http.get("assets/mockData/bookList.json")
       .retry(5)
-      .subscribe(list => {
+      .subscribe((list:IndexBooklistElement[]) => {
         if (!list) {
           throw new Error('获取首页图书数据为空')
         }
@@ -144,6 +148,23 @@ export class RestApiProvider {
           callbackFn(data);
         }
       })
+  }
+  getCartBooks(callbackFn) {
+    this.http.get(apiUrl.cartBooks_url)
+      .retry(5)
+      .subscribe(data => {
+        if (data) {
+          this.cartBooksCache = {...data};
+          callbackFn(data);
+        }
+      })
+  }
+  addCartBook(book){
+    this.cartBooksCache.push(book);
+    this.cartBookChange.next(true);
+  }
+  watchCartBooks(){
+    return this.cartBookChange.asObservable();
   }
 
 }

@@ -5,7 +5,7 @@ import { AreaValidatorDirective } from './area-validator/area-validator';
 import { PhoneValidatorDirective } from './phone-validator/phone-validator';
 import { XiangxidizhiDirective } from './xiangxidizhi/xiangxidizhi';
 import { FobidenValidatorDirective } from './fobiden-validator/fobiden-validator';
-import { FlyToCartDirective } from './fly-to-cart/fly-to-cart';
+import {BtnClickDirective,CartShakeDirective,BtnClickService,FlyToCartDirective} from './fly-to-cart'; 
 @NgModule({
 	declarations: [
     MyvalidatorDirective,
@@ -13,7 +13,9 @@ import { FlyToCartDirective } from './fly-to-cart/fly-to-cart';
     PhoneValidatorDirective,
     XiangxidizhiDirective,
     FobidenValidatorDirective,
-    FlyToCartDirective
+    FlyToCartDirective,
+    CartShakeDirective,
+    BtnClickDirective
   ],
 	imports: [],
   exports: [
@@ -22,8 +24,11 @@ import { FlyToCartDirective } from './fly-to-cart/fly-to-cart';
     PhoneValidatorDirective,
     XiangxidizhiDirective,
     FobidenValidatorDirective,
-    FlyToCartDirective
+    FlyToCartDirective,
+    CartShakeDirective,
+    BtnClickDirective,
+    
   ],
-  providers:[]
+  providers:[BtnClickService]
 })
 export class DirectivesModule {}

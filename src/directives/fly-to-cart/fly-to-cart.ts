@@ -1,6 +1,6 @@
 import { Directive,ComponentRef,AfterViewInit,
    Renderer2,ComponentFactoryResolver, ViewContainerRef,HostListener,ElementRef,HostBinding } from '@angular/core';
-import { EventListener } from '@angular/core/src/debug/debug_node';
+import {BtnClickService} from './service';
 
 /**
  * Generated class for the FlyToCartDirective directive.
@@ -18,7 +18,8 @@ export class FlyToCartDirective implements AfterViewInit{
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private viewcontainerRef: ViewContainerRef,
-    public renderer: Renderer2
+    public renderer: Renderer2,
+    public btnService:BtnClickService
   ) {
     console.log('Hello FlyToCartDirective Directive');
     this.el = this.viewcontainerRef.element.nativeElement;
@@ -30,14 +31,16 @@ export class FlyToCartDirective implements AfterViewInit{
      this.src = getComputedStyle(this.el).backgroundImage; 
    
     console.log('cloneNode',this.cloneEl,this.el.backgroundImage,'a');
+    this.btnService.watch().subscribe(clicked => {
+      if(clicked) {
+        let imgclone = document.createElement('div');
+        imgclone.className = "cart-fly";
+        this.renderer.setStyle(imgclone,'backgroundImage',this.src);
+        document.body.appendChild(imgclone);
+        setTimeout(()=>{imgclone.remove()},1100);
+        console.log(imgclone)
+      }
+    })
   }
-  @HostListener('click',['$event'])
-  fly(){
-    console.log('haha')
-    let imgclone = document.createElement('div');
-    imgclone.className = "cart-fly";
-    this.renderer.setStyle(imgclone,'backgroundImage',this.src);
-    document.body.appendChild(imgclone);
-    console.log(imgclone)
-  }
+
 }

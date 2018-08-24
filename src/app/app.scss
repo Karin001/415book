@@ -17,42 +17,83 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.title-cart{
+  position: absolute;
+  top:0;
+  left:300px;
+}
+.title-cart-action{
+  animation: action 1s ease-out;
+}
+@keyframes action{
+  0%{
+    transform: rotate(0deg)
+  }
+  20%{
+    transform: rotate(30deg)
+  }
+  40%{
+    transform: rotate(-30deg)
+  }
+  60%{
+    transform: rotate(20deg)
+  }
+  80%{
+    transform: rotate(-20deg)
+  }
+  90%{
+    transform: rotate(10deg)
+  }
+  100%{
+    transform: rotate(0deg)
+  }
+}
 .cart-fly{
   position: absolute;
   width: 100px;
   height: 130px;
   top:-50px;
-  left: 100px;
+  left: 150px;
   z-index: 999;
+  background-position: center;
+  background-size:cover;
   animation: fly 1s ease-in-out;
   opacity: 0;
+  box-shadow: 2px 2px 4px rgba(34, 34, 34,.6);
   transform: scale(.2);
 }
 @keyframes fly {
     0% {
       top:50px;
       display: inline-block;
-      opacity: .3;
-      transform:scale(.8);
+      opacity: .8;
+      transform:scale(.8) rotate(30deg);
     
     }
   
     30% {
-      left: 200px;
-      top: 200px;
+      left: 230px;
+      top: 100px;
      
       display: inline-block;
-      opacity: .3;
-      transform:scale(.2);
+      opacity: .6;
+      transform:scale(.2) rotate(130deg);
     }
-  
     60% {
-      left: 200px;
-      top:200px;
+      left: 230px;
+      top: 100px;
+     
+      display: inline-block;
+      opacity: .6;
+      transform:scale(.2) rotate(360deg);
+    }
+    80% {
+      left: 230px;
+      top:100px;
   
       display: inline-block;
-      opacity: .3;
-      transform:scale(.2);
+      opacity: .5;
+      transform:scale(.2) rotate(0deg);
     }
     100%{
       left:300px;

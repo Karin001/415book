@@ -7,13 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>图书详情</ion-title>
+    <ion-title>图书详情
+          <app-cart  fly-to-cart-shake  class="title-cart" ></app-cart>
+    </ion-title>
+    
   </ion-navbar>
-
+  
 </ion-header>
 
 
 <ion-content>
+   
   <div class="headerbox">
     <div class="imgbox" fly-to-cart  [style.backgroundImage]="'url('+book.src+')'" alt=""></div>
     <p class="name">{{book.name}}</p>
@@ -27,7 +31,7 @@
       </span>
     </p>
     <div class="caozuo">
-      <button ion-button outline>加入购物车</button>
+      <button ion-button outline fly-to-cart-btn>加入购物车</button>
       <button ion-button (click)="toCheckOrderPage()">立即购买</button>
     </div>
   </div>

@@ -1,9 +1,9 @@
 @import "theme/flex.scss";
 you-may-like {
-    .book-item-img{
-        width:100px;
-        height:130px;
-        background-color: aquamarine;
+    .book-item-img-like{
+        width:30%;
+        padding-bottom: 42%;
+        background-color: rgb(167, 167, 167);
         background-repeat:no-repeat; 
         background-size:100% 100%;
          box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: .5)

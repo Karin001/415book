@@ -40,6 +40,7 @@ export class MyApp {
         this.auth.logged.next(false);
         console.log('rem3');
       })
+      
     });
   }
 }

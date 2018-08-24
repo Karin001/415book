@@ -32,8 +32,8 @@ export class HomePage {
     public zone: NgZone,
     public restApi: RestApiProvider
   ) {
-    this.restApi.getIndexBookList((list)=>{this.typeLists = list});
-    console.log('hiahiahia')
+    this.restApi.getIndexBookList((list)=>{this.typeLists = list; console.log('hiahiahia',this.typeLists)});
+   
 
 
 
