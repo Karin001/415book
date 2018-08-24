@@ -1,7 +1,7 @@
 <ion-content (ionScroll)="hhahaScroll($event)">
 
   <header #header class="header-box" [ngClass]="{'header-box-border': sw,'header-box-border-none':!sw}">
-    <div class="search-box" [ngClass]="{'search-box-sw': sw,'search-box-sw-none':!sw}">
+    <div (click)="toSearchPage()" class="search-box" [ngClass]="{'search-box-sw': sw,'search-box-sw-none':!sw}">
       <ion-icon name="search" [color]="sw?'primary':'secondary'"></ion-icon>
       <ion-input class="search" [ngClass]="{'input-sw': sw,'input-sw-none':!sw}" type="text" placeholder="作者/书名/出版社"></ion-input>
     </div>

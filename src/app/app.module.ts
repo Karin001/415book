@@ -29,6 +29,7 @@ import { EditPostPage } from '../pages/edit-post/edit-post';
 import { CityPickerPage } from '../pages/city-picker/city-picker';
 import { BookTypePage } from '../pages/book-type/book-type';
 import { UserPage } from '../pages/user/user';
+import { SearchPage } from '../pages/search/search';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -55,6 +56,7 @@ import { AuthProvider } from '../providers/auth/auth';
     EditPostPage,
     BookTypePage,
     CityPickerPage,
+    SearchPage,
     UserPage
   ],
   imports: [
@@ -87,6 +89,7 @@ import { AuthProvider } from '../providers/auth/auth';
     PostAddrPage,
     EditPostPage,
     CityPickerPage,
+    SearchPage,
     BookTypePage
   ],
   providers: [
