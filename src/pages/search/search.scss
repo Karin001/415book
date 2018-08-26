@@ -1,13 +1,40 @@
 page-search {
+  ion-searchbar{
+    z-index: 9;
+    position: fixed;
+    width:90%;
+    height: 40px;
+  }
+
     h2{
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin:10px 0 0 0;
+        font-weight: bold;
+    }
+    .hot-title{
+      margin-top:55px;
     }
     .hot-tag{
         width: 100%;
-        padding:10px;
+        padding:8px;
+        overflow: hidden;
         ion-badge{
-            margin:10px;
+          max-width: 130px;
+            margin:3px 5px;
+            font-size:1rem;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap
         }
+    }
+    .history{
+      ion-list{
+        margin:0 !important;
+        ion-item{
+          font-size: 1.3rem;
+         min-height: 25px;
+        }
+      }
     }
 
 }

@@ -30,6 +30,8 @@ import { CityPickerPage } from '../pages/city-picker/city-picker';
 import { BookTypePage } from '../pages/book-type/book-type';
 import { UserPage } from '../pages/user/user';
 import { SearchPage } from '../pages/search/search';
+import { UserSettingPage } from '../pages/user-setting/user-setting';
+import { OrderlistPage } from '../pages/orderlist/orderlist';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -57,7 +59,9 @@ import { AuthProvider } from '../providers/auth/auth';
     BookTypePage,
     CityPickerPage,
     SearchPage,
-    UserPage
+    UserPage,
+    UserSettingPage,
+    OrderlistPage
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,9 @@ import { AuthProvider } from '../providers/auth/auth';
     EditPostPage,
     CityPickerPage,
     SearchPage,
-    BookTypePage
+    UserSettingPage,
+    BookTypePage,
+    OrderlistPage
   ],
   providers: [
     StatusBar,

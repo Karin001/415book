@@ -10,7 +10,7 @@
 <ion-content (ionScroll)="hhahaScroll($event)">
   <div #uraHeader class="ura-header " [style.background]="op" [ngClass]="{'shadow': sw,'hideUra':hideUra}">
       <div class="ura-avatar" [hidden]="!sw"></div>
-      <button ion-button clear icon-only class="set">
+      <button ion-button clear icon-only class="set" (click)="toUserSettingPage()">
           <ion-icon name="settings" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
         </button>
         <button ion-button clear icon-only>
@@ -27,7 +27,7 @@
         <button ion-button round >登录</button>
         或者
         <button ion-button round>注册</button>
-        
+
         </p>
     </div>
     <div class="user-name-youhuiquan" *ngIf="logged$ | async">
@@ -39,8 +39,8 @@
         <ion-badge color="secondary">优惠券：3</ion-badge>
       </div>
     </div>
-    
- 
+
+
   </header>
   <div class="content-box">
     <div class="order-box">
@@ -72,7 +72,7 @@
 
         <span>已完成</span>
       </div>
-      <div class="button-box">
+      <div class="button-box" (click)="toOrderlistPage()">
         <ion-icon name="list-box" color="primary" class="main-order-icon"></ion-icon>
         <span>我的订单</span>
       </div>
@@ -86,8 +86,8 @@
       </div>
 
       <ion-scroll [scrollX]="'true'"  >
-        <div class="book-con" *ngIf="history && history.books.length>0">
-          <div *ngFor="let book of history.books" class="book" >
+        <div class="book-con" *ngIf="history && history.length>0">
+          <div *ngFor="let book of history" class="book" >
             <img [src]="book.src" alt="">
           </div>
         </div>
@@ -96,8 +96,8 @@
 
       </ion-scroll>
     </div>
-    
+
   </div>
-  
+
   <you-may-like></you-may-like>
 </ion-content>

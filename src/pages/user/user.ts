@@ -6,6 +6,8 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { Observable } from 'rxjs/Observable';
 import {map} from 'rxjs/operators/map';
 import { SignUpPage } from '../sign-up/sign-up';
+import { UserSettingPage } from '../user-setting/user-setting';
+import { OrderlistPage } from '../orderlist/orderlist';
 /**
  * Generated class for the UserPage page.
  *
@@ -36,7 +38,8 @@ export class UserPage {
     public change:ChangeDetectorRef
   ) {
     this.restApi.getHistoryBooks((list) => {
-      this.history = list;
+      this.history = list.historyBooks;
+      console.log('list',list)
     })
     this.logged$ = this.auth.watchLogged();
     this.username$ = this.logged$.pipe(map(val=>val['username']));
@@ -48,6 +51,12 @@ export class UserPage {
   }
   toSignUpPage(){
     this.navCtrl.push(SignUpPage);
+  }
+  toUserSettingPage(){
+    this.navCtrl.push(UserSettingPage);
+  }
+  toOrderlistPage(){
+    this.navCtrl.push(OrderlistPage);
   }
   hhahaScroll(event: ScrollEvent) {
     if(this.hideUraHandle){
