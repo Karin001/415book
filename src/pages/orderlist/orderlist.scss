@@ -1,6 +1,24 @@
 page-orderlist {
   img{
-    width: 30px;
-    margin: 5px 3px;
+    width: 50px;
+    margin: 5px;
+  }
+  .scroll-box {
+    width: 100%;
+    overflow-x: scroll;
+    background-color: #dfdfdf;
+    margin-bottom: 10px;
+  }
+  .inner-scroll {
+    
+    padding:5px;
+    
+  }
+  .order-element {
+    p{
+      text-align: right;
+      margin:0;
+    }
+    
   }
 }

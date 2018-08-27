@@ -32,6 +32,7 @@ import { UserPage } from '../pages/user/user';
 import { SearchPage } from '../pages/search/search';
 import { UserSettingPage } from '../pages/user-setting/user-setting';
 import { OrderlistPage } from '../pages/orderlist/orderlist';
+import { OrderDetailPage } from '../pages/order-detail/order-detail';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -61,7 +62,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SearchPage,
     UserPage,
     UserSettingPage,
-    OrderlistPage
+    OrderlistPage,
+    OrderDetailPage
   ],
   imports: [
     BrowserModule,
@@ -96,7 +98,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SearchPage,
     UserSettingPage,
     BookTypePage,
-    OrderlistPage
+    OrderlistPage,
+    OrderDetailPage
   ],
   providers: [
     StatusBar,
