@@ -7,7 +7,7 @@ import {
   LoadingController,
   ToastController
 } from 'ionic-angular';
-import { LogInPage } from '../log-in/log-in';
+//import { LogInPage } from '../log-in/log-in';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 /**
@@ -47,7 +47,7 @@ export class SignUpPage {
     console.log('ionViewDidLoad SignUpPage');
   }
   toLogIn() {
-    const modal = this.modalCtrl.create(LogInPage, {}, { cssClass: 'cos' });
+    const modal = this.modalCtrl.create('LogInPage', {}, { cssClass: 'cos' });
     modal.present();
   }
   getCode() {
@@ -107,6 +107,9 @@ export class SignUpPage {
       this.navCtrl.push(HomePage);
     });
     toast.present();
+  }
+  back(){
+    this.navCtrl.pop();
   }
   submit({ phone, ps, code }) {
     if (phone.valid && ps.valid && code.valid) {

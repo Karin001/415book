@@ -1,6 +1,6 @@
 import { Component,ChangeDetectorRef} from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController,AlertController } from 'ionic-angular';
-import { CityPickerPage } from '../city-picker/city-picker';
+//import { CityPickerPage } from '../city-picker/city-picker';
 /**
  * Generated class for the EditPostPage page.
  *
@@ -38,7 +38,7 @@ export class EditPostPage {
     console.log('ionViewDidLoad EditPostPage');
   }
   openCityPicker(){
-    const modal = this.modalCtrl.create(CityPickerPage,{data:this.form.fromModalData},{cssClass:'cos'});
+    const modal = this.modalCtrl.create('CityPickerPage',{data:this.form.fromModalData},{cssClass:'cos'});
     console.log('frpmdata',this.form.fromModalData);
     modal.present();
     modal.onDidDismiss(data => {

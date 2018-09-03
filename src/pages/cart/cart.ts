@@ -1,8 +1,8 @@
 import { Component,ViewChild,NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
-import { BookPage } from '../book/book';
-import { CheckOrderPage } from '../check-order/check-order';
-import { EditRemovePage } from './modal-page/editRemove';
+//import { BookPage } from '../book/book';
+//import { CheckOrderPage } from '../check-order/check-order';
+//import { EditRemovePage } from './modal-page/editRemove';
 /**
  * Generated class for the CartPage page.
  *
@@ -66,9 +66,9 @@ export class CartPage {
     console.log('ionViewDidLoad CartPage');
   }
   toBookPage(item){
-    const book = {name:item.name,author:item.author,src:item['imgSrc']}
+    const book = {name:item.name,author:item.author,imgSrc:item['imgSrc']}
     console.log(book)
-    this.navCtrl.push(BookPage,{book})
+    this.navCtrl.push('BookPage',{book})
   }
 
 
@@ -94,7 +94,7 @@ export class CartPage {
     this.content.scrollTo(0);
   }
   toCheckOrderPage(){
-    this.navCtrl.push(CheckOrderPage, {orderList:this.cartGoods})
+    this.navCtrl.push('CheckOrderPage', {orderList:this.cartGoods})
   }
   openAlert(){
     let message;
@@ -111,7 +111,7 @@ export class CartPage {
         {
           text: '详情',
           handler: () => {
-            const modal = this.modalCtrl.create(EditRemovePage,{removeBooks:this.mayNotWantBooks});
+            const modal = this.modalCtrl.create('EditRemovePage',{removeBooks:this.mayNotWantBooks});
             console.log(this.mayNotWantBooks);
             modal.present();
 
