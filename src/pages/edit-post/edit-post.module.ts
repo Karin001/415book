@@ -4,7 +4,7 @@ import { EditPostPage } from './edit-post';
 
 @NgModule({
   declarations: [
-
+    EditPostPage
   ],
   imports: [
     IonicPageModule.forChild(EditPostPage),

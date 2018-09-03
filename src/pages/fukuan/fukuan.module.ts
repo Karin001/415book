@@ -4,7 +4,7 @@ import { FukuanPage } from './fukuan';
 
 @NgModule({
   declarations: [
-
+    FukuanPage
   ],
   imports: [
     IonicPageModule.forChild(FukuanPage),

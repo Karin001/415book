@@ -1,0 +1,57 @@
+<!--
+  Generated template for the UserInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list >
+    <ion-item class="avatar" >
+      <span>头像</span>
+      <img item-end src="assets/icon/avatar.png" alt="">
+      <button ion-button icon-only item-end clear>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item >
+      <span>用户名</span>
+      <span item-end>dshjfhjsd323_34234</span>
+    </ion-item>
+    <ion-item (click)="showPrompt('nickname ')">
+      <span>昵称</span>
+      <span item-end>天天向上</span>
+      <button ion-button icon-only item-end clear>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+    <ion-item >
+      <ion-label>性别</ion-label>
+    <ion-select [(ngModel)]="sex">
+      <ion-option value="man">男</ion-option>
+      <ion-option value="woman">女</ion-option>
+      <ion-option value="secret">保密</ion-option>
+  
+    </ion-select>
+    </ion-item>
+    <ion-item >
+      <span>出生日期</span>
+    
+      <button ion-button icon-only item-end clear>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    
+    </ion-item>
+    <ion-item >
+
+    </ion-item>
+  </ion-list>
+</ion-content>

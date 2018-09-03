@@ -4,7 +4,7 @@ import { CheckOrderPage } from './check-order';
 
 @NgModule({
   declarations: [
-
+    CheckOrderPage
   ],
   imports: [
     IonicPageModule.forChild(CheckOrderPage),

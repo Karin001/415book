@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+//import { UserInfoPage } from '../user-info/user-info';
 /**
  * Generated class for the UserSettingPage page.
  *
@@ -21,5 +21,7 @@ export class UserSettingPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserSettingPage');
   }
-
+  toUserInfoPage(){
+    this.navCtrl.push('UserInfoPage');
+  }
 }

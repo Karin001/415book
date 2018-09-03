@@ -5,9 +5,9 @@ import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth';
 import { Observable } from 'rxjs/Observable';
 import {map} from 'rxjs/operators/map';
-import { SignUpPage } from '../sign-up/sign-up';
-import { UserSettingPage } from '../user-setting/user-setting';
-import { OrderlistPage } from '../orderlist/orderlist';
+//import { SignUpPage } from '../sign-up/sign-up';
+//import { UserSettingPage } from '../user-setting/user-setting';
+//import { OrderlistPage } from '../orderlist/orderlist';
 /**
  * Generated class for the UserPage page.
  *
@@ -50,13 +50,13 @@ export class UserPage {
 
   }
   toSignUpPage(){
-    this.navCtrl.push(SignUpPage);
+    this.navCtrl.push('SignUpPage');
   }
   toUserSettingPage(){
-    this.navCtrl.push(UserSettingPage);
+    this.navCtrl.push('UserSettingPage');
   }
   toOrderlistPage(){
-    this.navCtrl.push(OrderlistPage);
+    this.navCtrl.push('OrderlistPage');
   }
   hhahaScroll(event: ScrollEvent) {
     if(this.hideUraHandle){

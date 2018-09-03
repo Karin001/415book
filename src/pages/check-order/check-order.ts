@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PostAddrPage } from '../post-addr/post-addr';
+//import { PostAddrPage } from '../post-addr/post-addr';
 /**
  * Generated class for the CheckOrderPage page.
  *
@@ -26,7 +26,7 @@ export class CheckOrderPage {
     console.log('ionViewDidLoad CheckOrderPage');
   }
   changePost(){
-    this.navCtrl.push(PostAddrPage);
+    this.navCtrl.push('PostAddrPage');
   }
 
 }

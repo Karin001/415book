@@ -4,7 +4,7 @@ import { MuluPage } from './mulu';
 
 @NgModule({
   declarations: [
-
+    MuluPage
   ],
   imports: [
     IonicPageModule.forChild(MuluPage),

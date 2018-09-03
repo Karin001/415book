@@ -1,0 +1,13 @@
+page-user-info {
+    ion-icon{
+        font-size:2rem !important;
+        vertical-align:middle !important;
+        display: table-cell !important 
+    }
+    .avatar{
+        img{
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+}

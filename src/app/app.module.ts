@@ -8,7 +8,7 @@ import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-n
 import { Platform } from 'ionic-angular';
 import { NG_VALIDATORS} from '@angular/forms'
 import { MyvalidatorDirective } from '../directives/myvalidator/myvalidator';
-
+import { CartPageModule } from '../pages/cart/cart.module'
 import {ComponentsModule} from '../components/components.module'
 
 import { DirectivesModule } from '../directives/directives.module';
@@ -16,23 +16,25 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { SignUpPage } from '../pages/sign-up/sign-up';
+//import { SignUpPage } from '../pages/sign-up/sign-up';
 import { LogInPage } from '../pages/log-in/log-in';
 import { BookPage } from '../pages/book/book';
-import {MuluPage} from '../pages/mulu/mulu';
+//import {MuluPage} from '../pages/mulu/mulu';
 import { CartPage } from '../pages/cart/cart';
-import { EditRemovePage } from '../pages/cart/modal-page/editRemove';
-import { FukuanPage } from '../pages/fukuan/fukuan';
-import { CheckOrderPage } from '../pages/check-order/check-order';
-import { PostAddrPage } from '../pages/post-addr/post-addr';
-import { EditPostPage } from '../pages/edit-post/edit-post';
-import { CityPickerPage } from '../pages/city-picker/city-picker';
-import { BookTypePage } from '../pages/book-type/book-type';
+//import { EditRemovePage } from '../pages/cart/modal-page/editRemove';
+//import { FukuanPage } from '../pages/fukuan/fukuan';
+//import { CheckOrderPage } from '../pages/check-order/check-order';
+//import { PostAddrPage } from '../pages/post-addr/post-addr';
+//import { EditPostPage } from '../pages/edit-post/edit-post';
+//import { CityPickerPage } from '../pages/city-picker/city-picker';
+//import { BookTypePage } from '../pages/book-type/book-type';
 import { UserPage } from '../pages/user/user';
-import { SearchPage } from '../pages/search/search';
-import { UserSettingPage } from '../pages/user-setting/user-setting';
-import { OrderlistPage } from '../pages/orderlist/orderlist';
-import { OrderDetailPage } from '../pages/order-detail/order-detail';
+//import { SearchPage } from '../pages/search/search';
+//import { UserSettingPage } from '../pages/user-setting/user-setting';
+//import { OrderlistPage } from '../pages/orderlist/orderlist';
+//import { OrderDetailPage } from '../pages/order-detail/order-detail';
+//import { BillDetailPage } from '../pages/bill-detail/bill-detail';
+//import { UserInfoPage } from '../pages/user-info/user-info';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -45,29 +47,32 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     AboutPage,
     ContactPage,
-    SignUpPage,
-    LogInPage,
+    //SignUpPage,
+    //LogInPage,
     HomePage,
     TabsPage,
-    BookPage,
-    MuluPage,
-    CartPage,
-    FukuanPage,
-    CheckOrderPage,
-    EditRemovePage,
-    PostAddrPage,
-    EditPostPage,
-    BookTypePage,
-    CityPickerPage,
-    SearchPage,
+   // BookPage,
+   // MuluPage,
+    //CartPage,
+    //FukuanPage,
+    //CheckOrderPage,
+    //EditRemovePage,
+    //PostAddrPage,
+    //EditPostPage,
+    //BookTypePage,
+   // CityPickerPage,
+   // SearchPage,
     UserPage,
-    UserSettingPage,
-    OrderlistPage,
-    OrderDetailPage
+   // UserSettingPage,
+    //OrderlistPage,
+    //OrderDetailPage,
+   // BillDetailPage,
+   // UserInfoPage
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
+    CartPageModule,
     IonicStorageModule.forRoot(),
     DirectivesModule,
     HttpClientModule,
@@ -75,6 +80,8 @@ import { AuthProvider } from '../providers/auth/auth';
     IonicModule.forRoot(MyApp,{
       tabsHideOnSubPages: 'true',
       iconMode: 'ios',
+      monthNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+      monthShortNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
     })
   ],
   bootstrap: [IonicApp],
@@ -82,24 +89,27 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     AboutPage,
     ContactPage,
-    SignUpPage,
-    LogInPage,
+    //SignUpPage,
+    //LogInPage,
     UserPage,
-    BookPage,HomePage,
-    MuluPage,
-    CartPage,
+    //BookPage,
+    HomePage,
+    //MuluPage,
+    //CartPage,
     TabsPage,
-    FukuanPage,
-    CheckOrderPage,
-    EditRemovePage,
-    PostAddrPage,
-    EditPostPage,
-    CityPickerPage,
-    SearchPage,
-    UserSettingPage,
-    BookTypePage,
-    OrderlistPage,
-    OrderDetailPage
+    //FukuanPage,
+    //CheckOrderPage,
+    //EditRemovePage,
+    //PostAddrPage,
+    //EditPostPage,
+   // CityPickerPage,
+   // SearchPage,
+   // UserSettingPage,
+   // BookTypePage,
+   // OrderlistPage,
+   // OrderDetailPage,
+   // BillDetailPage,
+   // UserInfoPage
   ],
   providers: [
     StatusBar,

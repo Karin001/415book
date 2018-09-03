@@ -4,10 +4,12 @@ import { LogInPage } from './log-in';
 
 @NgModule({
   declarations: [
-
+    LogInPage
   ],
   imports: [
     IonicPageModule.forChild(LogInPage),
   ],
+  entryComponents:[LogInPage]
+ 
 })
 export class LogInPageModule {}

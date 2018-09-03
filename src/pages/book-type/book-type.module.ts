@@ -4,7 +4,7 @@ import { BookTypePage } from './book-type';
 
 @NgModule({
   declarations: [
-
+    BookTypePage
   ],
   imports: [
     IonicPageModule.forChild(BookTypePage),

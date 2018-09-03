@@ -3,8 +3,8 @@ import { NavController, ScrollEvent } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { BookPage } from '../book/book';
 import { CartPage } from '../cart/cart';
-import { BookTypePage } from '../book-type/book-type';
-import { SearchPage } from '../search/search';
+//import { BookTypePage } from '../book-type/book-type';
+//import { SearchPage } from '../search/search';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -40,16 +40,16 @@ export class HomePage {
 
   }
   toBookPage(book) {
-    this.navCtrl.push(BookPage, { book });
+    this.navCtrl.push('BookPage', { book });
   }
   toCartPage() {
     this.navCtrl.push(CartPage);
   }
   toBookTypePage(type) {
-    this.navCtrl.push(BookTypePage,{typeTitle:type})
+    this.navCtrl.push('BookTypePage',{typeTitle:type})
   }
   toSearchPage() {
-    this.navCtrl.push(SearchPage)
+    this.navCtrl.push('SearchPage')
   }
   hhahaScroll(event: ScrollEvent) {
 
