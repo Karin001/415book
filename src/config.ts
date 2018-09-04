@@ -1,4 +1,9 @@
 export const baseApiUrl = 'http://localhost';
+export const environment_production = false; 
+export const restApiUrl = {
+  booklist:'/booklist',
+  bookDetail:'bookDetail'
+}
 export const storageNames = {
   index: 'index_book_list',
   history: 'book_type_history_list',

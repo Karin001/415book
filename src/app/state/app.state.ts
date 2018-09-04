@@ -1,17 +1,30 @@
 import {State,Action,StateContext,Selector} from '@ngxs/store'
 import {IndexStateModel} from './app.stateModel'
 import {IndexLoadStart} from './app.action'
-
+import { BookService } from '../../providers/book/book.service'
+import {tap,catchError} from 'rxjs/operators'
+import {of} from 'rxjs/observable/of'
 @State<IndexStateModel>({
   name:'app',
-  defaults:{bookList:{}}
+  defaults:{
+    bookList:[{}]
+  }
 })
 export class AppState{
-  constructor(){
+  @Selector() static bookList(state:IndexStateModel){
+    return state.bookList
+  }
+  constructor(
+    public bookService:BookService
+  ){
 
   }
   @Action(IndexLoadStart)
   loadIndexBookList(ctx:StateContext<IndexStateModel>,action:IndexLoadStart){
-
+    return this.bookService.getIndexBookList({Cachable:'true',x_refresh:'true'}).pipe(
+      tap(indexBookList =>{ 
+        ctx.setState(indexBookList)
+      })
+    )
   }
 }

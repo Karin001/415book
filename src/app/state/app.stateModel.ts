@@ -1,4 +1,4 @@
-interface BookList{
+interface BookListUnit{
 
   name:string;
   idbook:string;
@@ -6,6 +6,10 @@ interface BookList{
 
   imgurl:string;
 }
+interface BookListType{
+  typeName:string;
+  books:BookListUnit[];
+}
 export interface IndexStateModel{
-  bookList:BookList | {};
+  bookList:BookListType[] | [{}];
 }

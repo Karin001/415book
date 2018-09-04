@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { baseApiUrl } from '../../config';
+import {URL} from './config';
+// import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import {storageNames } from '../../config';
+// import {storageNames } from '../../config';
 import { IndexStateModel } from '../../app/state/app.stateModel';
 import {Observable} from 'rxjs/observable'
+import { retry}  from 'rxjs/operators'
 import {of} from 'rxjs/observable/of'
 @Injectable()
 export class BookService {
   constructor(
     public http:HttpClient,
-    public storage: Storage
   ) {}
-  getIndexBookList():Observable<IndexStateModel>{
-    this.storage.get(storageNames.index).then(value => {
-      if(value) {
-        return of(value)
-      } else{
-        return this.http
+  getIndexBookList({Cachable,x_refresh}):Observable<IndexStateModel>{
+    
+    return this.http.get<IndexStateModel>(baseApiUrl+URL.booklist,{
+      headers:{
+        'Content-Type':  'application/json',
+        'Cachable':Cachable,
+        'x-refresh':x_refresh
       }
     })
+    .pipe(retry(3))
   }
 }

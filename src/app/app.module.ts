@@ -1,6 +1,10 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
+import {AppState} from './state/app.state'
 import { MyApp } from './app.component';
 import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -41,7 +45,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { AuthProvider } from '../providers/auth/auth';
-
+import { BookService } from '../providers/book/book.service';
+import {httpInterceptorProviders} from '../providers/interceptor/index'
 @NgModule({
   declarations: [
     MyApp,
@@ -73,6 +78,9 @@ import { AuthProvider } from '../providers/auth/auth';
     BrowserModule,
     ComponentsModule,
     CartPageModule,
+    NgxsModule.forRoot([AppState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
     IonicStorageModule.forRoot(),
     DirectivesModule,
     HttpClientModule,
@@ -117,7 +125,9 @@ import { AuthProvider } from '../providers/auth/auth';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     {provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]},
     RestApiProvider,
-    AuthProvider
+    AuthProvider,
+    httpInterceptorProviders,
+    BookService
   ]
 })
 export class AppModule {}

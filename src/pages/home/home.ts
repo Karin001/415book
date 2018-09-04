@@ -1,8 +1,12 @@
 import { Component, ElementRef, ViewChild, Renderer2, NgZone } from '@angular/core';
 import { NavController, ScrollEvent } from 'ionic-angular';
+import {Store,Select} from '@ngxs/store';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { BookPage } from '../book/book';
 import { CartPage } from '../cart/cart';
+import { AppState } from '../../app/state/app.state';
+import { IndexStateModel } from '../../app/state/app.stateModel';
+import { Observable } from 'rxjs';
 //import { BookTypePage } from '../book-type/book-type';
 //import { SearchPage } from '../search/search';
 @Component({
@@ -27,14 +31,16 @@ export class HomePage {
   ]
   typeLists;
   op = `rgba(255,255,255,0)`;
+  @Select(AppState.bookList) indexData$:Observable<any>;
   constructor(
     public navCtrl: NavController,
     public renderer: Renderer2,
     public zone: NgZone,
-    public restApi: RestApiProvider
+    public restApi: RestApiProvider,
+    public store: Store
   ) {
-    this.restApi.getIndexBookList((list)=>{this.typeLists = list; console.log('hiahiahia',this.typeLists)});
-   
+    
+    this.indexData$.subscribe(data => console.log('datalist',data));
 
 
 

@@ -101,7 +101,8 @@ page-home {
       @include flx($x:flex-start);
       flex:1;
       margin: .8rem .8rem .8rem 2rem;
-      border: 2px solid #13AFEC;
+      
+      box-shadow: inset 0px 0px 2px 1px rgb(74, 148, 245);
       ion-icon[name=search]{
         padding:0 10px;
         font-size: 2rem;
