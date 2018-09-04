@@ -1,6 +1,8 @@
 import { Component, ViewChild,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController  } from 'ionic-angular';
-
+import {Store,Select} from '@ngxs/store'
+import {BookDetailState} from '../../app/state/app.state'
+import {Observable} from 'rxjs/observable'
 //import { MuluPage } from '../mulu/mulu';
 //import { CheckOrderPage } from '../check-order/check-order';
 /**
@@ -43,6 +45,7 @@ export class BookPage {
   @ViewChild('box') box1:ElementRef;
   @ViewChild('con') con1:ElementRef;
   moreShow=false;
+  @Select(BookDetailState.bookDetail) bookDetail$:Observable<any>
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,

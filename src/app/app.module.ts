@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
-import {AppState} from './state/app.state'
+import {AppState,BookDetailState} from './state/app.state'
 import { MyApp } from './app.component';
 import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -78,7 +78,7 @@ import {httpInterceptorProviders} from '../providers/interceptor/index'
     BrowserModule,
     ComponentsModule,
     CartPageModule,
-    NgxsModule.forRoot([AppState]),
+    NgxsModule.forRoot([AppState,BookDetailState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     IonicStorageModule.forRoot(),

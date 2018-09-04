@@ -19,10 +19,10 @@
 <ion-content>
 
   <div class="headerbox">
-    <div class="imgbox" fly-to-cart  [style.backgroundImage]="'url('+book.imgSrc+')'" alt=""></div>
-    <p class="name">{{book.name}}</p>
-    <p class="author"><span>作者: </span> {{book.author}}</p>
-    <p class="jiage">￥21</p>
+    <div class="imgbox" fly-to-cart  [style.backgroundImage]="'url('+(bookDetail$ | async).imgurl+')'" alt=""></div>
+    <p class="name">{{(bookDetail$ | async).bookname}}</p>
+    <p class="author"><span>作者: </span> {{(bookDetail$ | async).bookauth}}</p>
+    <p class="jiage">￥{{(bookDetail$ | async).bookprice}}</p>
     <p class="zhekou">
       <span class="zhe">3.7折</span>
       <span class="dixiao">

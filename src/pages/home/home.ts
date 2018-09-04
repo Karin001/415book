@@ -6,6 +6,7 @@ import { BookPage } from '../book/book';
 import { CartPage } from '../cart/cart';
 import { AppState } from '../../app/state/app.state';
 import { IndexStateModel } from '../../app/state/app.stateModel';
+import { BookClick } from '../../app/state/app.action'
 import { Observable } from 'rxjs';
 //import { BookTypePage } from '../book-type/book-type';
 //import { SearchPage } from '../search/search';
@@ -39,19 +40,21 @@ export class HomePage {
     public restApi: RestApiProvider,
     public store: Store
   ) {
-    
+
     this.indexData$.subscribe(data => console.log('datalist',data));
 
 
 
   }
   toBookPage(book) {
+    this.store.dispatch(new BookClick('1'));
     this.navCtrl.push('BookPage', { book });
   }
   toCartPage() {
     this.navCtrl.push(CartPage);
   }
   toBookTypePage(type) {
+
     this.navCtrl.push('BookTypePage',{typeTitle:type})
   }
   toSearchPage() {
@@ -77,5 +80,5 @@ export class HomePage {
     })
 
   }
-  
+
 }
