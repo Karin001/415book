@@ -7,18 +7,20 @@ import { HttpClient } from '@angular/common/http';
 import { IndexStateModel, BookDetailStateModel } from '../../app/state/app.stateModel';
 import { Observable } from 'rxjs/observable'
 import { retry } from 'rxjs/operators'
+import {storageNames} from '../../config'
 import { of } from 'rxjs/observable/of'
 @Injectable()
 export class BookService {
   constructor(
     public http: HttpClient,
   ) { }
-  getIndexBookList({ Cachable, x_refresh }): Observable<IndexStateModel> {
+  getIndexBookList({ Cachable, x_refresh,CacheProperty=storageNames.index }): Observable<IndexStateModel> {
     return this.http.get<IndexStateModel>(baseApiUrl + URL.booklist, {
       headers: {
         'Content-Type': 'application/json',
         'Cachable': Cachable,
-        'x-refresh': x_refresh
+        'x-refresh': x_refresh,
+        'CacheProperty':CacheProperty
       }
     })
       .pipe(retry(3))
