@@ -25,20 +25,9 @@ import { LogInPage } from '../pages/log-in/log-in';
 import { BookPage } from '../pages/book/book';
 //import {MuluPage} from '../pages/mulu/mulu';
 import { CartPage } from '../pages/cart/cart';
-//import { EditRemovePage } from '../pages/cart/modal-page/editRemove';
-//import { FukuanPage } from '../pages/fukuan/fukuan';
-//import { CheckOrderPage } from '../pages/check-order/check-order';
-//import { PostAddrPage } from '../pages/post-addr/post-addr';
-//import { EditPostPage } from '../pages/edit-post/edit-post';
-//import { CityPickerPage } from '../pages/city-picker/city-picker';
-//import { BookTypePage } from '../pages/book-type/book-type';
+
 import { UserPage } from '../pages/user/user';
-//import { SearchPage } from '../pages/search/search';
-//import { UserSettingPage } from '../pages/user-setting/user-setting';
-//import { OrderlistPage } from '../pages/orderlist/orderlist';
-//import { OrderDetailPage } from '../pages/order-detail/order-detail';
-//import { BillDetailPage } from '../pages/bill-detail/bill-detail';
-//import { UserInfoPage } from '../pages/user-info/user-info';
+
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -46,33 +35,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { AuthProvider } from '../providers/auth/auth';
 import { BookService } from '../providers/book/book.service';
+import { messageService } from '../providers/message/message.service';
 import {httpInterceptorProviders} from '../providers/interceptor/index'
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
-    //SignUpPage,
-    //LogInPage,
+
     HomePage,
     TabsPage,
-   // BookPage,
-   // MuluPage,
-    //CartPage,
-    //FukuanPage,
-    //CheckOrderPage,
-    //EditRemovePage,
-    //PostAddrPage,
-    //EditPostPage,
-    //BookTypePage,
-   // CityPickerPage,
-   // SearchPage,
+   
     UserPage,
-   // UserSettingPage,
-    //OrderlistPage,
-    //OrderDetailPage,
-   // BillDetailPage,
-   // UserInfoPage
+ 
   ],
   imports: [
     BrowserModule,
@@ -127,6 +102,7 @@ import {httpInterceptorProviders} from '../providers/interceptor/index'
     RestApiProvider,
     AuthProvider,
     httpInterceptorProviders,
+    messageService,
     BookService
   ]
 })

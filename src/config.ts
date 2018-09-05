@@ -17,5 +17,6 @@ export const storageNames = {
   hot: 'hot_book_list',
   new: 'new_book_list',
   areaData: 'area_data',
+  token:'auth_token'
 
 }

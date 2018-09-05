@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import {Storage} from '@ionic/storage';
+import {storageNames} from '../../config';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -11,6 +12,7 @@ import { exhaustMap } from 'rxjs/operators/exhaustMap';
 import { map } from 'rxjs/operators/map';
 import { of } from 'rxjs/observable/of';
 import { Authentication_logIn, Authentication_signIn, User } from '../../app/model/auth';
+import {baseApiUrl,restApiUrl} from '../../config'
 /*
   Generated class for the AuthProvider provider.
 
@@ -61,21 +63,13 @@ export class AuthProvider {
     })
     )
   }
-  logIn(formval: Authentication_logIn):Observable<{success:boolean; payload:any}> {
-    return this.http.post('http://127.0.0.1:8000/logIn', { ...formval })
+  saveAuthToken(token:string){
+    this.storage.set(storageNames.token,token);
+  }
+  logIn(formVal:{phone:string;password:string}):Observable<any> {
+    return this.http.post<any>('', formVal)
       .pipe(
-      retry(5),
-     
-      exhaustMap((data: User)=> {
-        if(data.payload) {
-          this.remenberMe(data.payload);
-        }
-        this.logged.next({ ...data });
-        return of({success:true,payload:data});
-      }),
-      catchError((err)=> {
-        return of({success:true,payload:err});
-      })
+      retry(5)
       )
   }
   logOut():Observable<boolean> {
