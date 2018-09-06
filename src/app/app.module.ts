@@ -33,7 +33,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
-import { AuthProvider } from '../providers/auth/auth';
+import { AuthProvider } from '../providers/auth/auth.service';
 import { BookService } from '../providers/book/book.service';
 import { messageService } from '../providers/message/message.service';
 import {httpInterceptorProviders} from '../providers/interceptor/index'

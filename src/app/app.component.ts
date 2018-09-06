@@ -6,7 +6,7 @@ import { Storage } from '@ionic/storage';
 import { IndexLoadStart } from './state/app.action';
 import {Store} from '@ngxs/store'
 import { TabsPage } from '../pages/tabs/tabs';
-import {AuthProvider} from '../providers/auth/auth';
+import {AuthProvider} from '../providers/auth/auth.service';
 import {catchError} from 'rxjs/operators/catchError';
 import { retry } from 'rxjs/operators/retry';
 import {of} from 'rxjs/observable/of'

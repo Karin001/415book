@@ -2,7 +2,12 @@ export const baseApiUrl = 'http://localhost';
 export const environment_production = false; 
 export const restApiUrl = {
   booklist:'/booklist',
-  bookDetail:'bookDetail'
+  bookDetail:'bookDetail',
+  logIn:'/logIn',
+  signUp:'/signUp',
+  phoneCode:'/phoneCode',
+  checkPhoneCode: '/checkPhoneCode',
+  resetPW:'/resetPW'
 }
 export const storageNames = {
   index: 'index_book_list',

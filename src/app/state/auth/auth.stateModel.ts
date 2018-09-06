@@ -1,6 +1,7 @@
 export interface AuthStateModel {
     logged:boolean;
-    remenberMe:boolean;
     nickName:string;
     avatar:string;
+    resetedPWSuccess:boolean;
+    codeSendedByserver:number;
 }

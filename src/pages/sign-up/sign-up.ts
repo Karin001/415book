@@ -8,7 +8,7 @@ import {
   ToastController
 } from 'ionic-angular';
 //import { LogInPage } from '../log-in/log-in';
-import { AuthProvider } from '../../providers/auth/auth';
+import { AuthProvider } from '../../providers/auth/auth.service';
 import { HomePage } from '../home/home';
 /**
  * Generated class for the SignUpPage page.

@@ -1,42 +1,47 @@
 import { Injectable } from '@angular/core';
 import { baseApiUrl } from '../../config';
 import { URL } from './config';
-// import { Storage } from '@ionic/storage';
-import { HttpClient } from '@angular/common/http';
-// import {storageNames } from '../../config';
-import { IndexStateModel, BookDetailStateModel } from '../../app/state/app.stateModel';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 import { Observable } from 'rxjs/observable'
 import { retry } from 'rxjs/operators'
-import {storageNames} from '../../config'
-import { of } from 'rxjs/observable/of'
+
+import * as Model from './book.service.model';
+
+function  setHeader(options: Model.Options) {
+  return new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Cachable': options.Cachable.toString(),
+    'x-refresh': options.x_refresh.toString(),
+    'CacheProperty': options.CacheProperty
+  })
+}
 @Injectable()
 export class BookService {
   constructor(
     public http: HttpClient,
   ) { }
-  getIndexBookList({ Cachable, x_refresh,CacheProperty=storageNames.index }): Observable<IndexStateModel> {
-    return this.http.get<IndexStateModel>(baseApiUrl + URL.booklist, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cachable': Cachable,
-        'x-refresh': x_refresh,
-        'CacheProperty':CacheProperty
-      }
+ 
+  getIndexBookList(options: Model.Options): Observable<Model.BookListResponseBodyModel> {
+    return this.http.get<Model.BookListResponseBodyModel>(baseApiUrl + URL.booklist, {
+      headers: setHeader(options)
     })
       .pipe(retry(3))
   }
 
-  getBookDetail({ Cachable, x_refresh, idbook }): Observable<BookDetailStateModel> {
-    return this.http.post<BookDetailStateModel>(baseApiUrl + URL.bookDetail, {
-      idbook
-    }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Cachable': Cachable,
-          'x-refresh': x_refresh
-        },
+  getBookDetail(options: Model.Options, requestBody: Model.BookDetailRequestBodyModel): Observable<Model.BookDetailResponseBodyModel> {
+    return this.http.post<Model.BookDetailResponseBodyModel>(baseApiUrl + URL.bookDetail, requestBody, {
+      headers: setHeader(options)
+    })
+      .pipe(retry(3))
+  }
 
-      })
+  getBookTypeList(options: Model.Options, requestBody: Model.BookTypeListRequestBodyModel): Observable<Model.BookTypeListResponseBodyModel> {
+    return this.http.post<Model.BookTypeListResponseBodyModel>(baseApiUrl + URL.bookTypeList, requestBody, {
+      headers: setHeader(options)
+    })
       .pipe(retry(3))
   }
 }

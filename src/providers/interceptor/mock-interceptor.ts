@@ -15,6 +15,8 @@ const mockResfn = (req: HttpRequest<any>): HttpResponse<any> => {
     case baseApiUrl + restApiUrl.bookDetail:
       const res_detail = new HttpResponse({ body: fromMock.bookDetailResbody,status:200 })
       return res_detail
+    case baseApiUrl + restApiUrl.logIn:
+    
     default:
       const res1 = new HttpResponse({ body: fromMock.booklistResbody })
       return res1

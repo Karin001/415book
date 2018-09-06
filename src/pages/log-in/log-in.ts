@@ -8,7 +8,7 @@ import {
   LoadingController,
   ToastController
 } from 'ionic-angular';
-import { AuthProvider } from '../../providers/auth/auth';
+import { AuthProvider } from '../../providers/auth/auth.service';
 import { UserPage } from '../user/user';
 import { HomePage } from '../home/home';
 import { TabsPage } from '../tabs/tabs';

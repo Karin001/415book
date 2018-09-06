@@ -1,6 +1,7 @@
 import {IndexStateModel} from '../app/state/app.stateModel'
-
-export const booklistResbody:IndexStateModel = {
+import {BookListResponseBodyModel} from '../providers/book/book.service.model'
+export const booklistResbody:BookListResponseBodyModel = {
+    success:true,
     bookList:[
         {
             typeName:'hot',

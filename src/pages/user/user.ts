@@ -2,7 +2,7 @@ import { Component,Renderer2,ViewChild,ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ScrollEvent } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { Storage } from '@ionic/storage';
-import { AuthProvider } from '../../providers/auth/auth';
+import { AuthProvider } from '../../providers/auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import {map} from 'rxjs/operators/map';
 //import { SignUpPage } from '../sign-up/sign-up';

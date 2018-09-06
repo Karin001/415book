@@ -1,4 +1,5 @@
 export const  URL = {
   booklist:'/booklist',
-  bookDetail:'bookDetail'
+  bookDetail:'/bookDetail',
+  bookTypeList:'/bookTypeList'
 }
