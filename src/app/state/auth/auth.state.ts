@@ -9,7 +9,9 @@ const defalutState = {
     nickName: '',
     avatar: 'assets/icon/avatar/png',
     resetedPWSuccess: false,
-    codeSendedByserver: 0
+    codeSendedByserver: 0,
+    codeButtonName:'获取验证码',
+    codeButtonDisabled:false
 }
 @State<AuthStateModel>({
     name: 'Auth',
@@ -25,6 +27,16 @@ export class AuthState {
     @Selector() static avatar(state: AuthStateModel) {
         return state.avatar
     }
+    @Selector() static sendPhoneCode(state: AuthStateModel) {
+        return state.codeSendedByserver
+    }
+    @Selector() static codeButtonName(state: AuthStateModel) {
+        return state.codeButtonName
+    }
+    @Selector() static codeButtonDisabled(state: AuthStateModel) {
+        return state.codeButtonDisabled
+    }
+    
     constructor(
         private authService: AuthProvider,
         public messageService: messageService
@@ -67,15 +79,40 @@ export class AuthState {
         return this.authService.getPhoneCode(action.formVal).pipe(
             tap(responseBody => {
                 if (!responseBody.success) {
-                    this.messageService.presentToast(`获取验证码失败,${responseBody.errorInfo}`, 1000)
+                    this.messageService.presentToast(`获取验证码失败,${responseBody.errorInfo}`, 2000)
+                    
                     ctx.patchState({
-                        codeSendedByserver: 0
+                        codeSendedByserver: 0,
+                        codeButtonDisabled:false,
+                        codeButtonName:responseBody.errorInfo+',请重试'
                     })
+
                 } else {
                     const count = ctx.getState().codeSendedByserver
+                    let timeCount = 6;
                     ctx.patchState({
-                        codeSendedByserver: count + 1
+                        codeSendedByserver: count + 1,
+                        codeButtonDisabled: true,
+                        codeButtonName:`${timeCount}秒后可重新获取`
                     })
+                    
+                    const kk = setInterval(() => {
+                        if (timeCount === 0) {
+                          window.clearInterval(kk);
+                          timeCount = null;
+                        ctx.patchState({
+                            codeButtonDisabled:false,
+                            codeButtonName: '获取验证码'
+                        })
+                          return;
+                        }
+                        timeCount--;
+                        ctx.patchState({
+                            codeButtonName:`${timeCount}秒后可重新获取`
+                        })
+            
+                      }, 1000)
+                    
                 }
             })
         )

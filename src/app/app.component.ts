@@ -10,6 +10,8 @@ import {AuthProvider} from '../providers/auth/auth.service';
 import {catchError} from 'rxjs/operators/catchError';
 import { retry } from 'rxjs/operators/retry';
 import {of} from 'rxjs/observable/of'
+import { Options } from '../providers/book/book.service.model'
+import {storageNames} from '../config'
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,7 +30,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.store.dispatch(new IndexLoadStart());
+      const option:Options = {
+        Cachable:true,
+        x_refresh:true,
+        CacheProperty: storageNames.index
+      }
+      this.store.dispatch(new IndexLoadStart(option));
       // this.storage.get('remenberMe').then(payload=>{
       //   if(!payload) {
       //     this.auth.logged.next(false);

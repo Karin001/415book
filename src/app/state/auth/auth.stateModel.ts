@@ -4,4 +4,6 @@ export interface AuthStateModel {
     avatar:string;
     resetedPWSuccess:boolean;
     codeSendedByserver:number;
+    codeButtonName:string;
+    codeButtonDisabled:boolean;
 }

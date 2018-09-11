@@ -5,6 +5,8 @@ import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 import {map} from 'rxjs/operators/map';
+import { AuthState } from '../../app/state/auth/auth.state'
+import { Store,Select} from '@ngxs/store'
 //import { SignUpPage } from '../sign-up/sign-up';
 //import { UserSettingPage } from '../user-setting/user-setting';
 //import { OrderlistPage } from '../orderlist/orderlist';
@@ -27,7 +29,8 @@ export class UserPage {
   hideUra = false;
   hideUraHandle;
   history;
-  logged$: Observable<{ username: string;payload?:string }|boolean>;
+  @Select(AuthState.logged) logged$:Observable<boolean>
+  @Select(AuthState.nickName) nickName$:Observable<string>
   username$: Observable<string>;
   constructor(
     public navCtrl: NavController,
@@ -35,14 +38,13 @@ export class UserPage {
     public restApi: RestApiProvider,
     public storage: Storage,
     public auth: AuthProvider,
-    public change:ChangeDetectorRef
+    public change:ChangeDetectorRef,
+    public store:Store
   ) {
     this.restApi.getHistoryBooks((list) => {
       this.history = list.historyBooks;
       console.log('list',list)
     })
-    this.logged$ = this.auth.watchLogged();
-    this.username$ = this.logged$.pipe(map(val=>val['username']));
   }
 
   ionViewDidLoad() {

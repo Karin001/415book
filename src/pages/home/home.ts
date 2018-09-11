@@ -8,6 +8,8 @@ import { AppState } from '../../app/state/app.state';
 import { IndexStateModel } from '../../app/state/app.stateModel';
 import { BookClick } from '../../app/state/app.action'
 import { Observable } from 'rxjs';
+import {storageNames} from '../../config'
+import {Options,BookDetailRequestBodyModel} from '../../providers/book/book.service.model'
 //import { BookTypePage } from '../book-type/book-type';
 //import { SearchPage } from '../search/search';
 @Component({
@@ -46,8 +48,16 @@ export class HomePage {
 
 
   }
-  toBookPage(book) {
-    this.store.dispatch(new BookClick('1'));
+  toBookPage(book,cachable=true,idbook='1') {
+    const option:Options = {
+      Cachable:cachable,
+      x_refresh:cachable,
+      CacheProperty:storageNames.new
+    }
+    const bookDetailreqBody:BookDetailRequestBodyModel = {
+      idbook
+    }
+    this.store.dispatch(new BookClick(option,bookDetailreqBody));
     this.navCtrl.push('BookPage', { book });
   }
   toCartPage() {

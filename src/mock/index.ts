@@ -1,3 +1,3 @@
 export {booklistResbody} from './booklist'
 export {bookDetailResbody} from './bookDetail'
-export 
+export {PhoneAuthErrorResponse,PhoneAuthResponse} from './auth/phoneCode'
