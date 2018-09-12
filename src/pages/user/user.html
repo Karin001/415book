@@ -23,10 +23,10 @@
     <div  class="shenmiren" *ngIf="!(logged$ | async)">
       <p (click)="toLogInPage()">嗨，神秘人！
       </p>
-      <p  (click)="toSignUpPage()">请
-        <button ion-button round >登录</button>
+      <p  >请
+        <button ion-button round (click)="toLoginPage()" >登录</button>
         或者
-        <button ion-button round>注册</button>
+        <button ion-button round (click)="toSignUpPage()">注册</button>
 
         </p>
     </div>

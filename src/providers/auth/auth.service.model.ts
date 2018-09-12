@@ -12,7 +12,7 @@ export interface LogInResponseBodyModel {
 export interface SignUpRequesetBodyModel {
     phone:string;
     password:string;
-    phoneCode:string;// 手机验证码
+    phoneAuthCode:string;// 手机验证码
 }
 export interface SignUpResponseBodyModel {
     token:string;
@@ -35,7 +35,7 @@ export interface CheckPhoneAuthResponseBodyModel {
 }
 export interface   ResetPWRequestBodyModel {
     phone:string;
-    code:string; // 手机收到的验证码
+    phoneAuthCode:string; // 手机收到的验证码
     password:string; // 新密码
 }
 export interface ResetPWResponseBodyModel {

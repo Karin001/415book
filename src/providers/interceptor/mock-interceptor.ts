@@ -11,22 +11,25 @@ const mockResfn = (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
   switch (req.url) {
     case baseApiUrl + restApiUrl.booklist:
       const res = new HttpResponse({ body: fromMock.booklistResbody,status:200 })
-      console.log('111111111',req.url)
       return of(res)
 
     case baseApiUrl + restApiUrl.bookDetail:
       const res_detail = new HttpResponse({ body: fromMock.bookDetailResbody,status:200 })
-      console.log('2222222222',req.url)
-      return of(res_detail)
-    case baseApiUrl + restApiUrl.logIn:
-      return 
+      return of(res_detail) 
     case baseApiUrl + restApiUrl.phoneCode:
-
       return Math.random()>0.5? _throw(fromMock.PhoneAuthErrorResponse):of(fromMock.PhoneAuthResponse)
+    case baseApiUrl + restApiUrl.logIn:
+      return Math.random()>0.5? _throw(fromMock.LogInErrorResponse):of(fromMock.LoginResponse)
+    case baseApiUrl + restApiUrl.resetPW:
+      return Math.random()>0.5? _throw(fromMock.ResetPWErrorResponse):of(fromMock.ResetPWResponse)
+    case baseApiUrl + restApiUrl.signUp:
+    console.log('signUp!')
+      return Math.random()>0.5? _throw(fromMock.SignUpErrorResponse):of(fromMock.SignUpResponse)
+    case baseApiUrl + restApiUrl.checkPhoneCode:
+      return Math.random()>0.5? _throw(fromMock.CheckPhoneAuthErrorResponse):of(fromMock.CheckPhoneAuthResponse)
     default:
-    console.log('3333333333333',req.url,baseApiUrl + restApiUrl.bookDetail)
-      const res1 = new HttpResponse({ body: fromMock.booklistResbody })
-      return of(res1)
+    console.log(234234234234234234234234234234234)
+      return of(fromMock.ResetPWResponse)
   }
 }
 @Injectable()

@@ -54,9 +54,7 @@ import {httpInterceptorProviders} from '../providers/interceptor/index'
     BrowserModule,
     ComponentsModule,
     CartPageModule,
-    NgxsModule.forRoot([AppState,BookDetailState,AuthState]),
-    NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
+    
     IonicStorageModule.forRoot(),
     DirectivesModule,
     HttpClientModule,
@@ -66,7 +64,10 @@ import {httpInterceptorProviders} from '../providers/interceptor/index'
       iconMode: 'ios',
       monthNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
       monthShortNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-    })
+    }),
+    NgxsModule.forRoot([AppState,BookDetailState,AuthState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [

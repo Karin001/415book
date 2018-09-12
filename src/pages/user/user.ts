@@ -1,5 +1,5 @@
 import { Component,Renderer2,ViewChild,ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, ScrollEvent } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ScrollEvent,ModalController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth.service';
@@ -39,7 +39,8 @@ export class UserPage {
     public storage: Storage,
     public auth: AuthProvider,
     public change:ChangeDetectorRef,
-    public store:Store
+    public store:Store,
+    public modalCtrl:ModalController
   ) {
     this.restApi.getHistoryBooks((list) => {
       this.history = list.historyBooks;
@@ -53,6 +54,10 @@ export class UserPage {
   }
   toSignUpPage(){
     this.navCtrl.push('SignUpPage');
+  }
+  toLoginPage(){
+    const modal = this.modalCtrl.create('LogInPage', {}, { cssClass: 'cos' });
+    modal.present();
   }
   toUserSettingPage(){
     this.navCtrl.push('UserSettingPage');

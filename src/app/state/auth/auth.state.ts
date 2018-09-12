@@ -1,17 +1,20 @@
+import { Inject } from '@angular/core'
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { LogIn, LogOut, SignUp, RequestPhoneCode, ResetPW } from './auth.action'
 import { AuthStateModel } from './auth.stateModel'
 import { messageService } from '../../../providers/message/message.service'
 import { AuthProvider } from '../../../providers/auth/auth.service'
-import { tap } from 'rxjs/operators';
+import { tap, map,filter, switchMap,take } from 'rxjs/operators';
+import { interval } from 'rxjs/observable/interval';
+
 const defalutState = {
     logged: false,
     nickName: '',
-    avatar: 'assets/icon/avatar/png',
+    avatar: 'assets/icon/avatar.png',
     resetedPWSuccess: false,
     codeSendedByserver: 0,
-    codeButtonName:'获取验证码',
-    codeButtonDisabled:false
+    codeButtonName: '获取验证码',
+    codeButtonDisabled: false
 }
 @State<AuthStateModel>({
     name: 'Auth',
@@ -36,17 +39,17 @@ export class AuthState {
     @Selector() static codeButtonDisabled(state: AuthStateModel) {
         return state.codeButtonDisabled
     }
-    
+
     constructor(
         private authService: AuthProvider,
-        public messageService: messageService
+        public messageService: messageService,
     ) { }
     @Action(LogIn)
     logIn(ctx: StateContext<AuthStateModel>, action: LogIn) {
         return this.authService.logIn(action.formVal).pipe(
             tap(responseBody => {
                 if (!responseBody.success) {
-                    this.messageService.presentToast(`登录失败，${responseBody.errorInfo}`, 1000)
+                    this.messageService.presentToast(`登录失败，${responseBody.errorInfo}`, 2000)
                 } else {
                     this.authService.saveAuthToken(responseBody.token)
                     ctx.patchState({
@@ -63,8 +66,9 @@ export class AuthState {
     signUp(ctx: StateContext<AuthStateModel>, action: SignUp) {
         return this.authService.signUp(action.formVal).pipe(
             tap(responseBody => {
+                console.error('signUp', responseBody)
                 if (!responseBody.success) {
-                    this.messageService.presentToast(`注册失败,${responseBody.errorInfo}`, 1000)
+                    this.messageService.presentToast(`注册失败,${responseBody.errorInfo}`, 2000)
                 } else {
                     this.authService.saveAuthToken(responseBody.token)
                     ctx.patchState({
@@ -76,26 +80,26 @@ export class AuthState {
     }
     @Action(RequestPhoneCode)
     requestPhoneCode(ctx: StateContext<AuthStateModel>, action: RequestPhoneCode) {
+        let timeCount = 6;
         return this.authService.getPhoneCode(action.formVal).pipe(
             tap(responseBody => {
                 if (!responseBody.success) {
                     this.messageService.presentToast(`获取验证码失败,${responseBody.errorInfo}`, 2000)
-                    
+
                     ctx.patchState({
                         codeSendedByserver: 0,
-                        codeButtonDisabled:false,
-                        codeButtonName:responseBody.errorInfo+',请重试'
+                        codeButtonDisabled: false,
+                        codeButtonName: responseBody.errorInfo + ',请重试'
                     })
 
                 } else {
                     const count = ctx.getState().codeSendedByserver
-                    let timeCount = 6;
+                    
                     ctx.patchState({
                         codeSendedByserver: count + 1,
                         codeButtonDisabled: true,
-                        codeButtonName:`${timeCount}秒后可重新获取`
+                        codeButtonName: `${timeCount}秒后可重新获取`
                     })
-                    
                     const kk = setInterval(() => {
                         if (timeCount === 0) {
                           window.clearInterval(kk);
@@ -110,11 +114,12 @@ export class AuthState {
                         ctx.patchState({
                             codeButtonName:`${timeCount}秒后可重新获取`
                         })
-            
+
                       }, 1000)
-                    
+
                 }
             })
+
         )
     }
     @Action(ResetPW)
@@ -122,13 +127,14 @@ export class AuthState {
         return this.authService.resetPW(action.formVal).pipe(
             tap(responseBody => {
                 if (!responseBody.success) {
-                    this.messageService.presentToast(`密码重置错误,${responseBody.errorInfo}`, 1000)
+                    this.messageService.presentToast(`密码重置错误,${responseBody.errorInfo}`, 2000)
                     ctx.patchState({
                         resetedPWSuccess: false
                     })
                 } else {
                     ctx.patchState({
-                        resetedPWSuccess: true
+                        resetedPWSuccess: true,
+                        logged:true
                     })
                 }
             })

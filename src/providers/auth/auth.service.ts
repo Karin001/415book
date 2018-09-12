@@ -1,4 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
+
 import {Storage} from '@ionic/storage';
 import {storageNames} from '../../config';
 import { Injectable } from '@angular/core';
@@ -21,7 +22,8 @@ export class AuthProvider {
 
   constructor(
     public http: HttpClient,
-    public storage: Storage
+    public storage: Storage,
+   
   ) {
     console.log('Hello AuthProvider Provider');
   }
@@ -64,5 +66,6 @@ export class AuthProvider {
     retry(5),
     )
   }
+ 
 
 }

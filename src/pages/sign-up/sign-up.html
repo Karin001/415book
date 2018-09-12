@@ -32,10 +32,7 @@
         </ion-item>
 
           <button ion-button full [disabled]="!phone.valid ||!code.valid ||!ps.valid " (click)="submit({phone:phone,ps:ps,code:code})">ok</button>
-          <ion-item class="info">
-            <span>已有账号？请</span>
-            <span class="switch-login" (click)="toLogIn()">登录</span>
-          </ion-item>
+          
         </div>
 
   <div class="blur bgImg" [style.background-image]="'url('+bgsrc +')'">

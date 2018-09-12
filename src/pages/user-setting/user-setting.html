@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <ion-list >
+  <ion-list>
     <ion-item (click)="toUserInfoPage()">
       <ion-avatar item-start>
         <img src="assets/icon/avatar.png">
@@ -27,22 +27,26 @@
   </ion-list>
 
   <ion-list>
-    <ion-item >
+    <ion-item>
       <span>更换手机</span>
       <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
     </ion-item>
-    <ion-item >
-        <span>更改登录密码</span>
-        <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
-      </ion-item>
-      <ion-item >
-          <span>地址管理</span>
-          <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
-        </ion-item>
-        <ion-item >
-            <span>支付设置</span>
-            <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
-          </ion-item>
+    <ion-item>
+      <span>更改登录密码</span>
+      <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <span>地址管理</span>
+      <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <span>支付设置</span>
+      <ion-icon item-end name="arrow-forward" color="primary"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="logged$ | async">
+      <span>退出登录</span>
+      <button ion-button (click)="logOut()">Log Out</button>
+    </ion-item>
   </ion-list>
 
 </ion-content>

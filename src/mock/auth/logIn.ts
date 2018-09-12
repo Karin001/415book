@@ -15,7 +15,7 @@ const LogInErrorResponseBody:LogInResponseBodyModel = {
     token:'',
     avatar:''
 }
-export const LoginSuccessResponse = new HttpResponse({
+export const LoginResponse = new HttpResponse({
     status:200,
     body:LogInResponseBody
 })
