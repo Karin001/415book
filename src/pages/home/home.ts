@@ -6,10 +6,11 @@ import { BookPage } from '../book/book';
 import { CartPage } from '../cart/cart';
 import { AppState } from '../../app/state/app.state';
 import { IndexStateModel } from '../../app/state/app.stateModel';
-import { BookClick } from '../../app/state/app.action'
+import { BookClick,LoadBookType } from '../../app/state/app.action'
 import { Observable } from 'rxjs';
 import {storageNames} from '../../config'
-import {Options,BookDetailRequestBodyModel} from '../../providers/book/book.service.model'
+import {Options,BookDetailRequestBodyModel,BookTypeListRequestBodyModel} from '../../providers/book/book.service.model'
+import {typeNames} from '../../config'
 //import { BookTypePage } from '../book-type/book-type';
 //import { SearchPage } from '../search/search';
 @Component({
@@ -23,14 +24,14 @@ export class HomePage {
   haha = 1;
   youMayLike;
   icontypes = [
-    { icon_name: 'sports', name: '运动' },
-    { icon_name: 'eng', name: '外文' },
-    { icon_name: 'child', name: '儿童' },
-    { icon_name: 'bungaku', name: '文学' },
-    { icon_name: 'gijuzu', name: '艺术' },
-    { icon_name: 'skill', name: '科技' },
-    { icon_name: 'history', name: '历史' },
-    { icon_name: 'shakai', name: '社会' },
+    { icon_name: 'sports',name: typeNames.sports.name,link:typeNames.sports.linkName },
+    { icon_name: 'eng', name:typeNames.foreign.name, link:typeNames.foreign.linkName },
+    { icon_name: 'child', name:typeNames.child.name,link:typeNames.child.linkName },
+    { icon_name: 'bungaku', name:typeNames.literature.name,link:typeNames.literature.linkName },
+    { icon_name: 'gijuzu', name:typeNames.art.name,link:typeNames.art.linkName },
+    { icon_name: 'skill', name: typeNames.science_technology.name,link:typeNames.science_technology.linkName },
+    { icon_name: 'history', name: typeNames.history.name,link:typeNames.history.linkName },
+    { icon_name: 'shakai', name: typeNames.society.name, link:typeNames.society.linkName},
   ]
   typeLists;
   op = `rgba(255,255,255,0)`;
@@ -63,9 +64,17 @@ export class HomePage {
   toCartPage() {
     this.navCtrl.push(CartPage);
   }
-  toBookTypePage(type) {
-
-    this.navCtrl.push('BookTypePage',{typeTitle:type})
+  toBookTypePage(typeName,cachable=true) {
+    const option:Options = {
+      Cachable:cachable,
+      x_refresh:cachable,
+      CacheProperty:storageNames.new
+    }
+    const reqBody:BookTypeListRequestBodyModel = {
+      typeName
+    }
+    this.store.dispatch(new LoadBookType(option,reqBody));
+    this.navCtrl.push('BookTypePage',{typeTitle:typeName})
   }
   toSearchPage() {
     this.navCtrl.push('SearchPage')

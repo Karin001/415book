@@ -7,8 +7,9 @@ import {_throw} from 'rxjs/observable/throw'
 import { baseApiUrl, restApiUrl } from '../../config';
 import * as fromMock from '../../mock'
 const mockResfn = (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
-
+  console.error(req.url)
   switch (req.url) {
+  
     case baseApiUrl + restApiUrl.booklist:
       const res = new HttpResponse({ body: fromMock.booklistResbody,status:200 })
       return of(res)
@@ -16,6 +17,9 @@ const mockResfn = (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
     case baseApiUrl + restApiUrl.bookDetail:
       const res_detail = new HttpResponse({ body: fromMock.bookDetailResbody,status:200 })
       return of(res_detail) 
+    case baseApiUrl + restApiUrl.bookType:
+    console.error('213123123123123123')
+      return Math.random()>0.9? _throw(fromMock.BookTypeListErrorResponse):of(fromMock.BookTypeListResponse)
     case baseApiUrl + restApiUrl.phoneCode:
       return Math.random()>0.5? _throw(fromMock.PhoneAuthErrorResponse):of(fromMock.PhoneAuthResponse)
     case baseApiUrl + restApiUrl.logIn:

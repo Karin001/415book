@@ -34,6 +34,9 @@ export class UserSettingPage {
     this.navCtrl.push('UserInfoPage');
   }
   logOut(){
-    this.store.dispatch(new LogOut())
+    this.store.dispatch(new LogOut()).subscribe(()=>{
+      this.navCtrl.pop()
+    })
+    
   }
 }

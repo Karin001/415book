@@ -1,4 +1,4 @@
-import {Options,BookDetailRequestBodyModel} from '../../providers/book/book.service.model'
+import {Options,BookDetailRequestBodyModel,BookTypeListRequestBodyModel} from '../../providers/book/book.service.model'
 
 export class IndexLoadStart {
   static readonly type = '[home] load-start';
@@ -8,4 +8,9 @@ export class IndexLoadStart {
 export class BookClick {
   static readonly type = '[detail] show-bookdetail';
   constructor(public options:Options,public bookDetail:BookDetailRequestBodyModel){}
+}
+
+export class LoadBookType {
+  static readonly type = '[bookType] load-start';
+  constructor(public option:Options,public typeName:BookTypeListRequestBodyModel){}
 }

@@ -3,10 +3,10 @@ interface BookListUnit{
   name:string;
   idbook:string;
   author:string;
-
   imgurl:string;
+  description?:string // 简介 首页数据不需要 分类列表数据需要
 }
-interface BookListType{
+export interface BookListType{
   typeName:string;
   books:BookListUnit[];
 }
@@ -25,4 +25,7 @@ interface BookDetail{
 }
 export interface BookDetailStateModel{
   bookDetail:BookDetail | {}
+}
+export interface BookTypeStateModel{
+  bookType:BookListType | {}
 }

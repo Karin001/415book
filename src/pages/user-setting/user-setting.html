@@ -45,7 +45,7 @@
     </ion-item>
     <ion-item *ngIf="logged$ | async">
       <span>退出登录</span>
-      <button ion-button (click)="logOut()">Log Out</button>
+      <button item-end  ion-button (click)="logOut()">Log Out</button>
     </ion-item>
   </ion-list>
 

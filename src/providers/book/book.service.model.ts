@@ -8,7 +8,8 @@
     name:string;
     idbook:string;
     author:string;
-    imgurl:string
+    imgurl:string;
+   
  }
  interface BookListElement {
     typeName:string;
@@ -17,7 +18,9 @@
 export interface BookListResponseBodyModel {
     bookList:BookListElement[]; //一个字典对象的数组
     success:boolean;
+    errorInfo:string;
 }
+
 
 interface BookDetail {
     bookdescription:string;
@@ -40,6 +43,7 @@ export interface BookDetailRequestBodyModel {
 export interface BookDetailResponseBodyModel {
     bookDetail:BookDetail;
     success:boolean;
+    errorInfo:string;
 }
 
 export interface BookTypeListRequestBodyModel {
@@ -72,4 +76,5 @@ interface BookTypeList {
 export interface BookTypeListResponseBodyModel {
     bookTypeList:BookTypeList;
     success:boolean;
+    errorInfo:string;
 }

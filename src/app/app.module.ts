@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
-import {AppState,BookDetailState} from './state/app.state'
+import {AppState,BookDetailState,BookTypeState} from './state/app.state'
 import { AuthState} from './state/auth/auth.state'
 import { MyApp } from './app.component';
 import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
@@ -65,7 +65,7 @@ import {httpInterceptorProviders} from '../providers/interceptor/index'
       monthNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
       monthShortNames: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
     }),
-    NgxsModule.forRoot([AppState,BookDetailState,AuthState]),
+    NgxsModule.forRoot([AppState,BookDetailState,BookTypeState,AuthState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
   ],

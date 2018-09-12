@@ -2,6 +2,7 @@ import {IndexStateModel} from '../app/state/app.stateModel'
 import {BookListResponseBodyModel} from '../providers/book/book.service.model'
 export const booklistResbody:BookListResponseBodyModel = {
     success:true,
+    errorInfo:'',
     bookList:[
         {
             typeName:'hot',

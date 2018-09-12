@@ -27,7 +27,7 @@
           <ion-col col-3 *ngFor="let icontype of icontypes">
             <div class="type-tubiao-set">
 
-              <ion-icon color="primary" [name]="icontype.icon_name">
+              <ion-icon color="primary" [name]="icontype.icon_name" (click)="toBookTypePage(icontype.link)">
 
               </ion-icon>
 

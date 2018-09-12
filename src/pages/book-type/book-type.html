@@ -7,22 +7,22 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>{{(bookType$ | async).typeName }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-list *ngIf="typeListData">
+  <ion-list *ngIf="(bookType$ | async) && (bookType$ | async).books">
 
-    <ion-item *ngFor="let book of typeListData.books" >
+    <ion-item *ngFor="let book of (bookType$ | async).books" >
       <div class="box">
-        <img [src]="book.src" alt="" class="book-item-img">
+        <img [src]="book.imgurl" alt="" >
         <div class="book-info">
           <p class="book-name">{{book.name}}</p>
           <p class="author">{{book.author}}</p>
-          <p class="jianjie-short">{{book.jianjie_short}}</p>
+          <p class="jianjie-short">{{book.description}}</p>
         </div>
       </div>
     </ion-item>

@@ -1,11 +1,12 @@
 import {State,Action,StateContext,Selector} from '@ngxs/store'
-import {IndexStateModel,BookDetailStateModel} from './app.stateModel'
-import {IndexLoadStart,BookClick} from './app.action'
+import {IndexStateModel,BookDetailStateModel,BookTypeStateModel} from './app.stateModel'
+import {IndexLoadStart,BookClick,LoadBookType} from './app.action'
 import { BookService } from '../../providers/book/book.service'
-
+import { messageService } from '../../providers/message/message.service'
 import {tap,catchError} from 'rxjs/operators'
 import {of} from 'rxjs/observable/of'
 import { bookDetailResbody } from '../../mock';
+import { state } from '@angular/core/src/animation/dsl';
 @State<IndexStateModel>({
   name:'app',
   defaults:{
@@ -50,6 +51,39 @@ export class BookDetailState{
       tap(bookDetailResbody => {
         console.log('bookdetailres',bookDetailResbody)
         ctx.setState({bookDetail:bookDetailResbody.bookDetail})
+      })
+    )
+  }
+}
+
+@State<BookTypeStateModel>({
+  name:'bookType',
+  defaults:{
+    bookType:{}
+  }
+})
+export class BookTypeState{
+  @Selector() static bookType(state:BookTypeStateModel) {
+    return state.bookType
+  }
+  constructor(
+    public bookService:BookService,
+    public messageService:messageService
+  ){}
+  @Action(LoadBookType)
+  loadBookType(ctx:StateContext<BookTypeStateModel>,action:LoadBookType){
+    console.error('!!!!!!!!!!!!!!!1')
+    return this.bookService.getBookTypeList(action.option,action.typeName).pipe(
+      tap(bookTypeResbody => {
+        
+        if(bookTypeResbody.success) {
+          ctx.setState({
+            bookType:bookTypeResbody.bookTypeList
+          })
+        }else {
+          this.messageService.presentToast(bookTypeResbody.errorInfo,2000)
+        }
+       
       })
     )
   }

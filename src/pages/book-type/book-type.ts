@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
+import { Store,Select } from '@ngxs/store';
+import { BookTypeState } from '../../app/state/app.state'
+
+import { Observable } from 'rxjs';
+import { BookListType } from '../../app/state/app.stateModel';
 /**
  * Generated class for the BookTypePage page.
  *
@@ -14,17 +19,14 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
   templateUrl: 'book-type.html',
 })
 export class BookTypePage {
-  title;
-  typeListData;
+  @Select(BookTypeState.bookType) bookType$:Observable<BookListType>
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public restApi: RestApiProvider
   ) {
-    this.title = this.navParams.get('typeTitle');
-    this.restApi.getBooktypeList(this.title,(list)=>{
-      this.typeListData = list;
-    });
+    
   }
 
   ionViewDidLoad() {

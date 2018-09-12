@@ -9,29 +9,29 @@
 
 <ion-content (ionScroll)="hhahaScroll($event)">
   <div #uraHeader class="ura-header " [style.background]="op" [ngClass]="{'shadow': sw,'hideUra':hideUra}">
-      <div class="ura-avatar" [hidden]="!sw"></div>
-      <button ion-button clear icon-only class="set" (click)="toUserSettingPage()">
-          <ion-icon name="settings" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
-        </button>
-        <button ion-button clear icon-only>
-          <ion-icon name="notifications" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
-          <ion-badge class="message" color="danger">3</ion-badge>
-        </button>
+    <div class="ura-avatar" [hidden]="!sw"></div>
+    <button [disabled]="!(logged$ | async)" ion-button clear icon-only class="set" (click)="toUserSettingPage()">
+      <ion-icon name="settings" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
+    </button>
+    <button [disabled]="!(logged$ | async)" ion-button clear icon-only>
+      <ion-icon name="notifications" [ngClass]="{'dark': sw,'light':!sw}"></ion-icon>
+      <ion-badge class="message" color="danger">3</ion-badge>
+    </button>
   </div>
   <header>
     <div class="avatar"></div>
-    <div  class="shenmiren" *ngIf="!(logged$ | async)">
+    <div class="shenmiren" *ngIf="!(logged$ | async)">
       <p (click)="toLogInPage()">嗨，神秘人！
       </p>
-      <p  >请
-        <button ion-button round (click)="toLoginPage()" >登录</button>
+      <p>请
+        <button ion-button round (click)="toLoginPage()">登录</button>
         或者
         <button ion-button round (click)="toSignUpPage()">注册</button>
 
-        </p>
+      </p>
     </div>
     <div class="user-name-youhuiquan" *ngIf="logged$ | async">
-      <div class="user-name" >
+      <div class="user-name">
         <span>{{username$ | async}}</span>
         <ion-badge>钻石</ion-badge>
       </div>
@@ -81,13 +81,13 @@
 
     <div class="history">
       <div class="ashato">
-          <ion-icon name="paw" color="secondary"></ion-icon>
-          <span>浏览历史</span>
+        <ion-icon name="paw" color="secondary"></ion-icon>
+        <span>浏览历史</span>
       </div>
 
-      <ion-scroll [scrollX]="'true'"  >
+      <ion-scroll [scrollX]="'true'">
         <div class="book-con" *ngIf="history && history.length>0">
-          <div *ngFor="let book of history" class="book" >
+          <div *ngFor="let book of history" class="book">
             <img [src]="book.src" alt="">
           </div>
         </div>

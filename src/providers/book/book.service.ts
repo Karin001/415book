@@ -39,8 +39,10 @@ export class BookService {
   }
 
   getBookTypeList(options: Model.Options, requestBody: Model.BookTypeListRequestBodyModel): Observable<Model.BookTypeListResponseBodyModel> {
+   console.error('!!!!!!!!!!!!11')
     return this.http.post<Model.BookTypeListResponseBodyModel>(baseApiUrl + URL.bookTypeList, requestBody, {
       headers: setHeader(options)
+
     })
       .pipe(retry(3))
   }
