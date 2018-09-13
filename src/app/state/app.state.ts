@@ -1,6 +1,6 @@
 import {State,Action,StateContext,Selector} from '@ngxs/store'
 import {IndexStateModel,BookDetailStateModel,BookTypeStateModel} from './app.stateModel'
-import {IndexLoadStart,BookClick,LoadBookType} from './app.action'
+import {IndexLoadStart,BookClick,LoadBookType,ScrollLoadMore} from './app.action'
 import { BookService } from '../../providers/book/book.service'
 import { messageService } from '../../providers/message/message.service'
 import {tap,catchError} from 'rxjs/operators'
@@ -59,7 +59,7 @@ export class BookDetailState{
 @State<BookTypeStateModel>({
   name:'bookType',
   defaults:{
-    bookType:{}
+    bookType:{typeName:'',books:[]}
   }
 })
 export class BookTypeState{
@@ -72,7 +72,6 @@ export class BookTypeState{
   ){}
   @Action(LoadBookType)
   loadBookType(ctx:StateContext<BookTypeStateModel>,action:LoadBookType){
-    console.error('!!!!!!!!!!!!!!!1')
     return this.bookService.getBookTypeList(action.option,action.typeName).pipe(
       tap(bookTypeResbody => {
         
@@ -87,4 +86,24 @@ export class BookTypeState{
       })
     )
   }
-}
+  @Action(ScrollLoadMore) 
+  scrollLoad(ctx:StateContext<BookTypeStateModel>,action:ScrollLoadMore){
+    return this.bookService.getBookTypeList(action.option,action.typeName).pipe(
+      tap(bookTypeResbody => {
+        
+        if(bookTypeResbody.success) {
+          const books = [...ctx.getState().bookType.books,...bookTypeResbody.bookTypeList.books]
+          const typeName = ctx.getState().bookType.typeName 
+          ctx.setState({
+            bookType:{typeName,books}
+          })
+        }else {
+          this.messageService.presentToast(bookTypeResbody.errorInfo,2000)
+        }
+       
+      })
+    )
+  }
+
+  }
+

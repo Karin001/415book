@@ -24,8 +24,8 @@ export const storageNames = {
   new: 'new_book_list',
   life: 'book_type_life_list',
   areaData: 'area_data',
-  token: 'auth_token'
-
+  token: 'auth_token',
+  recommend:'book_recommend_list'
 }
 export const typeNames = {
   hot: {linkName:'hot',name:'热门'},
@@ -36,8 +36,22 @@ export const typeNames = {
   foreign: {linkName:'foreign',name:'外文'},
   science_technology: {linkName:'science_technology',name:'科学与技术'},
   child: {linkName:'child',name:'儿童'},
-  society: {linkName:'hot',name:'热门'},
-  sports: {linkName:'society',name:'运动'},
+  society: {linkName:'society',name:'社会'},
+  sports: {linkName:'sports',name:'运动'},
   life: {linkName:'life',name:'生活'},
   recommend: {linkName:'recommend',name:'推荐'}
+}
+export const typeNames_short = {
+  hot: '热门',
+  new: '新书',
+  literature: '文学',
+  art:'艺术',
+  history: '历史',
+  foreign: '外文',
+  science_technology: '科学与技术',
+  child: '儿童',
+  society: '社会',
+  sports: '运动',
+  life:'生活',
+  recommend:'推荐'
 }

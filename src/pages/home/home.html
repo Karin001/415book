@@ -66,7 +66,7 @@
   <ng-container *ngFor="let group of indexData$ | async" >
     <div class="rexiao" *ngIf="group.typeName === 'hot' || group.typeName === 'new'">
       <div class="title">
-        <button ion-button full  [color]="group.typeName === 'hot'?'danger':'primary'" icon-start (click)="toBookTypePage('hot')">
+        <button ion-button full  [color]="group.typeName === 'hot'?'danger':'primary'" icon-start (click)="toBookTypePage(group.typeName)">
                 <ion-icon [name]="group.typeName === 'hot'? 'bonfire':'car'"  class="books-type-icon"></ion-icon>
                 <span>{{group.typeName === 'hot'?'热销图书':'新到好书'}}</span>
                 <ion-icon  name="arrow-dropright" class="more-books-icon"></ion-icon>
@@ -87,9 +87,9 @@
     </div>
     <div class="type-list" *ngIf="group.typeName!=='hot' && group.typeName!=='new' &&  group.typeName!=='youMayLike' ">
       <div class="title">
-        <button ion-button full clear icon-start>
+        <button ion-button full clear icon-start (click)="toBookTypePage(group.typeName)">
                     <ion-icon name="book"  class="books-type-icon"></ion-icon>
-                    <span>{{group.typeName}}</span>
+                    <span>{{group.typeName | tn}}</span>
                     <ion-icon  name="arrow-dropright" class="more-books-icon"></ion-icon>
                   </button>
 

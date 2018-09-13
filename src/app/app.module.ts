@@ -38,6 +38,8 @@ import { AuthProvider } from '../providers/auth/auth.service';
 import { BookService } from '../providers/book/book.service';
 import { messageService } from '../providers/message/message.service';
 import {httpInterceptorProviders} from '../providers/interceptor/index'
+import { PipesModule } from '../pipes/pipes.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -53,6 +55,7 @@ import {httpInterceptorProviders} from '../providers/interceptor/index'
   imports: [
     BrowserModule,
     ComponentsModule,
+    PipesModule,
     CartPageModule,
     
     IonicStorageModule.forRoot(),

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{(bookType$ | async).typeName }}</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 <ion-content>
   <ion-list *ngIf="(bookType$ | async) && (bookType$ | async).books">
 
-    <ion-item *ngFor="let book of (bookType$ | async).books" >
+    <ion-item *ngFor="let book of (bookType$ | async).books" (click)="toBookPage(book.idbook)" >
       <div class="box">
         <img [src]="book.imgurl" alt="" >
         <div class="book-info">
@@ -27,4 +27,8 @@
       </div>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

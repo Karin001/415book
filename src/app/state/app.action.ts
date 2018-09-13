@@ -14,3 +14,7 @@ export class LoadBookType {
   static readonly type = '[bookType] load-start';
   constructor(public option:Options,public typeName:BookTypeListRequestBodyModel){}
 }
+export class ScrollLoadMore{
+  static readonly type = '[bookType] scroll-load';
+  constructor(public option:Options,public typeName:BookTypeListRequestBodyModel){}
+}

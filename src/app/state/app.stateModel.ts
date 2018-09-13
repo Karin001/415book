@@ -27,5 +27,5 @@ export interface BookDetailStateModel{
   bookDetail:BookDetail | {}
 }
 export interface BookTypeStateModel{
-  bookType:BookListType | {}
+  bookType:BookListType
 }

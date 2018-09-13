@@ -19,6 +19,17 @@ page-book-type {
         height: auto;
         white-space:normal;
       }
+      .jianjie-short{
+        margin-top:30px;;
+                white-space: normal;
+                
+                overflow : hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+
+      }
 
     }
   }
