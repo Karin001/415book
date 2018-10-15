@@ -34,6 +34,7 @@ export class CityPickerPage {
     }
     this.rest.getAreaData((list)=>{
       this.data = list;
+      console.log('dddddddddddd',this.data)
       if(!this.properties || this.properties.length === 0) {
         console.log('here',this.properties);
         this.properties[0] = this.default;

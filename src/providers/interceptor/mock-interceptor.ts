@@ -40,10 +40,15 @@ const mockResfn = (req: HttpRequest<any>): Observable<HttpEvent<any>> => {
 export class MockInterceptor implements HttpInterceptor {
   constructor() { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log('req.url',req.url)
     if (environment_production) {
       console.log('hhhher')
       return next.handle(req)
-    } else {
+    } else if(req.url === restApiUrl.areaData_url){
+      console.log('mock skip')
+      return next.handle(req)
+    }else{
+      console.log('not skip mock')
       return mockResfn(req)
     }
   }

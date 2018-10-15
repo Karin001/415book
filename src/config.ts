@@ -8,7 +8,9 @@ export const restApiUrl = {
   signUp: '/signUp',
   phoneCode: '/phoneCode',
   checkPhoneCode: '/checkPhoneCode',
-  resetPW: '/resetPW'
+  resetPW: '/resetPW',
+  areaData_url: 'assets/mockData/areaData1.json',
+  
 }
 export const storageNames = {
   index: 'index_book_list',

@@ -123,18 +123,20 @@ export class RestApiProvider {
   }
 
   async getAreaData(callbackFn) {
-    const stringifyData = await this.storage.get(storageNames.areaData);
-    if(stringifyData) {
-      const data = JSON.parse(stringifyData);
-      if(data.lastTime && Date.now() - data.lastTime < LIMIT) {
-        callbackFn(data);
-        return;
-      }
-    };
+    // const stringifyData = await this.storage.get(storageNames.areaData);
+    // if(stringifyData) {
+    //   const data = JSON.parse(stringifyData);
+    //   if(data.lastTime && Date.now() - data.lastTime < LIMIT) {
+    //     console.log('storage',data)
+    //     callbackFn(data);
+    //     return;
+    //   }
+    // };
     this.http.get(apiUrl.areaData_url)
       .retry(5)
       .subscribe(list => {
         this.setStorage(storageNames.areaData,list);
+        console.log('liiiist',list)
         callbackFn(list);
       })
   }
