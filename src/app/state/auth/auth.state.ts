@@ -1,11 +1,10 @@
-import { Inject } from '@angular/core'
+
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { LogIn, LogOut, SignUp, RequestPhoneCode, ResetPW } from './auth.action'
 import { AuthStateModel } from './auth.stateModel'
 import { messageService } from '../../../providers/message/message.service'
 import { AuthProvider } from '../../../providers/auth/auth.service'
-import { tap, map,filter, switchMap,take } from 'rxjs/operators';
-import { interval } from 'rxjs/observable/interval';
+import { tap} from 'rxjs/operators';
 
 const defalutState = {
     logged: false,
@@ -94,7 +93,7 @@ export class AuthState {
 
                 } else {
                     const count = ctx.getState().codeSendedByserver
-                    
+
                     ctx.patchState({
                         codeSendedByserver: count + 1,
                         codeButtonDisabled: true,

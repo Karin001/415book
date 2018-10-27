@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams,ViewController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { Subscription } from 'rxjs';

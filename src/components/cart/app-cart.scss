@@ -1,11 +1,15 @@
-app-cart{
-    ion-icon{
+app-cart {
+    position: fixed;
+    top: -10px;
+    right: 5px;
+    ion-icon {
         position: relative;
     }
-    ion-badge{
+    ion-badge {
         position: fixed;
-        top:0rem;
-        right:.6rem;;
+        top: 0rem;
+        right: .6rem;
+        ;
         transform: scale(.7);
-      }
+    }
 }

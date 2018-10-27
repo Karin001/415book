@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { NG_VALIDATORS, AbstractControl, ValidationErrors} from '@angular/forms';
+import { NG_VALIDATORS, AbstractControl} from '@angular/forms';
 /**
  * Generated class for the PhoneValidatorDirective directive.
  *
@@ -21,8 +21,8 @@ export class FobidenValidatorDirective {
     console.log('Hello forbiden Directive');
   }
   validate(control: AbstractControl): {[key: string]: any} | null {
-  
+
       return regCheck(control, /^[A-Za-z0-9\-\.()\/\\_:]+$/, 'forbiden', '含非法字符');
-    
+
   }
 }

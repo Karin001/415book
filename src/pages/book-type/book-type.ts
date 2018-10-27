@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RestApiProvider } from '../../providers/rest-api/rest-api';
+
 import { Store,Select } from '@ngxs/store';
 import { BookTypeState } from '../../app/state/app.state'
 import {BookClick, ScrollLoadMore} from '../../app/state/app.action'
@@ -29,7 +29,7 @@ const option: Options = {
 export class BookTypePage {
   @Select(BookTypeState.bookType) srcBookType$:Observable<BookListType>
   get bookType$(){
-    
+
     return environment_production? this.srcBookType$.pipe(filter(data=>data.typeName === this.typeName))
     :this.srcBookType$.pipe(filter(data=>data.typeName === 'hot'))
   }

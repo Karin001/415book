@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Options, BookDetailRequestBodyModel, BookTypeListRequestBodyModel } from '../../providers/book/book.service.model';
 import { BookClick, ScrollLoadMore } from '../../app/state/app.action';
-import { NavController, Option } from 'ionic-angular'
+import { NavController} from 'ionic-angular'
 import { Store, Select } from '@ngxs/store'
 import { LoadBookType } from '../../app/state/app.action'
 import { BookTypeState } from '../../app/state/app.state'
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { BookListType } from '../../app/state/app.stateModel';
 import { filter } from 'rxjs/operators';
 import { typeNames, environment_production } from '../../config'
-import { BookTypeListResponse } from '../../mock';
+
 /**
  * Generated class for the YouMayLikeComponent component.
  *

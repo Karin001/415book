@@ -1,10 +1,10 @@
 <!-- Generated template for the YouMayLikeComponent component -->
 <h2 class="background double"> <span>为您推荐</span> </h2>
 <ion-list >
-  <ion-item *ngFor="let book of (list$ | async).books" >
+  <ion-item lazy-load-images *ngFor="let book of (list$ | async).books" >
       <div class="you-may-like-content-box" (click)="toBookPage(1)">
 
-          <div [style.background-image]="'url('+book.imgurl+')'" alt="" class="book-item-img-like"></div>
+          <div  [attr.data-background-src]="book.imgurl" alt="" class="book-item-img-like"></div>
           <div class="you-may-like-content-info">
             <p class="book-name">{{book.name}}</p>
             <p class="author">{{book.author}}</p>
@@ -13,7 +13,7 @@
           </div>
 
 
-        
+
       </div>
   </ion-item>
 </ion-list>

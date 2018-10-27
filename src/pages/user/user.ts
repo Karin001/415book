@@ -1,10 +1,10 @@
-import { Component,Renderer2,ViewChild,ChangeDetectorRef } from '@angular/core';
+import { Component,ViewChild,ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, ScrollEvent,ModalController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { Storage } from '@ionic/storage';
 import { AuthProvider } from '../../providers/auth/auth.service';
 import { Observable } from 'rxjs/Observable';
-import {map} from 'rxjs/operators/map';
+
 import { AuthState } from '../../app/state/auth/auth.state'
 import { Store,Select} from '@ngxs/store'
 //import { SignUpPage } from '../sign-up/sign-up';

@@ -11,8 +11,7 @@ import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
 import { Platform } from 'ionic-angular';
-import { NG_VALIDATORS} from '@angular/forms'
-import { MyvalidatorDirective } from '../directives/myvalidator/myvalidator';
+
 import { CartPageModule } from '../pages/cart/cart.module'
 import {ComponentsModule} from '../components/components.module'
 
@@ -22,10 +21,9 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 //import { SignUpPage } from '../pages/sign-up/sign-up';
-import { LogInPage } from '../pages/log-in/log-in';
-import { BookPage } from '../pages/book/book';
+
 //import {MuluPage} from '../pages/mulu/mulu';
-import { CartPage } from '../pages/cart/cart';
+
 
 import { UserPage } from '../pages/user/user';
 
@@ -39,7 +37,7 @@ import { BookService } from '../providers/book/book.service';
 import { messageService } from '../providers/message/message.service';
 import {httpInterceptorProviders} from '../providers/interceptor/index'
 import { PipesModule } from '../pipes/pipes.module';
-
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
 @NgModule({
   declarations: [
     MyApp,
@@ -48,17 +46,17 @@ import { PipesModule } from '../pipes/pipes.module';
 
     HomePage,
     TabsPage,
-   
+
     UserPage,
- 
+
   ],
   imports: [
     BrowserModule,
     ComponentsModule,
     PipesModule,
     CartPageModule,
-    
     IonicStorageModule.forRoot(),
+    LazyLoadImagesModule,
     DirectivesModule,
     HttpClientModule,
     NativeHttpModule,

@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams, AlertController, ModalController }
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-const goods = []
+
 @IonicPage()
 @Component({
   selector: 'page-cart',

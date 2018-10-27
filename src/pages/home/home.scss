@@ -26,11 +26,12 @@ ion-col {
 }
 .book-item-img{
   width: 100%;
-  padding-bottom: 130%;
- 
+
+
   margin-bottom: 10px;
-  background-color: aquamarine;
-  background-repeat:no-repeat; 
+  transition: background-image 1s ease-out;
+  background-repeat:no-repeat;
+  background-image: url(../../assets/imgs/default.png);
   background-size:100% 100%;
    box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: .5)
 }
@@ -71,25 +72,27 @@ white-space: nowrap;
   width: 100%;
 
     .imgBox{
-    
-      padding-bottom: 130%;
+
+
       background-color: #949494;
       background-position: center;
       background-size:cover;
+
+      transition: background-image 1s ease-out;
    }
     p{
       margin:2px;
     }
-    
-   
-  
+
+
+
 
 }
 
 page-home {
   ion-scroll{
     height:100%;
-   
+
   }
   .header-box {
     z-index: 2;
@@ -101,7 +104,7 @@ page-home {
       @include flx($x:flex-start);
       flex:1;
       margin: .8rem .8rem .8rem 2rem;
-      
+
       box-shadow: inset 0px 0px 2px 1px rgb(74, 148, 245);
       ion-icon[name=search]{
         padding:0 10px;
@@ -316,7 +319,7 @@ page-home {
     }
     .content{
       padding-left: 10px;
-      
+
     }
   }
 

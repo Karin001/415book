@@ -8,8 +8,8 @@ export class BtnClickService {
     constructor() {
     }
 
-    emmit(){
-        this.clicked.next(true);
+    emmit(url){
+        this.clicked.next(url);
         setTimeout(()=>{
             this.shake.next(true);
         },1000)

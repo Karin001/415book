@@ -16,9 +16,9 @@
 <ion-content>
   <ion-list *ngIf="(bookType$ | async) && (bookType$ | async).books">
 
-    <ion-item *ngFor="let book of (bookType$ | async).books" (click)="toBookPage(book.idbook)" >
+    <ion-item lazy-load-images *ngFor="let book of (bookType$ | async).books" (click)="toBookPage(book.idbook)" >
       <div class="box">
-        <img [src]="book.imgurl" alt="" >
+        <div [attr.data-background-src]="book.imgurl"  class="book-item-img"></div>
         <div class="book-info">
           <p class="book-name">{{book.name}}</p>
           <p class="author">{{book.author}}</p>

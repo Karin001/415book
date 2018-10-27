@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { ValidatorFn, ValidationErrors, AsyncValidatorFn,AbstractControl,NG_VALIDATORS } from '@angular/forms';
+import { AbstractControl,NG_VALIDATORS } from '@angular/forms';
 /**
  * Generated class for the MyvalidatorDirective directive.
  *
@@ -12,9 +12,9 @@ function regCheck(c: AbstractControl, reg: RegExp, name: string, message: string
     {'message':message}
    : null;
 }
-function chnChar(c: AbstractControl): ValidationErrors {
-  return regCheck(c, /^[\u4E00-\u9FA5]+$/, 'chnChar', '请输入中文字符');
-}
+// function chnChar(c: AbstractControl): ValidationErrors {
+//   return regCheck(c, /^[\u4E00-\u9FA5]+$/, 'chnChar', '请输入中文字符');
+// }
 @Directive({
   selector: '[chnOnly]', // Attribute selector
   providers: [{provide: NG_VALIDATORS, useExisting:MyvalidatorDirective, multi:true}],

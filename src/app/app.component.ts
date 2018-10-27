@@ -7,9 +7,7 @@ import { IndexLoadStart } from './state/app.action';
 import {Store} from '@ngxs/store'
 import { TabsPage } from '../pages/tabs/tabs';
 import {AuthProvider} from '../providers/auth/auth.service';
-import {catchError} from 'rxjs/operators/catchError';
-import { retry } from 'rxjs/operators/retry';
-import {of} from 'rxjs/observable/of'
+
 import { Options } from '../providers/book/book.service.model'
 import {storageNames} from '../config'
 @Component({
@@ -18,10 +16,10 @@ import {storageNames} from '../config'
 export class MyApp {
   rootPage:any = TabsPage;
 
-  constructor(platform: Platform, 
+  constructor(platform: Platform,
     statusBar: StatusBar,
-     splashScreen: SplashScreen, 
-     public storage:Storage , 
+     splashScreen: SplashScreen,
+     public storage:Storage ,
      public auth:AuthProvider,
      public store:Store
     ) {
@@ -56,7 +54,7 @@ export class MyApp {
       //   this.auth.logged.next(false);
       //   console.log('rem3');
       // })
-      
+
     });
   }
 }

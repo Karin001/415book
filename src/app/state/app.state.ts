@@ -3,10 +3,8 @@ import {IndexStateModel,BookDetailStateModel,BookTypeStateModel} from './app.sta
 import {IndexLoadStart,BookClick,LoadBookType,ScrollLoadMore} from './app.action'
 import { BookService } from '../../providers/book/book.service'
 import { messageService } from '../../providers/message/message.service'
-import {tap,catchError} from 'rxjs/operators'
-import {of} from 'rxjs/observable/of'
-import { bookDetailResbody } from '../../mock';
-import { state } from '@angular/core/src/animation/dsl';
+import {tap} from 'rxjs/operators'
+
 @State<IndexStateModel>({
   name:'app',
   defaults:{
@@ -74,7 +72,7 @@ export class BookTypeState{
   loadBookType(ctx:StateContext<BookTypeStateModel>,action:LoadBookType){
     return this.bookService.getBookTypeList(action.option,action.typeName).pipe(
       tap(bookTypeResbody => {
-        
+
         if(bookTypeResbody.success) {
           ctx.setState({
             bookType:bookTypeResbody.bookTypeList
@@ -82,25 +80,25 @@ export class BookTypeState{
         }else {
           this.messageService.presentToast(bookTypeResbody.errorInfo,2000)
         }
-       
+
       })
     )
   }
-  @Action(ScrollLoadMore) 
+  @Action(ScrollLoadMore)
   scrollLoad(ctx:StateContext<BookTypeStateModel>,action:ScrollLoadMore){
     return this.bookService.getBookTypeList(action.option,action.typeName).pipe(
       tap(bookTypeResbody => {
-        
+
         if(bookTypeResbody.success) {
           const books = [...ctx.getState().bookType.books,...bookTypeResbody.bookTypeList.books]
-          const typeName = ctx.getState().bookType.typeName 
+          const typeName = ctx.getState().bookType.typeName
           ctx.setState({
             bookType:{typeName,books}
           })
         }else {
           this.messageService.presentToast(bookTypeResbody.errorInfo,2000)
         }
-       
+
       })
     )
   }

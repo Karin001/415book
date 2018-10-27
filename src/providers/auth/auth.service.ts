@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 
 import {Storage} from '@ionic/storage';
 import {storageNames} from '../../config';
@@ -18,17 +18,17 @@ import * as Model from './auth.service.model';
 */
 @Injectable()
 export class AuthProvider {
-  
+
 
   constructor(
     public http: HttpClient,
     public storage: Storage,
-   
+
   ) {
     console.log('Hello AuthProvider Provider');
   }
-  
-  
+
+
   checkPhoneAuth(requestBody:Model.CheckPhoneAuthRequestBodyModel):Observable<Model.CheckPhoneAuthResponseBodyModel>{
     return this.http.post<Model.CheckPhoneAuthResponseBodyModel>(baseApiUrl + URL.checkPhoneCode, requestBody)
     .pipe(
@@ -66,6 +66,6 @@ export class AuthProvider {
     retry(5),
     )
   }
- 
+
 
 }

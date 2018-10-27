@@ -9,15 +9,13 @@ import {
   ToastController
 } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth.service';
-import { UserPage } from '../user/user';
-import { HomePage } from '../home/home';
-import { TabsPage } from '../tabs/tabs';
+
 import { Store,Select} from '@ngxs/store'
 import { AuthState } from '../../app/state/auth/auth.state'
 import { LogIn,RequestPhoneCode,ResetPW } from '../../app/state/auth/auth.action'
 import { LogInRequstBodyModel, PhoneAuthRequestBodyModel, ResetPWRequestBodyModel } from '../../providers/auth/auth.service.model';
 import { Observable } from 'rxjs';
-import { observableToBeFn } from 'rxjs/testing/TestScheduler';
+
 /**
  * Generated class for the LogInPage page.
  *
@@ -42,7 +40,7 @@ export class LogInPage {
 
   toast;
   codeCheckOk = false;
-  
+
   @Select(AuthState.codeButtonDisabled) codeButtonDisabled$:Observable<boolean>
   @Select(AuthState.codeButtonName) codeButtonName$:Observable<string>
   @Select(AuthState.sendPhoneCode) sendPhoneCode$:Observable<number>
@@ -79,7 +77,7 @@ export class LogInPage {
     this.store.dispatch(new RequestPhoneCode(phoneAuthRequestBody)).subscribe(()=>{
       loading.dismiss()
     })
-    
+
   }
   restValidCheck(ps: string) {
     console.log(ps.length);
@@ -89,7 +87,6 @@ export class LogInPage {
     if (ps.length > 20) {
       return false;
     }
-    const kkk = new Promise(res => { setTimeout(() => { console.log('32313123sddgs'); res() }, 3000) })
 
     return true;
   }
@@ -129,7 +126,7 @@ export class LogInPage {
       duration: 1000
     });
   }
- 
+
   logIn({ phone, ps }) {
     if (phone.valid && ps.valid) {
       let loading = this.loadingCtrl.create({

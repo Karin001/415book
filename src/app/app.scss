@@ -49,11 +49,11 @@
   }
 }
 .cart-fly{
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 130px;
   top:-50px;
-  left: 150px;
+  right: 45%;
   z-index: 999;
   background-position: center;
   background-size:cover;
@@ -68,35 +68,35 @@
       display: inline-block;
       opacity: .8;
       transform:scale(.8) rotate(30deg);
-    
+
     }
-  
+
     30% {
-      left: 230px;
+      right: 0px;
       top: 100px;
-     
+
       display: inline-block;
       opacity: .6;
       transform:scale(.2) rotate(130deg);
     }
     60% {
-      left: 230px;
+      right: 0px;
       top: 100px;
-     
+
       display: inline-block;
       opacity: .6;
       transform:scale(.2) rotate(360deg);
     }
     80% {
-      left: 230px;
+      right: 0px;
       top:100px;
-  
+
       display: inline-block;
       opacity: .5;
       transform:scale(.2) rotate(0deg);
     }
     100%{
-      left:300px;
-      
+      right:-5px;
+
     }
 }

@@ -6,10 +6,12 @@ import { EditRemovePage } from './modal-page/editRemove';
 @NgModule({
   declarations: [
 
-    CartPage
+    CartPage,
+    EditRemovePage
   ],
   imports: [
     IonicPageModule.forChild(CartPage),
+
   ],
   exports:[CartPage]
 })

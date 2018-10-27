@@ -4,10 +4,17 @@ page-book-type {
     width: 100%;
     height:130px;
     @include flx($x:flex-start);
-    img{
-      width:30%;
-      margin-right:5%;
-    box-shadow: 0 2px 2px #6E6E6E;
+    .book-item-img{
+      width: 30%;
+      padding-bottom: 40%;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      transition: background-image 1s ease-out;
+      background-repeat:no-repeat;
+      background-image: url(../../assets/imgs/default.png);
+      background-size:100% 100%;
+      background-position: center;
+       box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: .5)
     }
     .book-info {
       word-break:break-all;
@@ -22,7 +29,7 @@ page-book-type {
       .jianjie-short{
         margin-top:30px;;
                 white-space: normal;
-                
+
                 overflow : hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;

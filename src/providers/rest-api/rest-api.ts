@@ -3,7 +3,7 @@ import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IndexBooklistElement } from '../../app/model/indexBooklist';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import 'rxjs/add/operator/retry';
 /*
   Generated class for the RestApiProvider provider.
@@ -45,7 +45,7 @@ const storageNames = {
   hot: 'hot_book_list',
   new: 'new_book_list',
   areaData: 'area_data',
-  
+
 }
 const LIMIT = 1000 * 60 * 10 //10min
 @Injectable()

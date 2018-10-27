@@ -5,7 +5,7 @@
       <ion-icon name="search" [color]="sw?'primary':'secondary'"></ion-icon>
       <ion-input class="search" [ngClass]="{'input-sw': sw,'input-sw-none':!sw}" type="text" placeholder="作者/书名/出版社"></ion-input>
     </div>
-    <button (click)="toCartPage()" ion-button icon-only clear [ngClass]="{'icon-btn': !sw,'icon-btn-op1':sw}">
+    <button  ion-button icon-only clear [ngClass]="{'icon-btn': !sw,'icon-btn-op1':sw}">
       <ion-icon name="notifications" [color]="sw?'primary':'light'"></ion-icon>
 
     </button>
@@ -75,9 +75,9 @@
       </div>
       <ion-grid >
         <ion-row >
-          <ion-col  col-4 *ngFor="let book of group.books" (click)="toBookPage(book)">
+          <ion-col  lazy-load-images col-4 *ngFor="let book of group.books" (click)="toBookPage(book)">
 
-            <div  [style.background-image]="'url('+book.imgurl+')'"  class="book-item-img"> </div>
+            <img   src="../../assets/imgs/default.png" [attr.data-src]="book.imgurl"  class="book-item-img">
             <p class="book-name">{{book.name}}</p>
             <p class="author">{{book.author}}</p>
 
@@ -96,9 +96,9 @@
       </div>
       <div class="content">
         <div class="scroll1">
-          <div class="book-con">
+          <div class="book-con" lazy-load-images >
             <div *ngFor="let book of group.books" class="book-item" (click)="toBookPage(book)">
-              <div class="imgBox" [style.backgroundImage]="'url('+book.imgurl+')'" alt=""> </div>
+              <img class="imgBox" src="../../assets/imgs/default.png" [attr.data-src]="book.imgurl" alt="">
               <p class="book-name">{{book.name}}</p>
               <p class="author">{{book.author}}</p>
             </div>
@@ -108,10 +108,10 @@
 
       </div>
     </div>
-    
+
 
   </ng-container>
 
-  
+
   <you-may-like></you-may-like>
 </ion-content>

@@ -1,7 +1,5 @@
-import { Component, ViewChild, NgZone } from '@angular/core';
+import { Component} from '@angular/core';
 import {
-  IonicPage,
-  NavController,
   ViewController,
   NavParams,
   AlertController,
@@ -14,7 +12,7 @@ import {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-const goods = []
+
 @Component({
   selector: 'page-editRemove',
   templateUrl: 'editRemove.html',

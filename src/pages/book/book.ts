@@ -1,6 +1,6 @@
 import { Component, ViewChild,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController  } from 'ionic-angular';
-import {Store,Select} from '@ngxs/store'
+import {Select} from '@ngxs/store'
 import {BookDetailState} from '../../app/state/app.state'
 import {Observable} from 'rxjs/observable'
 //import { MuluPage } from '../mulu/mulu';

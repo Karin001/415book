@@ -3,8 +3,9 @@ you-may-like {
     .book-item-img-like{
         width:30%;
         padding-bottom: 42%;
-        background-color: rgb(167, 167, 167);
-        background-repeat:no-repeat; 
+        background-image: url(../../assets/imgs/default.png);
+        transition: background-image 1s ease-out;
+        background-repeat:no-repeat;
         background-size:100% 100%;
          box-shadow: 2px 3px 5px rgba($color: #000000, $alpha: .5)
     }
@@ -14,11 +15,11 @@ you-may-like {
         text-align: center;
         text-transform: uppercase;
     }
-    
+
     h2.background {
         position: relative;
         z-index: 1;
-        
+
         &:before {
             border-top: 2px solid #dfdfdf;
             content:"";
@@ -28,22 +29,22 @@ you-may-like {
             width: 95%;
             z-index: -1;
         }
-    
-        span { 
-            /* to hide the lines from behind the text, you have to set the background color the same as the container */ 
-            background: #fff; 
-            padding: 0 15px; 
+
+        span {
+            /* to hide the lines from behind the text, you have to set the background color the same as the container */
+            background: #fff;
+            padding: 0 15px;
         }
     }
-    h2.double:before { 
+    h2.double:before {
         /* this is just to undo the :before styling from above */
-        border-top: none; 
+        border-top: none;
     }
-    
+
     h2.double:after {
         border-bottom: 1px solid blue;
-       
-       
+
+
         box-shadow: 0 1px 0 0 red;
         content: "";
         margin: 0 auto; /* this centers the line to the full width specified */
@@ -58,7 +59,7 @@ you-may-like {
         .you-may-like-content-info{
             flex:1;
             padding:10px 0px 0px 20px;;
-            align-self: stretch;   
+            align-self: stretch;
             word-break:break-all;
             .book-name{
                 font-weight: bold;
@@ -67,7 +68,7 @@ you-may-like {
             .jianjie{
                 margin-top:30px;;
                 white-space: normal;
-                
+
                 overflow : hidden;
                 text-overflow: ellipsis;
                 display: -webkit-box;
@@ -75,9 +76,9 @@ you-may-like {
                 -webkit-box-orient: vertical;
 
             }
-           
+
         }
     }
-    
-    
+
+
 }

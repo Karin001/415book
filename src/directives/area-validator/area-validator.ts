@@ -1,5 +1,5 @@
 import { Directive } from '@angular/core';
-import { NG_VALIDATORS, AbstractControl, ValidationErrors} from '@angular/forms';
+import { NG_VALIDATORS, AbstractControl} from '@angular/forms';
 /**
  * Generated class for the AreaValidatorDirective directive.
  *

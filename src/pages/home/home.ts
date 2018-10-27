@@ -2,10 +2,10 @@ import { Component, ElementRef, ViewChild, Renderer2, NgZone } from '@angular/co
 import { NavController, ScrollEvent } from 'ionic-angular';
 import {Store,Select} from '@ngxs/store';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
-import { BookPage } from '../book/book';
+
 import { CartPage } from '../cart/cart';
 import { AppState } from '../../app/state/app.state';
-import { IndexStateModel } from '../../app/state/app.stateModel';
+
 import { BookClick,LoadBookType } from '../../app/state/app.action'
 import { Observable } from 'rxjs';
 import {storageNames} from '../../config'
@@ -21,6 +21,7 @@ export class HomePage {
   @ViewChild('header') header: ElementRef;
   bannerImgs = [`url("assets/imgs/banner.jpg")`, `url("assets/imgs/banner.jpg")`, `url("assets/imgs/banner.jpg")`]
   sw;
+
   haha = 1;
   youMayLike;
   icontypes = [
@@ -49,6 +50,7 @@ export class HomePage {
 
 
   }
+
   toBookPage(book,cachable=true,idbook='1') {
     const option:Options = {
       Cachable:cachable,

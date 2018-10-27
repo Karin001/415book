@@ -1,10 +1,11 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 import { BtnClickService } from './service';
 @Directive({
     selector: '[fly-to-cart-btn]',
 })
-export class BtnClickDirective { 
-    constructor(
+export class BtnClickDirective {
+  @Input('fly-to-cart-btn') flytocartbtn;
+  constructor(
         public btnService:BtnClickService
     ){
 
@@ -12,7 +13,7 @@ export class BtnClickDirective {
     @HostListener('click',['$event'])
     flyTheBooK(){
         console.log('clicked')
-        this.btnService.emmit();
+        this.btnService.emmit(this.flytocartbtn);
     }
-  
+
 }

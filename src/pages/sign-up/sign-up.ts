@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SignUpRequesetBodyModel, PhoneAuthResponseBodyModel, PhoneAuthRequestBodyModel } from '../../providers/auth/auth.service.model'
+import { SignUpRequesetBodyModel,  PhoneAuthRequestBodyModel } from '../../providers/auth/auth.service.model'
 import {
   IonicPage,
   NavController,
@@ -71,7 +71,7 @@ export class SignUpPage {
     if (ps.length > 20) {
       return false;
     }
-    const kkk = new Promise(res => { setTimeout(() => { console.log('32313123sddgs'); res() }, 3000) })
+
 
     return true;
   }
